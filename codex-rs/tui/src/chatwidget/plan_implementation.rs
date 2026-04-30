@@ -23,8 +23,8 @@ pub(super) const PLAN_IMPLEMENTATION_NO_APPROVED_PLAN: &str = "No approved plan 
 /// Builds the confirmation prompt shown after a plan is approved in Plan mode.
 ///
 /// The optional usage label is already phrased for display, such as `89% used`
-/// or `123K used`. This module only decides where that label belongs in the
-/// decision copy so action wiring stays separate from token accounting.
+/// or `123K used`. The clear-context action is available for every non-empty
+/// plan; token usage only adds context to the row description.
 pub(super) fn selection_view_params(
     default_mask: Option<CollaborationModeMask>,
     plan_markdown: Option<&str>,
@@ -70,8 +70,8 @@ pub(super) fn selection_view_params(
     };
 
     let clear_context_description = clear_context_usage_label.map_or_else(
-        || "Fresh thread with this plan.".to_string(),
-        |label| format!("Fresh thread. Context: {label}."),
+        || "Fresh thread using this plan.".to_string(),
+        |label| format!("Fresh thread using this plan. Context: {label}."),
     );
 
     SelectionViewParams {

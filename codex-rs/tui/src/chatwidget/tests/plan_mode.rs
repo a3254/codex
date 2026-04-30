@@ -249,7 +249,7 @@ async fn plan_implementation_clear_context_requires_default_mode_and_plan() {
 
     assert_eq!(
         params.items[1].description.as_deref(),
-        Some("Fresh thread with this plan.")
+        Some("Fresh thread using this plan.")
     );
 
     let params = plan_implementation::selection_view_params(
@@ -259,7 +259,7 @@ async fn plan_implementation_clear_context_requires_default_mode_and_plan() {
     );
     assert_eq!(
         params.items[1].description.as_deref(),
-        Some("Fresh thread. Context: 89% used.")
+        Some("Fresh thread using this plan. Context: 89% used.")
     );
 }
 
