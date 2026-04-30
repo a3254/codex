@@ -957,6 +957,8 @@ pub(crate) struct ChatWidget {
     suppress_initial_user_message_submit: bool,
     // User inputs queued while a turn is in progress.
     queued_user_messages: VecDeque<QueuedUserMessage>,
+    loop_scheduler: crate::loop_scheduler::LoopScheduler,
+    pending_loop_setup: bool,
     // History records for queued user messages. Slash commands such as `/goal`
     // can render history that differs from the text submitted to core, so this
     // stays in lockstep with `queued_user_messages`, with missing entries
@@ -2796,7 +2798,7 @@ impl ChatWidget {
         }
         // For desktop notifications: prefer the notification payload, fall back to
         // the item-level copy source if present, otherwise send an empty string.
-        let notification_response = last_agent_message
+        let mut notification_response = last_agent_message
             .as_ref()
             .filter(|message| !message.is_empty())
             .cloned()
@@ -2864,6 +2866,11 @@ impl ChatWidget {
         self.last_unified_wait = None;
         self.unified_exec_wait_streak = None;
         self.request_redraw();
+
+        if !from_replay && self.pending_loop_setup {
+            self.finalize_pending_loop_setup(&notification_response);
+            notification_response.clear();
+        }
 
         let had_pending_steers = !self.pending_steers.is_empty();
         self.refresh_pending_input_preview();
@@ -5383,6 +5390,8 @@ impl ChatWidget {
             forked_from: None,
             interrupted_turn_notice_mode: InterruptedTurnNoticeMode::Default,
             queued_user_messages: VecDeque::new(),
+            loop_scheduler: crate::loop_scheduler::LoopScheduler::default(),
+            pending_loop_setup: false,
             queued_user_message_history_records: VecDeque::new(),
             user_turn_pending_start: false,
             rejected_steers_queue: VecDeque::new(),
@@ -7090,6 +7099,7 @@ impl ChatWidget {
             }
             TurnStatus::Interrupted => {
                 self.last_non_retry_error = None;
+                self.pending_loop_setup = false;
                 let reason = if self
                     .budget_limited_turn_ids
                     .remove(notification.turn.id.as_str())
@@ -7101,6 +7111,7 @@ impl ChatWidget {
                 self.on_interrupted_turn(reason);
             }
             TurnStatus::Failed => {
+                self.pending_loop_setup = false;
                 if let Some(error) = notification.turn.error {
                     if self.last_non_retry_error.as_ref()
                         == Some(&(notification.turn.id.clone(), error.message.clone()))

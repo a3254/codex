@@ -231,6 +231,12 @@ pub(crate) enum AppEvent {
         thread_id: ThreadId,
     },
 
+    /// Wake a scheduled `/loop` task.
+    LoopDue {
+        id: String,
+        generation: u64,
+    },
+
     /// Result of refreshing rate limits.
     RateLimitsLoaded {
         origin: RateLimitRefreshOrigin,

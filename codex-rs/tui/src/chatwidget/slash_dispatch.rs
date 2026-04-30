@@ -9,6 +9,14 @@ use super::*;
 use crate::app_event::ThreadGoalSetMode;
 use crate::bottom_pane::prompt_args::parse_slash_name;
 use crate::bottom_pane::slash_commands;
+use crate::loop_scheduler::LoopCommand;
+use crate::loop_scheduler::LoopJob;
+use crate::loop_scheduler::NormalizedLoopRequest;
+use crate::loop_scheduler::cadence_label;
+use crate::loop_scheduler::loop_normalization_prompt;
+use crate::loop_scheduler::parse_loop_command;
+use crate::loop_scheduler::parse_normalized_loop_response;
+use crate::loop_scheduler::resolve_default_prompt;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum SlashCommandDispatchSource {
@@ -31,6 +39,17 @@ const SIDE_REVIEW_UNAVAILABLE_MESSAGE: &str =
 const SIDE_SLASH_COMMAND_UNAVAILABLE_HINT: &str = "Press Esc to return to the main thread first.";
 const GOAL_USAGE: &str = "Usage: /goal <objective>";
 const GOAL_USAGE_HINT: &str = "Example: /goal improve benchmark coverage";
+
+fn truncate_loop_prompt(prompt: &str) -> String {
+    const MAX_CHARS: usize = 80;
+    let mut chars = prompt.chars();
+    let truncated = chars.by_ref().take(MAX_CHARS).collect::<String>();
+    if chars.next().is_some() {
+        format!("{truncated}...")
+    } else {
+        truncated
+    }
+}
 
 impl ChatWidget {
     /// Dispatch a bare slash command and record its staged local-history entry.
@@ -101,6 +120,136 @@ impl ChatWidget {
         };
 
         self.request_side_conversation(parent_thread_id, /*user_message*/ None);
+    }
+
+    pub(crate) fn handle_loop_due(&mut self, id: String, generation: u64) {
+        if !self.is_session_configured() || self.is_user_turn_pending_or_running() {
+            self.schedule_loop_retry(id, generation);
+            return;
+        }
+        let now = Instant::now();
+        let Some((prompt, next_job)) = self.loop_scheduler.get_due_prompt(&id, generation, now)
+        else {
+            return;
+        };
+        if let Some(job) = next_job {
+            self.schedule_loop_wakeup(&job);
+        }
+        self.queue_user_message(UserMessage::from(prompt));
+    }
+
+    fn handle_loop_command(&mut self, args: &str) {
+        match parse_loop_command(args) {
+            Ok(LoopCommand::Create { .. }) => {
+                if self.pending_loop_setup {
+                    self.add_error_message("A loop setup turn is already running.".to_string());
+                    return;
+                }
+                if !self.is_session_configured() || self.is_user_turn_pending_or_running() {
+                    self.add_error_message(
+                        "Finish the current turn before creating a loop.".to_string(),
+                    );
+                    return;
+                }
+
+                let default_prompt = resolve_default_prompt(
+                    self.config.cwd.as_path(),
+                    self.config.codex_home.as_path(),
+                );
+                let prompt = loop_normalization_prompt(args, &default_prompt);
+                self.pending_loop_setup = true;
+                self.submit_user_message_with_shell_escape_policy(
+                    UserMessage::from(prompt),
+                    ShellEscapePolicy::Disallow,
+                );
+            }
+            Ok(LoopCommand::List) => {
+                let jobs = self.loop_scheduler.list();
+                if jobs.is_empty() {
+                    self.add_info_message(
+                        "No loops scheduled".to_string(),
+                        Some("Create one with /loop 5m <prompt>.".to_string()),
+                    );
+                    return;
+                }
+                let lines = jobs
+                    .iter()
+                    .map(|job| {
+                        format!(
+                            "{} - {} - {}",
+                            job.id,
+                            cadence_label(&job.schedule_kind),
+                            truncate_loop_prompt(&job.prompt)
+                        )
+                    })
+                    .collect::<Vec<_>>()
+                    .join("\n");
+                self.add_info_message("Scheduled loops".to_string(), Some(lines));
+            }
+            Ok(LoopCommand::Cancel { id }) => {
+                if self.loop_scheduler.cancel(&id).is_some() {
+                    self.add_info_message(format!("Loop {id} cancelled"), /*hint*/ None);
+                } else {
+                    self.add_error_message(format!("No scheduled loop found for {id}."));
+                }
+            }
+            Err(message) => self.add_error_message(message),
+        }
+    }
+
+    pub(super) fn finalize_pending_loop_setup(&mut self, response: &str) {
+        if !self.pending_loop_setup {
+            return;
+        }
+        self.pending_loop_setup = false;
+        match parse_normalized_loop_response(response) {
+            Ok(NormalizedLoopRequest::Schedule {
+                schedule_kind,
+                prompt,
+            }) => {
+                let job = self
+                    .loop_scheduler
+                    .create(schedule_kind, prompt, Instant::now());
+                self.schedule_loop_wakeup(&job);
+                self.add_info_message(
+                    "Loop scheduled".to_string(),
+                    Some(format!(
+                        "Job {}. {}. Cancel with /loop cancel {}.",
+                        job.id,
+                        cadence_label(&job.schedule_kind),
+                        job.id
+                    )),
+                );
+            }
+            Ok(NormalizedLoopRequest::AlreadyDone { reason }) => {
+                let hint =
+                    reason.unwrap_or_else(|| "The requested task is already complete.".to_string());
+                self.add_info_message("Loop not scheduled".to_string(), Some(hint));
+            }
+            Err(message) => {
+                self.add_error_message(format!("Loop setup failed: {message}"));
+            }
+        }
+    }
+
+    fn schedule_loop_wakeup(&self, job: &LoopJob) {
+        let delay = job
+            .next_fire_at
+            .checked_duration_since(Instant::now())
+            .unwrap_or_default();
+        self.schedule_loop_timer(job.id.clone(), job.generation, delay);
+    }
+
+    fn schedule_loop_retry(&self, id: String, generation: u64) {
+        self.schedule_loop_timer(id, generation, std::time::Duration::from_secs(30));
+    }
+
+    fn schedule_loop_timer(&self, id: String, generation: u64, delay: std::time::Duration) {
+        let tx = self.app_event_tx.clone();
+        tokio::spawn(async move {
+            tokio::time::sleep(delay).await;
+            tx.send(AppEvent::LoopDue { id, generation });
+        });
     }
 
     pub(super) fn dispatch_command(&mut self, cmd: SlashCommand) {
@@ -206,6 +355,9 @@ impl ChatWidget {
             }
             SlashCommand::Plan => {
                 self.apply_plan_slash_command();
+            }
+            SlashCommand::Loop => {
+                self.handle_loop_command("");
             }
             SlashCommand::Goal => {
                 if !self.config.features.enabled(Feature::Goals) {
@@ -687,6 +839,9 @@ impl ChatWidget {
                     self.bottom_pane.drain_pending_submission_state();
                 }
             }
+            SlashCommand::Loop => {
+                self.handle_loop_command(trimmed);
+            }
             SlashCommand::Side if !trimmed.is_empty() => {
                 let Some(parent_thread_id) = self.thread_id else {
                     self.add_error_message(
@@ -839,6 +994,7 @@ impl ChatWidget {
             | SlashCommand::Stop
             | SlashCommand::MemoryDrop
             | SlashCommand::MemoryUpdate
+            | SlashCommand::Loop
             | SlashCommand::Mcp
             | SlashCommand::Apps
             | SlashCommand::Plugins
