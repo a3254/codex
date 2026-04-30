@@ -1036,25 +1036,6 @@ impl CodexMessageProcessor {
                 self.thread_goal_clear(to_connection_request_id(request_id), params)
                     .await;
             }
-            ClientRequest::WorkspaceGoalList { request_id, .. }
-            | ClientRequest::WorkspaceGoalCreate { request_id, .. }
-            | ClientRequest::WorkspaceGoalUpdate { request_id, .. }
-            | ClientRequest::WorkspaceGoalArchive { request_id, .. }
-            | ClientRequest::OrchestratorScheduleSet { request_id, .. }
-            | ClientRequest::OrchestratorScheduleList { request_id, .. }
-            | ClientRequest::OrchestratorScheduleDelete { request_id, .. }
-            | ClientRequest::OrchestratorRunTrigger { request_id, .. }
-            | ClientRequest::OrchestratorRunList { request_id, .. }
-            | ClientRequest::OrchestratorRunRead { request_id, .. }
-            | ClientRequest::OrchestratorOpportunityList { request_id, .. }
-            | ClientRequest::OrchestratorOpportunityUpdate { request_id, .. }
-            | ClientRequest::OrchestratorLedgerList { request_id, .. } => {
-                self.send_invalid_request_error(
-                    to_connection_request_id(request_id),
-                    "orchestrator APIs are not implemented by this app-server build",
-                )
-                .await;
-            }
             ClientRequest::ThreadMetadataUpdate { request_id, params } => {
                 self.thread_metadata_update(to_connection_request_id(request_id), params)
                     .await;

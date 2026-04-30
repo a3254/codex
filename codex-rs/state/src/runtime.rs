@@ -20,13 +20,8 @@ use crate::apply_rollout_item;
 use crate::migrations::runtime_logs_migrator;
 use crate::migrations::runtime_state_migrator;
 use crate::model::AgentJobRow;
-use crate::model::OrchestratorOpportunityRow;
-use crate::model::OrchestratorRunRow;
-use crate::model::OrchestratorScheduleRow;
-use crate::model::OrchestratorWorkLedgerRow;
 use crate::model::ThreadGoalRow;
 use crate::model::ThreadRow;
-use crate::model::WorkspaceGoalRow;
 use crate::model::anchor_from_item;
 use crate::model::datetime_to_epoch_millis;
 use crate::model::datetime_to_epoch_seconds;
@@ -67,9 +62,6 @@ mod device_key_tests;
 mod goals;
 mod logs;
 mod memories;
-mod orchestrator;
-#[cfg(test)]
-mod orchestrator_tests;
 mod remote_control;
 #[cfg(test)]
 mod test_support;
@@ -79,8 +71,6 @@ pub use device_key::DeviceKeyBindingRecord;
 pub use goals::ThreadGoalAccountingMode;
 pub use goals::ThreadGoalAccountingOutcome;
 pub use goals::ThreadGoalUpdate;
-pub use orchestrator::OrchestratorOpportunityUpsert;
-pub use orchestrator::WorkspaceGoalUpdate;
 pub use remote_control::RemoteControlEnrollmentRecord;
 pub use threads::ThreadFilterOptions;
 
