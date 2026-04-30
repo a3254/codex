@@ -1921,6 +1921,17 @@
       ],
       "type": "string"
     },
+    "OrchestratorOpportunityStatus": {
+      "enum": [
+        "proposed",
+        "accepted",
+        "inProgress",
+        "complete",
+        "rejected",
+        "stale"
+      ],
+      "type": "string"
+    },
     "PermissionProfile": {
       "oneOf": [
         {
@@ -4469,6 +4480,22 @@
         "mode"
       ],
       "type": "object"
+    },
+    "WorkspaceGoalSource": {
+      "enum": [
+        "human",
+        "orchestrator"
+      ],
+      "type": "string"
+    },
+    "WorkspaceGoalStatus": {
+      "enum": [
+        "active",
+        "paused",
+        "complete",
+        "archived"
+      ],
+      "type": "string"
     }
   },
   "description": "Request from the client to the server.",

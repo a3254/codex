@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "OrchestratorRun": {
+      "properties": {
+        "budgetUsed": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "completedAt": {
+          "format": "int64",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "decisions": true,
+        "executionTokens": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "goalUpdates": true,
+        "id": {
+          "type": "string"
+        },
+        "impactScore": {
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "loopFlags": true,
+        "phase": {
+          "$ref": "#/definitions/OrchestratorRunPhase"
+        },
+        "scheduleId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scoutTokens": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "spawnedAgentCount": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "startedAt": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "status": {
+          "$ref": "#/definitions/OrchestratorRunStatus"
+        },
+        "subagentTokens": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verifierOutcome": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/OrchestratorVerificationOutcome"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "workspaceKey": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "budgetUsed",
+        "decisions",
+        "executionTokens",
+        "goalUpdates",
+        "id",
+        "loopFlags",
+        "phase",
+        "scoutTokens",
+        "spawnedAgentCount",
+        "startedAt",
+        "status",
+        "subagentTokens",
+        "workspaceKey"
+      ],
+      "type": "object"
+    },
+    "OrchestratorRunPhase": {
+      "enum": [
+        "scout",
+        "execution",
+        "verification",
+        "complete"
+      ],
+      "type": "string"
+    },
+    "OrchestratorRunStatus": {
+      "enum": [
+        "running",
+        "complete",
+        "failed",
+        "cancelled",
+        "loopDetected"
+      ],
+      "type": "string"
+    },
+    "OrchestratorVerificationOutcome": {
+      "enum": [
+        "passed",
+        "failed",
+        "needsHuman",
+        "skippedTrivial"
+      ],
+      "type": "string"
+    }
+  },
+  "properties": {
+    "run": {
+      "$ref": "#/definitions/OrchestratorRun"
+    }
+  },
+  "required": [
+    "run"
+  ],
+  "title": "OrchestratorRunUpdatedNotification",
+  "type": "object"
+}

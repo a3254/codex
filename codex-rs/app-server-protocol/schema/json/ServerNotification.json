@@ -2294,6 +2294,229 @@
       ],
       "type": "string"
     },
+    "OrchestratorBudgetAdjustedNotification": {
+      "properties": {
+        "currentTokenBudget": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "previousTokenBudget": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "scheduleId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "currentTokenBudget",
+        "previousTokenBudget",
+        "reason",
+        "scheduleId"
+      ],
+      "type": "object"
+    },
+    "OrchestratorLoopDetectedNotification": {
+      "properties": {
+        "flags": true,
+        "runId": {
+          "type": "string"
+        },
+        "schedulePaused": {
+          "type": "boolean"
+        },
+        "workspaceKey": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "flags",
+        "runId",
+        "schedulePaused",
+        "workspaceKey"
+      ],
+      "type": "object"
+    },
+    "OrchestratorRun": {
+      "properties": {
+        "budgetUsed": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "completedAt": {
+          "format": "int64",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "decisions": true,
+        "executionTokens": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "goalUpdates": true,
+        "id": {
+          "type": "string"
+        },
+        "impactScore": {
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "loopFlags": true,
+        "phase": {
+          "$ref": "#/definitions/OrchestratorRunPhase"
+        },
+        "scheduleId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scoutTokens": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "spawnedAgentCount": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "startedAt": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "status": {
+          "$ref": "#/definitions/OrchestratorRunStatus"
+        },
+        "subagentTokens": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verifierOutcome": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/OrchestratorVerificationOutcome"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "workspaceKey": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "budgetUsed",
+        "decisions",
+        "executionTokens",
+        "goalUpdates",
+        "id",
+        "loopFlags",
+        "phase",
+        "scoutTokens",
+        "spawnedAgentCount",
+        "startedAt",
+        "status",
+        "subagentTokens",
+        "workspaceKey"
+      ],
+      "type": "object"
+    },
+    "OrchestratorRunCompletedNotification": {
+      "properties": {
+        "run": {
+          "$ref": "#/definitions/OrchestratorRun"
+        }
+      },
+      "required": [
+        "run"
+      ],
+      "type": "object"
+    },
+    "OrchestratorRunPhase": {
+      "enum": [
+        "scout",
+        "execution",
+        "verification",
+        "complete"
+      ],
+      "type": "string"
+    },
+    "OrchestratorRunStartedNotification": {
+      "properties": {
+        "run": {
+          "$ref": "#/definitions/OrchestratorRun"
+        }
+      },
+      "required": [
+        "run"
+      ],
+      "type": "object"
+    },
+    "OrchestratorRunStatus": {
+      "enum": [
+        "running",
+        "complete",
+        "failed",
+        "cancelled",
+        "loopDetected"
+      ],
+      "type": "string"
+    },
+    "OrchestratorRunUpdatedNotification": {
+      "properties": {
+        "run": {
+          "$ref": "#/definitions/OrchestratorRun"
+        }
+      },
+      "required": [
+        "run"
+      ],
+      "type": "object"
+    },
+    "OrchestratorVerificationCompletedNotification": {
+      "properties": {
+        "outcome": {
+          "$ref": "#/definitions/OrchestratorVerificationOutcome"
+        },
+        "runId": {
+          "type": "string"
+        },
+        "summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "outcome",
+        "runId"
+      ],
+      "type": "object"
+    },
+    "OrchestratorVerificationOutcome": {
+      "enum": [
+        "passed",
+        "failed",
+        "needsHuman",
+        "skippedTrivial"
+      ],
+      "type": "string"
+    },
     "PatchApplyStatus": {
       "enum": [
         "inProgress",
@@ -4663,6 +4886,82 @@
         "samplePaths"
       ],
       "type": "object"
+    },
+    "WorkspaceGoal": {
+      "properties": {
+        "completedAt": {
+          "format": "int64",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "createdAt": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "id": {
+          "type": "string"
+        },
+        "objective": {
+          "type": "string"
+        },
+        "priority": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "source": {
+          "$ref": "#/definitions/WorkspaceGoalSource"
+        },
+        "status": {
+          "$ref": "#/definitions/WorkspaceGoalStatus"
+        },
+        "updatedAt": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "workspaceKey": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "createdAt",
+        "id",
+        "objective",
+        "priority",
+        "source",
+        "status",
+        "updatedAt",
+        "workspaceKey"
+      ],
+      "type": "object"
+    },
+    "WorkspaceGoalSource": {
+      "enum": [
+        "human",
+        "orchestrator"
+      ],
+      "type": "string"
+    },
+    "WorkspaceGoalStatus": {
+      "enum": [
+        "active",
+        "paused",
+        "complete",
+        "archived"
+      ],
+      "type": "string"
+    },
+    "WorkspaceGoalUpdatedNotification": {
+      "properties": {
+        "goal": {
+          "$ref": "#/definitions/WorkspaceGoal"
+        }
+      },
+      "required": [
+        "goal"
+      ],
+      "type": "object"
     }
   },
   "description": "Notification sent from the server to the client.",
@@ -4866,6 +5165,146 @@
         "params"
       ],
       "title": "Thread/goal/clearedNotification",
+      "type": "object"
+    },
+    {
+      "properties": {
+        "method": {
+          "enum": [
+            "workspace/goal/updated"
+          ],
+          "title": "Workspace/goal/updatedNotificationMethod",
+          "type": "string"
+        },
+        "params": {
+          "$ref": "#/definitions/WorkspaceGoalUpdatedNotification"
+        }
+      },
+      "required": [
+        "method",
+        "params"
+      ],
+      "title": "Workspace/goal/updatedNotification",
+      "type": "object"
+    },
+    {
+      "properties": {
+        "method": {
+          "enum": [
+            "orchestrator/run/started"
+          ],
+          "title": "Orchestrator/run/startedNotificationMethod",
+          "type": "string"
+        },
+        "params": {
+          "$ref": "#/definitions/OrchestratorRunStartedNotification"
+        }
+      },
+      "required": [
+        "method",
+        "params"
+      ],
+      "title": "Orchestrator/run/startedNotification",
+      "type": "object"
+    },
+    {
+      "properties": {
+        "method": {
+          "enum": [
+            "orchestrator/run/updated"
+          ],
+          "title": "Orchestrator/run/updatedNotificationMethod",
+          "type": "string"
+        },
+        "params": {
+          "$ref": "#/definitions/OrchestratorRunUpdatedNotification"
+        }
+      },
+      "required": [
+        "method",
+        "params"
+      ],
+      "title": "Orchestrator/run/updatedNotification",
+      "type": "object"
+    },
+    {
+      "properties": {
+        "method": {
+          "enum": [
+            "orchestrator/run/completed"
+          ],
+          "title": "Orchestrator/run/completedNotificationMethod",
+          "type": "string"
+        },
+        "params": {
+          "$ref": "#/definitions/OrchestratorRunCompletedNotification"
+        }
+      },
+      "required": [
+        "method",
+        "params"
+      ],
+      "title": "Orchestrator/run/completedNotification",
+      "type": "object"
+    },
+    {
+      "properties": {
+        "method": {
+          "enum": [
+            "orchestrator/loop/detected"
+          ],
+          "title": "Orchestrator/loop/detectedNotificationMethod",
+          "type": "string"
+        },
+        "params": {
+          "$ref": "#/definitions/OrchestratorLoopDetectedNotification"
+        }
+      },
+      "required": [
+        "method",
+        "params"
+      ],
+      "title": "Orchestrator/loop/detectedNotification",
+      "type": "object"
+    },
+    {
+      "properties": {
+        "method": {
+          "enum": [
+            "orchestrator/verification/completed"
+          ],
+          "title": "Orchestrator/verification/completedNotificationMethod",
+          "type": "string"
+        },
+        "params": {
+          "$ref": "#/definitions/OrchestratorVerificationCompletedNotification"
+        }
+      },
+      "required": [
+        "method",
+        "params"
+      ],
+      "title": "Orchestrator/verification/completedNotification",
+      "type": "object"
+    },
+    {
+      "properties": {
+        "method": {
+          "enum": [
+            "orchestrator/budget/adjusted"
+          ],
+          "title": "Orchestrator/budget/adjustedNotificationMethod",
+          "type": "string"
+        },
+        "params": {
+          "$ref": "#/definitions/OrchestratorBudgetAdjustedNotification"
+        }
+      },
+      "required": [
+        "method",
+        "params"
+      ],
+      "title": "Orchestrator/budget/adjustedNotification",
       "type": "object"
     },
     {
