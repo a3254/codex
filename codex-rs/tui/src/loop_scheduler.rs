@@ -9,6 +9,7 @@ use uuid::Uuid;
 pub(crate) const DEFAULT_DYNAMIC_DELAY: Duration = Duration::from_secs(10 * 60);
 const MIN_INTERVAL: Duration = Duration::from_secs(60);
 const MAX_PROMPT_BYTES: usize = 25_000;
+pub(crate) const LOOP_COMPLETE_MARKER: &str = "[codex-loop-complete]";
 
 const BUILT_IN_MAINTENANCE_PROMPT: &str = "\
 Continue any unfinished work from this conversation. If there is a current branch pull request, \
@@ -112,7 +113,7 @@ impl LoopScheduler {
             return None;
         }
 
-        let prompt = job.prompt.clone();
+        let prompt = loop_turn_prompt(&job.prompt);
         let delay = delay_for_schedule(&job.schedule_kind, &job.id);
         job.next_fire_at = now + delay;
         job.generation = job.generation.saturating_add(1);
@@ -183,8 +184,41 @@ Return only a JSON object with this exact shape:
 If already complete, return:
 {{"schedule":false,"interval":null,"prompt":null,"reason":"brief reason"}}
 
-The cleaned prompt should tell the future loop turn to re-check whether the task is already done before taking action."#
+The cleaned prompt should tell the future loop turn to re-check whether the task is already done before taking action, and to report when there is no more work or no next phase."#
     )
+}
+
+fn loop_turn_prompt(prompt: &str) -> String {
+    format!(
+        "\
+This is a scheduled /loop turn.
+
+Re-check whether the task is already done, or whether there are no more phases to continue, before taking action.
+
+If the work is already done or there is no next phase, do not take further action. Say that the loop is complete, and include this exact marker on its own line so Codex can cancel the scheduled loop:
+{LOOP_COMPLETE_MARKER}
+
+Otherwise, continue with the task.
+
+Task:
+{prompt}"
+    )
+}
+
+pub(crate) fn loop_response_completed(response: &str) -> bool {
+    response
+        .lines()
+        .any(|line| line.trim() == LOOP_COMPLETE_MARKER)
+}
+
+pub(crate) fn strip_loop_complete_marker(response: &str) -> String {
+    response
+        .lines()
+        .filter(|line| line.trim() != LOOP_COMPLETE_MARKER)
+        .collect::<Vec<_>>()
+        .join("\n")
+        .trim()
+        .to_string()
 }
 
 pub(crate) fn parse_normalized_loop_response(text: &str) -> Result<NormalizedLoopRequest, String> {
@@ -420,5 +454,34 @@ mod tests {
                 reason: Some("CI already passed".to_string())
             }
         );
+    }
+
+    #[test]
+    fn due_prompt_includes_completion_marker_instruction() {
+        let mut scheduler = LoopScheduler::default();
+        let now = Instant::now();
+        let job = scheduler.create(
+            LoopScheduleKind::Fixed {
+                interval: Duration::from_secs(300),
+            },
+            "continue with the next phase".to_string(),
+            now,
+        );
+
+        let (prompt, _) = scheduler
+            .get_due_prompt(&job.id, job.generation, now)
+            .expect("job should produce a due prompt");
+
+        assert!(prompt.contains("continue with the next phase"));
+        assert!(prompt.contains(LOOP_COMPLETE_MARKER));
+        assert!(prompt.contains("no more phases"));
+    }
+
+    #[test]
+    fn detects_and_strips_completion_marker() {
+        let response = format!("Done.\n{LOOP_COMPLETE_MARKER}\n");
+
+        assert!(loop_response_completed(&response));
+        assert_eq!(strip_loop_complete_marker(&response), "Done.");
     }
 }

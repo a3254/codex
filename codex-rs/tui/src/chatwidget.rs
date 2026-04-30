@@ -959,6 +959,7 @@ pub(crate) struct ChatWidget {
     queued_user_messages: VecDeque<QueuedUserMessage>,
     loop_scheduler: crate::loop_scheduler::LoopScheduler,
     pending_loop_setup: bool,
+    active_loop_job_id: Option<String>,
     // History records for queued user messages. Slash commands such as `/goal`
     // can render history that differs from the text submitted to core, so this
     // stays in lockstep with `queued_user_messages`, with missing entries
@@ -1134,6 +1135,7 @@ pub(crate) struct UserMessage {
 enum UserMessageHistoryRecord {
     UserMessageText,
     Override(UserMessageHistoryOverride),
+    Hidden,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -1497,6 +1499,13 @@ fn user_message_for_restore(
             text_elements: history.text_elements.clone(),
             ..message
         },
+        UserMessageHistoryRecord::Hidden => UserMessage {
+            text: String::new(),
+            local_images: Vec::new(),
+            remote_image_urls: Vec::new(),
+            text_elements: Vec::new(),
+            mention_bindings: Vec::new(),
+        },
         UserMessageHistoryRecord::Override(_) | UserMessageHistoryRecord::UserMessageText => {
             message
         }
@@ -1511,6 +1520,7 @@ fn user_message_preview_text(
         Some(UserMessageHistoryRecord::Override(history)) if !history.text.is_empty() => {
             history.text.clone()
         }
+        Some(UserMessageHistoryRecord::Hidden) => String::new(),
         Some(UserMessageHistoryRecord::Override(_))
         | Some(UserMessageHistoryRecord::UserMessageText)
         | None => message.text.clone(),
@@ -1564,6 +1574,7 @@ fn merge_user_messages_with_history_record(
                 UserMessageHistoryRecord::Override(history) if !history.text.is_empty() => {
                     append_history_segment(&history.text, history.text_elements.clone());
                 }
+                UserMessageHistoryRecord::Hidden => {}
                 UserMessageHistoryRecord::Override(_) if message.text.is_empty() => {}
                 UserMessageHistoryRecord::Override(_)
                 | UserMessageHistoryRecord::UserMessageText => {
@@ -2870,6 +2881,9 @@ impl ChatWidget {
         if !from_replay && self.pending_loop_setup {
             self.finalize_pending_loop_setup(&notification_response);
             notification_response.clear();
+        }
+        if !from_replay {
+            self.finalize_active_loop_turn(&mut notification_response);
         }
 
         let had_pending_steers = !self.pending_steers.is_empty();
@@ -5392,6 +5406,7 @@ impl ChatWidget {
             queued_user_messages: VecDeque::new(),
             loop_scheduler: crate::loop_scheduler::LoopScheduler::default(),
             pending_loop_setup: false,
+            active_loop_job_id: None,
             queued_user_message_history_records: VecDeque::new(),
             user_turn_pending_start: false,
             rejected_steers_queue: VecDeque::new(),
@@ -6016,6 +6031,19 @@ impl ChatWidget {
         .1
     }
 
+    fn submit_hidden_user_message_with_shell_escape_policy(
+        &mut self,
+        user_message: UserMessage,
+        shell_escape_policy: ShellEscapePolicy,
+    ) -> Option<AppCommand> {
+        self.submit_user_message_with_history_and_shell_escape_policy(
+            user_message,
+            UserMessageHistoryRecord::Hidden,
+            shell_escape_policy,
+        )
+        .1
+    }
+
     fn submit_user_message_with_history_and_shell_escape_policy(
         &mut self,
         user_message: UserMessage,
@@ -6288,9 +6316,9 @@ impl ChatWidget {
             UserMessageHistoryRecord::Override(history) if !history.text.is_empty() => {
                 Some(encode_history_mentions(&history.text, &encoded_mentions))
             }
-            UserMessageHistoryRecord::UserMessageText | UserMessageHistoryRecord::Override(_) => {
-                None
-            }
+            UserMessageHistoryRecord::UserMessageText
+            | UserMessageHistoryRecord::Override(_)
+            | UserMessageHistoryRecord::Hidden => None,
         };
         if let Some(history_text) = history_text {
             self.submit_op(Op::AddToHistory { text: history_text });
@@ -7100,6 +7128,7 @@ impl ChatWidget {
             TurnStatus::Interrupted => {
                 self.last_non_retry_error = None;
                 self.pending_loop_setup = false;
+                self.active_loop_job_id = None;
                 let reason = if self
                     .budget_limited_turn_ids
                     .remove(notification.turn.id.as_str())
@@ -7112,6 +7141,7 @@ impl ChatWidget {
             }
             TurnStatus::Failed => {
                 self.pending_loop_setup = false;
+                self.active_loop_job_id = None;
                 if let Some(error) = notification.turn.error {
                     if self.last_non_retry_error.as_ref()
                         == Some(&(notification.turn.id.clone(), error.message.clone()))

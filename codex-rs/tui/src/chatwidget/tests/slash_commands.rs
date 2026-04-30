@@ -72,6 +72,66 @@ async fn slash_compact_eagerly_queues_follow_up_before_turn_start() {
 }
 
 #[tokio::test]
+async fn loop_completion_marker_cancels_active_loop() {
+    let (mut chat, _, _) = make_chatwidget_manual(/*model_override*/ None).await;
+    let job = chat.loop_scheduler.create(
+        crate::loop_scheduler::LoopScheduleKind::Fixed {
+            interval: std::time::Duration::from_secs(300),
+        },
+        "continue phases".to_string(),
+        std::time::Instant::now(),
+    );
+    chat.active_loop_job_id = Some(job.id.clone());
+    let mut response = format!(
+        "No more phases remain.\n{}",
+        crate::loop_scheduler::LOOP_COMPLETE_MARKER
+    );
+
+    chat.finalize_active_loop_turn(&mut response);
+
+    assert_eq!(response, "No more phases remain.");
+    assert!(chat.loop_scheduler.cancel(&job.id).is_none());
+}
+
+#[tokio::test]
+async fn slash_loop_hides_internal_setup_prompt_from_history() {
+    let (mut chat, mut rx, mut op_rx) = make_chatwidget_manual(/*model_override*/ None).await;
+    chat.thread_id = Some(ThreadId::new());
+
+    submit_composer_text(&mut chat, "/loop 1m continue phases");
+
+    let ops = std::iter::from_fn(|| op_rx.try_recv().ok()).collect::<Vec<_>>();
+    assert!(
+        ops.iter().all(|op| !matches!(op, Op::AddToHistory { .. })),
+        "loop setup prompt should not be stored in user history: {ops:?}"
+    );
+    let setup_prompt = ops
+        .iter()
+        .find_map(|op| match op {
+            Op::UserTurn { items, .. } => items.iter().find_map(|item| match item {
+                UserInput::Text { text, .. } => Some(text.as_str()),
+                _ => None,
+            }),
+            _ => None,
+        })
+        .expect("loop setup should submit a user turn");
+    assert!(setup_prompt.contains("Prepare a Codex /loop scheduled task"));
+    assert!(setup_prompt.contains("<loop_request>\n1m continue phases\n</loop_request>"));
+
+    let rendered_history = std::iter::from_fn(|| rx.try_recv().ok())
+        .filter_map(|event| match event {
+            AppEvent::InsertHistoryCell(cell) => {
+                Some(lines_to_single_string(&cell.display_lines(/*width*/ 80)))
+            }
+            _ => None,
+        })
+        .collect::<Vec<_>>()
+        .join("\n");
+    assert!(!rendered_history.contains("Prepare a Codex /loop scheduled task"));
+    assert!(!rendered_history.contains("<loop_request>"));
+}
+
+#[tokio::test]
 async fn queued_slash_compact_dispatches_after_active_turn() {
     let (mut chat, mut rx, _op_rx) = make_chatwidget_manual(/*model_override*/ None).await;
     chat.thread_id = Some(ThreadId::new());

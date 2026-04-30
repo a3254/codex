@@ -268,6 +268,7 @@ pub(super) async fn make_chatwidget_manual(
         queued_user_messages: VecDeque::new(),
         loop_scheduler: crate::loop_scheduler::LoopScheduler::default(),
         pending_loop_setup: false,
+        active_loop_job_id: None,
         queued_user_message_history_records: VecDeque::new(),
         user_turn_pending_start: false,
         rejected_steers_queue: VecDeque::new(),

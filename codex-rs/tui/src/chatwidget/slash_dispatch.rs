@@ -14,9 +14,11 @@ use crate::loop_scheduler::LoopJob;
 use crate::loop_scheduler::NormalizedLoopRequest;
 use crate::loop_scheduler::cadence_label;
 use crate::loop_scheduler::loop_normalization_prompt;
+use crate::loop_scheduler::loop_response_completed;
 use crate::loop_scheduler::parse_loop_command;
 use crate::loop_scheduler::parse_normalized_loop_response;
 use crate::loop_scheduler::resolve_default_prompt;
+use crate::loop_scheduler::strip_loop_complete_marker;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum SlashCommandDispatchSource {
@@ -135,6 +137,7 @@ impl ChatWidget {
         if let Some(job) = next_job {
             self.schedule_loop_wakeup(&job);
         }
+        self.active_loop_job_id = Some(id);
         self.queue_user_message(UserMessage::from(prompt));
     }
 
@@ -158,7 +161,7 @@ impl ChatWidget {
                 );
                 let prompt = loop_normalization_prompt(args, &default_prompt);
                 self.pending_loop_setup = true;
-                self.submit_user_message_with_shell_escape_policy(
+                self.submit_hidden_user_message_with_shell_escape_policy(
                     UserMessage::from(prompt),
                     ShellEscapePolicy::Disallow,
                 );
@@ -229,6 +232,23 @@ impl ChatWidget {
             Err(message) => {
                 self.add_error_message(format!("Loop setup failed: {message}"));
             }
+        }
+    }
+
+    pub(super) fn finalize_active_loop_turn(&mut self, response: &mut String) {
+        let Some(id) = self.active_loop_job_id.take() else {
+            return;
+        };
+        if !loop_response_completed(response) {
+            return;
+        }
+
+        *response = strip_loop_complete_marker(response);
+        if self.loop_scheduler.cancel(&id).is_some() {
+            self.add_info_message(
+                format!("Loop {id} completed"),
+                Some("The scheduled loop was cancelled.".to_string()),
+            );
         }
     }
 
