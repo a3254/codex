@@ -5,7 +5,6 @@ use std::sync::atomic::Ordering;
 use tokio::sync::mpsc;
 use tokio::sync::watch;
 
-#[cfg(all(test, any()))]
 use codex_protocol::AgentPath;
 
 pub(crate) struct Mailbox {
@@ -71,6 +70,7 @@ impl MailboxReceiver {
     }
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

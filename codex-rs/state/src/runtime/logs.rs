@@ -534,6 +534,7 @@ fn push_like_filters<'a>(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::StateRuntime;
     use super::format_feedback_log_line;

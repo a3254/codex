@@ -220,6 +220,7 @@ fn completion_budget_report(goal: &ThreadGoal) -> Option<String> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_protocol::ThreadId;

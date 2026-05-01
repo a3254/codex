@@ -101,6 +101,7 @@ fn parse_markdown_hash_location_point(point: &str) -> Option<(&str, Option<&str>
 
 #[cfg(all(test, any()))]
 #[allow(warnings, clippy::all)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::find_uuids;
     use super::normalize_markdown_hash_location_suffix;

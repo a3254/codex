@@ -28,7 +28,3 @@ fn merge_toml_values_at_path(base: &mut TomlValue, overlay: &TomlValue, path: &m
         *base = normalized_with_key_aliases(overlay, path);
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "merge_tests.rs.old"]
-mod tests;

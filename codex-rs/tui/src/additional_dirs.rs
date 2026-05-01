@@ -44,6 +44,7 @@ fn format_warning(additional_dirs: &[PathBuf]) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::add_dir_warning_message;
     use codex_protocol::models::ManagedFileSystemPermissions;

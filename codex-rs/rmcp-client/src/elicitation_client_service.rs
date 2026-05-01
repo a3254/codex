@@ -151,6 +151,7 @@ fn elicitation_response_result(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
     use rmcp::model::BooleanSchema;

@@ -852,6 +852,7 @@ impl ConfigReloader for NoopReloader {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

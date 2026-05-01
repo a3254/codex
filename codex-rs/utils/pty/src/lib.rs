@@ -2,8 +2,6 @@ pub mod pipe;
 mod process;
 pub mod process_group;
 pub mod pty;
-#[cfg(all(test, any()))]
-mod tests;
 #[cfg(windows)]
 mod win;
 

@@ -910,6 +910,7 @@ fn render_offset_content(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_protocol::protocol::ExecCommandSource;

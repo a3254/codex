@@ -115,6 +115,7 @@ pub fn extract_proposed_plan_text(text: &str) -> Option<String> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::ProposedPlanParser;
     use super::ProposedPlanSegment;

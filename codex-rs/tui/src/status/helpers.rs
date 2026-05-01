@@ -183,6 +183,7 @@ fn title_case(s: &str) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::legacy_core::DEFAULT_AGENTS_MD_FILENAME;

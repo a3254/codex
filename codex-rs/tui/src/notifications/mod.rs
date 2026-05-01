@@ -62,6 +62,7 @@ fn supports_osc9(terminal: &TerminalInfo) -> bool {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::detect_backend;
     use super::supports_osc9;

@@ -27,7 +27,6 @@ use crate::error_code::INTERNAL_ERROR_CODE;
 use crate::error_code::internal_error;
 use crate::server_request_error::TURN_TRANSITION_PENDING_REQUEST_ERROR_REASON;
 
-#[cfg(all(test, any()))]
 use codex_protocol::account::PlanType;
 
 pub(crate) type ClientRequestResult = std::result::Result<Result, JSONRPCErrorError>;
@@ -689,6 +688,7 @@ pub(crate) struct OutgoingError {
     pub id: RequestId,
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use std::time::Duration;

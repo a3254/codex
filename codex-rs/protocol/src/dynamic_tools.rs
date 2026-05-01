@@ -82,6 +82,7 @@ impl<'de> Deserialize<'de> for DynamicToolSpec {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::DynamicToolSpec;
     use pretty_assertions::assert_eq;

@@ -1330,7 +1330,3 @@ impl ConfigEditsBuilder {
         .context("config persistence task panicked")?
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "edit_tests.rs.old"]
-mod tests;

@@ -473,6 +473,7 @@ fn convert_pcm16(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::convert_pcm16;
     use pretty_assertions::assert_eq;

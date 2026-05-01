@@ -243,8 +243,7 @@ mod voice {
 mod wrapping;
 
 #[cfg(all(test, any()))]
-pub(crate) mod test_backend;
-#[cfg(all(test, any()))]
+#[path = "support_harness.rs"]
 pub(crate) mod test_support;
 
 use crate::onboarding::onboarding_screen::OnboardingScreenArgs;
@@ -1760,6 +1759,7 @@ fn should_show_login_screen(login_status: LoginStatus, config: &Config) -> bool 
     login_status == LoginStatus::NotAuthenticated
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

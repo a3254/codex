@@ -62,7 +62,3 @@ fn window_allows_startup(window: Option<&RateLimitWindow>, max_used_percent: f64
         None => true,
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "guard_tests.rs.old"]
-mod tests;

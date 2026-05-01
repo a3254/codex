@@ -116,7 +116,6 @@ use codex_login::auth_env_telemetry::AuthEnvTelemetry;
 use codex_login::auth_env_telemetry::collect_auth_env_telemetry;
 use codex_model_provider::SharedModelProvider;
 use codex_model_provider::create_model_provider;
-#[cfg(all(test, any()))]
 use codex_model_provider_info::DEFAULT_WEBSOCKET_CONNECT_TIMEOUT_MS;
 use codex_model_provider_info::ModelProviderInfo;
 use codex_model_provider_info::WireApi;
@@ -2150,7 +2149,3 @@ impl WebsocketTelemetry for ApiTelemetry {
             .record_websocket_event(result, duration);
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "client_tests.rs.old"]
-mod tests;

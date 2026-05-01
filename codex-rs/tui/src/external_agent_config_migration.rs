@@ -756,6 +756,7 @@ fn is_ctrl_exit_combo(key_event: KeyEvent) -> bool {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::ActionMenuOption;
     use super::ExternalAgentConfigMigrationOutcome;

@@ -121,6 +121,7 @@ WHERE websocket_url = ? AND account_id = ? AND app_server_client_name = ?
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::RemoteControlEnrollmentRecord;
     use super::StateRuntime;

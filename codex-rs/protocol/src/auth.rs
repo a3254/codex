@@ -121,6 +121,7 @@ pub enum RefreshTokenFailedReason {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::KnownPlan;
     use super::PlanType;

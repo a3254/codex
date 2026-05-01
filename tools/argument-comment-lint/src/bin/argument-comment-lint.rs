@@ -264,6 +264,7 @@ fn exit_code_from_status(code: Option<i32>) -> ExitCode {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::normalize_nightly_library_filename;
     use super::strict_rustflags;

@@ -355,7 +355,3 @@ fn create_auth_storage_with_keyring_store(
         AuthCredentialsStoreMode::Ephemeral => Arc::new(EphemeralAuthStorage::new(codex_home)),
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "storage_tests.rs.old"]
-mod tests;

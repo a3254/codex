@@ -369,6 +369,7 @@ impl<'de> Deserialize<'de> for AbsolutePathBuf {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::test_support::test_path_buf;

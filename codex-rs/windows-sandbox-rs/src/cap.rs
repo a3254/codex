@@ -90,6 +90,7 @@ pub fn workspace_cap_sid_for_cwd(codex_home: &Path, cwd: &Path) -> Result<String
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::load_or_create_cap_sids;
     use super::workspace_cap_sid_for_cwd;

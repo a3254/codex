@@ -202,6 +202,7 @@ impl RequestTelemetry for ModelsRequestTelemetry {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use std::num::NonZeroU64;
 

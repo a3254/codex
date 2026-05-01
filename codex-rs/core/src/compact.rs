@@ -4,7 +4,6 @@ use std::time::Instant;
 use crate::Prompt;
 use crate::client::ModelClientSession;
 use crate::client_common::ResponseEvent;
-#[cfg(all(test, any()))]
 use crate::session::PreviousTurnSettings;
 use crate::session::session::Session;
 use crate::session::turn::get_last_assistant_message_from_turn;
@@ -566,7 +565,3 @@ async fn drain_to_completed(
         }
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "compact_tests.rs.old"]
-mod tests;

@@ -505,7 +505,3 @@ pub fn create_oss_provider_with_base_url(base_url: &str, wire_api: WireApi) -> M
         supports_websockets: false,
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "model_provider_info_tests.rs.old"]
-mod tests;

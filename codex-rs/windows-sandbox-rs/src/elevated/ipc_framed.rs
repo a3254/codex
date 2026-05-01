@@ -162,6 +162,7 @@ pub fn read_frame<R: Read>(mut reader: R) -> Result<Option<FramedMessage>> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

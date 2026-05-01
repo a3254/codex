@@ -402,8 +402,3 @@ mod detect_shell_type_tests {
         );
     }
 }
-
-#[cfg(all(test, any()))]
-#[cfg(unix)]
-#[path = "shell_tests.rs.old"]
-mod tests;

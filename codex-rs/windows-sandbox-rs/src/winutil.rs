@@ -201,6 +201,7 @@ fn sid_bytes_from_string(sid_str: &str) -> Result<Vec<u8>> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::argv_to_command_line;
     use pretty_assertions::assert_eq;

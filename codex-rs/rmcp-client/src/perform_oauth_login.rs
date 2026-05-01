@@ -572,6 +572,7 @@ fn append_query_param(url: &str, key: &str, value: Option<&str>) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
 

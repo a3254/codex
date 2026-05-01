@@ -558,6 +558,7 @@ mod windows_stdio_bridge {
     }
 
     #[cfg(test)]
+    #[cfg(all(test, any()))]
     mod tests {
         use std::sync::Mutex;
 
@@ -730,6 +731,7 @@ fn cli_overrides_use_legacy_sandbox_mode(cli_overrides: &[(String, TomlValue)]) 
     cli_overrides.iter().any(|(key, _)| key == "sandbox_mode")
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

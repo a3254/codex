@@ -76,6 +76,7 @@ pub async fn ensure_responses_supported(provider: &ModelProviderInfo) -> std::io
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

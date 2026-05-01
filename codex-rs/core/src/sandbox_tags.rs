@@ -1,6 +1,5 @@
 use codex_protocol::config_types::WindowsSandboxLevel;
 use codex_protocol::models::PermissionProfile;
-#[cfg(all(test, any()))]
 use codex_protocol::protocol::SandboxPolicy;
 use codex_sandboxing::SandboxType;
 use codex_sandboxing::get_platform_sandbox;
@@ -73,7 +72,3 @@ pub(crate) fn permission_profile_policy_tag(
         }
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "sandbox_tags_tests.rs.old"]
-mod tests;

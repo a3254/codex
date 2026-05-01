@@ -82,7 +82,3 @@ fn filter_codex_apps_mcp_tools(
         .map(|(name, tool)| (name.clone(), tool.clone()))
         .collect()
 }
-
-#[cfg(all(test, any()))]
-#[path = "mcp_tool_exposure_test.rs.old"]
-mod tests;

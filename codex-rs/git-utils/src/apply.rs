@@ -593,6 +593,7 @@ fn regex_ci(pat: &str) -> Regex {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use std::path::Path;

@@ -146,6 +146,7 @@ pub(crate) const DEFAULT_ENV_VARS: &[&str] =
     codex_protocol::shell_environment::WINDOWS_CORE_ENV_VARS;
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

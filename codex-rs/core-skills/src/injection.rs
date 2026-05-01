@@ -505,7 +505,3 @@ fn text_mentions_skill(text: &str, skill_name: &str) -> bool {
 fn is_mention_name_char(byte: u8) -> bool {
     matches!(byte, b'a'..=b'z' | b'A'..=b'Z' | b'0'..=b'9' | b'_' | b'-' | b':')
 }
-
-#[cfg(all(test, any()))]
-#[path = "injection_tests.rs.old"]
-mod tests;

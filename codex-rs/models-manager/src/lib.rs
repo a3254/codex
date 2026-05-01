@@ -4,8 +4,8 @@ pub(crate) mod config;
 pub mod manager;
 pub mod model_info;
 pub mod model_presets;
+#[path = "support_harness.rs"]
 pub mod test_support;
-
 pub use codex_app_server_protocol::AuthMode;
 pub use config::ModelsManagerConfig;
 

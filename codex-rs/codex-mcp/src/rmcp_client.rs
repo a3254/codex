@@ -644,6 +644,7 @@ async fn make_rmcp_client(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use rmcp::model::JsonObject;

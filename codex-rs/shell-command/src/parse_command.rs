@@ -62,6 +62,7 @@ fn single_unknown_for_command(command: &[String]) -> ParsedCommand {
 #[cfg(all(test, any()))]
 #[allow(clippy::items_after_test_module)]
 /// Tests are at the top to encourage using TDD + Codex to fix the implementation.
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

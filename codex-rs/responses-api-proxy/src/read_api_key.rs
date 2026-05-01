@@ -219,6 +219,7 @@ fn validate_auth_header_bytes(key_bytes: &[u8]) -> Result<()> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use std::collections::VecDeque;

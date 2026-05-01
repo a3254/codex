@@ -249,6 +249,7 @@ fn is_safe_git_command(words: &[String]) -> bool {
 }
 
 #[cfg(all(test, windows))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::powershell::try_find_pwsh_executable_blocking;

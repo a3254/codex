@@ -213,7 +213,3 @@ fn lower_ascii_path(path: PathBuf) -> PathBuf {
 fn lower_ascii_path(path: PathBuf) -> PathBuf {
     path
 }
-
-#[cfg(all(test, any()))]
-#[path = "path_utils_tests.rs.old"]
-mod tests;

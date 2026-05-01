@@ -155,6 +155,7 @@ pub(crate) fn unix_time_ms() -> i64 {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
     use serde_json::json;

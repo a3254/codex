@@ -433,6 +433,7 @@ fn resolve_manifest_path(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::MAX_DEFAULT_PROMPT_LEN;
     use super::PluginManifest;

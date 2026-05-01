@@ -164,7 +164,3 @@ fn is_trigger_turn_boundary(item: &ResponseItem) -> bool {
         && InterAgentCommunication::from_message_content(content)
             .is_some_and(|communication| communication.trigger_turn)
 }
-
-#[cfg(all(test, any()))]
-#[path = "thread_rollout_truncation_tests.rs.old"]
-mod tests;

@@ -732,7 +732,3 @@ fn push_unique(items: &mut Vec<String>, item_id: &str) {
 fn runtime_code_cell_key(thread_id: &str, runtime_cell_id: &str) -> (String, String) {
     (thread_id.to_string(), runtime_cell_id.to_string())
 }
-
-#[cfg(all(test, any()))]
-#[path = "code_cell_tests.rs.old"]
-mod tests;

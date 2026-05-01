@@ -310,6 +310,7 @@ fn serialization_failure_outcome(hook_events: Vec<HookCompletedEvent>) -> StopOu
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_protocol::protocol::HookEventName;
     use codex_protocol::protocol::HookOutputEntry;

@@ -1616,7 +1616,3 @@ fn emit_migration_metric(
         .collect::<Vec<_>>();
     let _ = metrics.counter(metric_name, /*inc*/ 1, &tag_refs);
 }
-
-#[cfg(all(test, any()))]
-#[path = "external_agent_config_tests.rs.old"]
-mod tests;

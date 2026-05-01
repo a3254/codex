@@ -291,6 +291,7 @@ impl<S: EventSource + Default + Unpin> Stream for TuiEventStream<S> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crossterm::event::Event;

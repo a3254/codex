@@ -1439,7 +1439,3 @@ async fn send_realtime_conversation_closed(
     })
     .await;
 }
-
-#[cfg(all(test, any()))]
-#[path = "realtime_conversation_tests.rs.old"]
-mod tests;

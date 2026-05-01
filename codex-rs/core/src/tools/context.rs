@@ -603,7 +603,3 @@ fn telemetry_preview(content: &str) -> String {
 
     preview
 }
-
-#[cfg(all(test, any()))]
-#[path = "context_tests.rs.old"]
-mod tests;

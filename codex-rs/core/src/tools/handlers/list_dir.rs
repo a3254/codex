@@ -288,7 +288,3 @@ impl From<&FileType> for DirEntryKind {
         }
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "list_dir_tests.rs.old"]
-mod tests;

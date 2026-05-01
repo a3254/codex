@@ -100,7 +100,3 @@ pub(crate) fn execpolicy_network_rule_amendment(
         justification,
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "network_policy_decision_tests.rs.old"]
-mod tests;

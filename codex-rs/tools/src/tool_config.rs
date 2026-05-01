@@ -350,7 +350,3 @@ impl ToolsConfig {
 fn supports_image_generation(model_info: &ModelInfo) -> bool {
     model_info.input_modalities.contains(&InputModality::Image)
 }
-
-#[cfg(all(test, any()))]
-#[path = "tool_config_tests.rs.old"]
-mod tests;

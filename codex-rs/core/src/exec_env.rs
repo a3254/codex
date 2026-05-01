@@ -1,5 +1,4 @@
 use codex_protocol::ThreadId;
-#[cfg(all(test, any()))]
 use codex_protocol::config_types::EnvironmentVariablePattern;
 use codex_protocol::config_types::ShellEnvironmentPolicy;
 use codex_protocol::shell_environment;
@@ -50,7 +49,3 @@ where
     let thread_id = thread_id.map(|thread_id| thread_id.to_string());
     shell_environment::populate_env(vars, policy, thread_id.as_deref())
 }
-
-#[cfg(all(test, any()))]
-#[path = "exec_env_tests.rs.old"]
-mod tests;

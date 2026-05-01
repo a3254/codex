@@ -1114,6 +1114,7 @@ fn parse_keybinding(spec: &str) -> Option<KeyBinding> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_config::types::KeybindingSpec;

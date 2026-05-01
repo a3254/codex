@@ -669,6 +669,7 @@ pub(crate) fn highlight_code_to_styled_spans(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use insta::assert_snapshot;

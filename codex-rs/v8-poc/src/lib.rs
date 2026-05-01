@@ -13,6 +13,7 @@ pub fn embedded_v8_version() -> &'static str {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
     use std::sync::Once;

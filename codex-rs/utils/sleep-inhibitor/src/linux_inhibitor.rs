@@ -230,6 +230,7 @@ fn child_exited(error: &std::io::Error) -> bool {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::BLOCKER_SLEEP_SECONDS;
 

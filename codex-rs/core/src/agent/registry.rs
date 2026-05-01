@@ -338,7 +338,3 @@ impl Drop for SpawnReservation {
         }
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "registry_tests.rs.old"]
-mod tests;

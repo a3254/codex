@@ -850,7 +850,3 @@ fn changed_path_for_matched_path(
             .unwrap_or_else(|_| event_path.to_path_buf()),
     )
 }
-
-#[cfg(all(test, any()))]
-#[path = "file_watcher_tests.rs.old"]
-mod tests;

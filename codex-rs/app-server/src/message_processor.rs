@@ -1333,8 +1333,6 @@ fn migration_items_need_runtime_refresh(items: &[ExternalAgentConfigMigrationIte
 }
 
 #[cfg(all(test, any()))]
-mod tracing_tests;
-
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

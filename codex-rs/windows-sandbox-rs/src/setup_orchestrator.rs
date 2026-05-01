@@ -938,6 +938,7 @@ fn filter_sensitive_write_roots(mut roots: Vec<PathBuf>, codex_home: &Path) -> V
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::WINDOWS_PLATFORM_DEFAULT_READ_ROOTS;
     use super::build_payload_roots;

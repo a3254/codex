@@ -72,6 +72,7 @@ impl SleepInhibitor {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::SleepInhibitor;
 

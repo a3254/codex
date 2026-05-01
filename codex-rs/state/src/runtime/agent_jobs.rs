@@ -567,6 +567,7 @@ WHERE job_id = ?
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::runtime::test_support::unique_temp_dir;

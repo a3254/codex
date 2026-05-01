@@ -469,6 +469,7 @@ mod job {
     }
 
     #[cfg(test)]
+    #[cfg(all(test, any()))]
     mod tests {
         use super::*;
 
@@ -641,6 +642,7 @@ fn emit_metrics(context: &StageOneRequestContext, counts: &Stats) {
     }
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

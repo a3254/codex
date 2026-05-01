@@ -36,8 +36,6 @@ pub(crate) const CHANNEL_CAPACITY: usize = 128;
 mod remote_control;
 mod stdio;
 mod unix_socket;
-#[cfg(all(test, any()))]
-mod unix_socket_tests;
 mod websocket;
 
 pub(crate) use remote_control::RemoteControlHandle;
@@ -468,6 +466,7 @@ pub(crate) async fn route_outgoing_envelope(
     }
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

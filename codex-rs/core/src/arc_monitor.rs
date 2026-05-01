@@ -408,7 +408,3 @@ fn build_arc_monitor_message(role: &str, content: serde_json::Value) -> ArcMonit
         content,
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "arc_monitor_tests.rs.old"]
-mod tests;

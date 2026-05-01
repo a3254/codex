@@ -42,9 +42,6 @@ pub use facts::TurnSteerResult;
 pub use facts::TurnTokenUsageFact;
 pub use facts::build_track_events_context;
 
-#[cfg(all(test, any()))]
-mod analytics_client_tests;
-
 pub fn now_unix_seconds() -> u64 {
     SystemTime::now()
         .duration_since(UNIX_EPOCH)

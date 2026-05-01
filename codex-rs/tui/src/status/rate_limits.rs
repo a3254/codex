@@ -345,6 +345,7 @@ fn format_credit_balance(raw: &str) -> Option<String> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::CreditsSnapshotDisplay;
     use super::RateLimitSnapshotDisplay;

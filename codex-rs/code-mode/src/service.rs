@@ -491,6 +491,7 @@ async fn run_session_control(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use std::collections::HashMap;
     use std::sync::Arc;

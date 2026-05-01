@@ -102,6 +102,7 @@ fn completed_goal_usage(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::GoalStatusState;
     use super::active_goal_usage;

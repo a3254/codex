@@ -29,9 +29,7 @@ use crate::render::line_utils::push_owned_lines;
 use crate::render::renderable::Renderable;
 use crate::style::proposed_plan_style;
 use crate::style::user_message_style;
-#[cfg(all(test, any()))]
 use crate::test_support::PathBufExt;
-#[cfg(all(test, any()))]
 use crate::test_support::test_path_buf;
 use crate::text_formatting::format_and_truncate_tool_result;
 use crate::text_formatting::truncate_text;
@@ -46,13 +44,10 @@ use base64::Engine;
 use codex_app_server_protocol::McpServerStatus;
 use codex_app_server_protocol::McpServerStatusDetail;
 use codex_config::types::McpServerTransportConfig;
-#[cfg(all(test, any()))]
 use codex_mcp::qualified_mcp_tool_name_prefix;
 use codex_otel::RuntimeMetricsSummary;
 use codex_protocol::account::PlanType;
-#[cfg(all(test, any()))]
 use codex_protocol::mcp::Resource;
-#[cfg(all(test, any()))]
 use codex_protocol::mcp::ResourceTemplate;
 use codex_protocol::models::ManagedFileSystemPermissions;
 use codex_protocol::models::PermissionProfile;
@@ -2984,6 +2979,7 @@ fn format_mcp_invocation<'a>(invocation: McpInvocation) -> Line<'a> {
     invocation_spans.into()
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

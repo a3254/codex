@@ -142,6 +142,7 @@ pub(crate) fn enum_to_string<T: Serialize>(value: &T) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::apply_rollout_item;
     use crate::model::ThreadMetadata;

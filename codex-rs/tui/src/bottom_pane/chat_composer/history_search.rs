@@ -483,6 +483,7 @@ impl ChatComposer {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use crossterm::event::KeyCode;
     use crossterm::event::KeyEvent;

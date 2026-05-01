@@ -120,6 +120,7 @@ ON CONFLICT(id) DO NOTHING
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::StateRuntime;
     use super::state_db_filename;

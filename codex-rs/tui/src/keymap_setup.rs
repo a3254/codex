@@ -712,6 +712,7 @@ fn key_parts_to_config_key_spec(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::picker::KEYMAP_ALL_TAB_ID;
     use super::picker::KEYMAP_COMMON_TAB_ID;

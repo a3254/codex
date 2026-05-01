@@ -494,6 +494,7 @@ fn hook_source_for_requirement_source(source: Option<&RequirementSource>) -> Hoo
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_config::ConfigLayerEntry;
     use codex_config::ConfigLayerSource;

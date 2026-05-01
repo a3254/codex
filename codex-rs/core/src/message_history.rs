@@ -412,7 +412,3 @@ fn history_log_id(metadata: &std::fs::Metadata) -> Option<u64> {
 fn history_log_id(_metadata: &std::fs::Metadata) -> Option<u64> {
     None
 }
-
-#[cfg(all(test, any()))]
-#[path = "message_history_tests.rs.old"]
-mod tests;

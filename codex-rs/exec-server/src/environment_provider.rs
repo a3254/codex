@@ -80,6 +80,7 @@ pub(crate) fn normalize_exec_server_url(exec_server_url: Option<String>) -> (Opt
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
 

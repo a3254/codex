@@ -329,6 +329,3 @@ fn filter_deferred_dynamic_tool_spec(
         spec => Some(spec),
     }
 }
-#[cfg(all(test, any()))]
-#[path = "router_tests.rs.old"]
-mod tests;

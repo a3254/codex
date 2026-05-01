@@ -295,6 +295,7 @@ fn parse_error(message: impl Into<String>) -> ThreadConfigLoadError {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use std::collections::BTreeMap;
     use std::collections::HashMap;

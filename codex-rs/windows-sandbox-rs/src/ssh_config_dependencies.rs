@@ -173,6 +173,7 @@ fn profile_path_arg(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::ssh_config_dependency_paths;
     use pretty_assertions::assert_eq;

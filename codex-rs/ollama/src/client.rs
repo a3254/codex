@@ -14,9 +14,7 @@ use crate::url::is_openai_compatible_base_url;
 use codex_core::config::Config;
 use codex_model_provider_info::ModelProviderInfo;
 use codex_model_provider_info::OLLAMA_OSS_PROVIDER_ID;
-#[cfg(all(test, any()))]
 use codex_model_provider_info::WireApi;
-#[cfg(all(test, any()))]
 use codex_model_provider_info::create_oss_provider_with_base_url;
 
 const OLLAMA_CONNECTION_ERROR: &str = "No running Ollama server detected. Start it with: `ollama serve` (after installing). Install instructions: https://github.com/ollama/ollama?tab=readme-ov-file#ollama";
@@ -260,6 +258,7 @@ impl OllamaClient {
     }
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

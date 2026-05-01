@@ -225,7 +225,3 @@ impl TraceReducer {
         Ok(())
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "inference_tests.rs.old"]
-mod tests;

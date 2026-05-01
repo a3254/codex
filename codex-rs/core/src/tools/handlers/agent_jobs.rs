@@ -1234,7 +1234,3 @@ fn csv_escape(value: &str) -> String {
         value.to_string()
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "agent_jobs_tests.rs.old"]
-mod tests;

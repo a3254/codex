@@ -427,7 +427,3 @@ fn windows_shell_guidance() -> &'static str {
 - Before any recursive delete or move on Windows, verify the resolved absolute target paths stay within the intended workspace or explicitly named target directory. Never issue a recursive delete or move against a computed path if the final target has not been checked.
 - When using `Start-Process` to launch a background helper or service, pass `-WindowStyle Hidden` unless the user explicitly asked for a visible interactive window. Use visible windows only for interactive tools the user needs to see or control."#
 }
-
-#[cfg(all(test, any()))]
-#[path = "local_tool_tests.rs.old"]
-mod tests;

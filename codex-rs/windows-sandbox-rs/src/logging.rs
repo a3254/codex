@@ -75,6 +75,7 @@ pub fn log_note(msg: &str, base_dir: Option<&Path>) {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

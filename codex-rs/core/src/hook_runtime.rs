@@ -510,6 +510,7 @@ fn hook_permission_mode(turn_context: &TurnContext) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_protocol::models::ContentItem;
     use codex_protocol::protocol::HookEventName;

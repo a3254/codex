@@ -337,7 +337,3 @@ pub(crate) fn build_specs_with_discoverable_tools(
     }
     builder
 }
-
-#[cfg(all(test, any()))]
-#[path = "spec_tests.rs.old"]
-mod tests;

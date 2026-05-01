@@ -258,6 +258,7 @@ fn normalize_limit_id(name: impl Into<String>) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use http::HeaderValue;

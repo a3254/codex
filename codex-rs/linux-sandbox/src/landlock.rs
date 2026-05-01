@@ -267,6 +267,7 @@ fn install_network_seccomp_filter_on_current_thread(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::NetworkSeccompMode;
     use super::network_seccomp_mode;

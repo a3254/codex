@@ -94,7 +94,3 @@ fn resource_timestamp(file_name: &str) -> Option<DateTime<Utc>> {
             .ok()?;
     Some(DateTime::from_naive_utc_and_offset(naive, Utc))
 }
-
-#[cfg(all(test, any()))]
-#[path = "extensions_tests.rs.old"]
-mod tests;

@@ -193,6 +193,7 @@ fn rollout_path_is_archived(store: &LocalThreadStore, path: &std::path::Path) ->
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
     use serde_json::Value;

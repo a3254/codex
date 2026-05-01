@@ -181,6 +181,7 @@ fn validate_relative_reference(reference: &str) -> Result<(), String> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::AgentPath;
     use pretty_assertions::assert_eq;

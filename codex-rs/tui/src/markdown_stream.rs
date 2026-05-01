@@ -8,13 +8,10 @@
 //! On finalization, `finalize_and_drain_source()` flushes whatever remains (the last line, which
 //! may lack a trailing newline).
 
-#[cfg(all(test, any()))]
 use ratatui::text::Line;
 use std::path::Path;
-#[cfg(all(test, any()))]
 use std::path::PathBuf;
 
-#[cfg(all(test, any()))]
 use crate::markdown;
 
 /// Newline-gated accumulator that buffers raw markdown source and commits only completed lines.
@@ -217,6 +214,7 @@ pub(crate) fn simulate_stream_markdown_for_tests(
     out
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

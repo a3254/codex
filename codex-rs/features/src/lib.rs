@@ -1132,6 +1132,3 @@ pub fn unstable_features_warning_event(
         msg: EventMsg::Warning(WarningEvent { message }),
     })
 }
-
-#[cfg(all(test, any()))]
-mod tests;

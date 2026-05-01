@@ -192,6 +192,7 @@ fn discovery_paths(base_path: &str) -> Vec<String> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use axum::Json;

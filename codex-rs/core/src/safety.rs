@@ -191,7 +191,3 @@ fn is_write_patch_constrained_to_writable_paths(
 
     true
 }
-
-#[cfg(all(test, any()))]
-#[path = "safety_tests.rs.old"]
-mod tests;

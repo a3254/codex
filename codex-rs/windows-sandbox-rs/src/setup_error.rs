@@ -247,6 +247,7 @@ fn redact_username_segments(value: &str, usernames: &[String]) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::redact_username_segments;
     use pretty_assertions::assert_eq;

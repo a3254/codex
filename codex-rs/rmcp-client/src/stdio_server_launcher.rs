@@ -579,6 +579,7 @@ impl ExecutorStdioServerLauncher {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_protocol::config_types::EnvironmentVariablePattern;

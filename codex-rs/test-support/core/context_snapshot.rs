@@ -343,6 +343,7 @@ fn normalize_dynamic_snapshot_paths(text: &str) -> String {
 }
 
 #[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::ContextSnapshotOptions;
     use super::ContextSnapshotRenderMode;

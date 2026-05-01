@@ -13,6 +13,7 @@ pub fn canonical_path_key(path: &Path) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::canonical_path_key;
     use pretty_assertions::assert_eq;

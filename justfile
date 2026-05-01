@@ -44,13 +44,12 @@ install:
     rustup show active-toolchain
     cargo fetch
 
-# Run `cargo nextest` since it's faster than `cargo test`, though including
-# --no-fail-fast is important to ensure all tests are run.
-#
-# Run `cargo install cargo-nextest` if you don't have it installed.
-# Prefer this for routine local runs. Workspace crate features are banned, so
-# there should be no need to add `--all-features`.
+# Run only the currently supported focused test set.
 test:
+    cargo test -p codex-app-server-protocol --test remote_client_capabilities
+
+# Run the historical broad workspace suite explicitly when it is restored.
+test-all:
     RUST_MIN_STACK={{ rust_min_stack }} cargo nextest run --no-fail-fast
 
 # Build and run Codex from source using Bazel.

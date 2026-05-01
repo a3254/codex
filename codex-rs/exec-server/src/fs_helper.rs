@@ -277,6 +277,7 @@ fn map_fs_error(err: io::Error) -> JSONRPCErrorError {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

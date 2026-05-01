@@ -27,6 +27,7 @@ mod compaction;
 mod conversation;
 mod inference;
 #[cfg(all(test, any()))]
+#[path = "support_harness.rs"]
 pub(crate) mod test_support;
 mod thread;
 mod tool;

@@ -181,6 +181,7 @@ pub(crate) fn keyring_service() -> &'static str {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_keyring_store::tests::MockKeyringStore;

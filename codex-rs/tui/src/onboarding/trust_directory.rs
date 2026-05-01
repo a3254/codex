@@ -186,6 +186,7 @@ impl TrustDirectoryWidget {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use crate::test_backend::VT100Backend;
 

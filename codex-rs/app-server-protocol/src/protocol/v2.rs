@@ -7985,6 +7985,7 @@ pub struct ConfigWarningNotification {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_protocol::items::AgentMessageContent;

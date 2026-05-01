@@ -202,7 +202,3 @@ impl From<ConfigWebSearchUserLocation> for ResponsesApiWebSearchUserLocation {
         }
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "tool_spec_tests.rs.old"]
-mod tests;

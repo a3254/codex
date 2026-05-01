@@ -68,6 +68,7 @@ pub async fn plugin_namespace_for_skill_path(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::find_plugin_manifest_path;
     use super::plugin_namespace_for_skill_path;

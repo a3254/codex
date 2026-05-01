@@ -465,6 +465,7 @@ pub(crate) fn retro_start_index(before: &str, retro_chars: usize) -> usize {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

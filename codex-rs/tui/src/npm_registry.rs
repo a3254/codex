@@ -69,6 +69,7 @@ fn version_info_with_dist<'a>(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

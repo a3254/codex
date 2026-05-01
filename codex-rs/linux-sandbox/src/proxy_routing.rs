@@ -650,6 +650,7 @@ fn close_fd(fd: libc::c_int) -> io::Result<()> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::PROXY_SOCKET_DIR_PREFIX;
     use super::ProxyRouteEntry;

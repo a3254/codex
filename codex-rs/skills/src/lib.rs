@@ -144,6 +144,7 @@ impl SystemSkillsError {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::SYSTEM_SKILLS_DIR;
     use super::collect_fingerprint_items;

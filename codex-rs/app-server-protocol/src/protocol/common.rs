@@ -1440,6 +1440,7 @@ client_notification_definitions! {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use anyhow::Result;
@@ -2898,7 +2899,3 @@ mod tests {
         );
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "common_tests.rs.old"]
-mod common_tests;

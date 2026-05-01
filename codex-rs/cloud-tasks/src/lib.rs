@@ -2125,6 +2125,7 @@ fn pretty_lines_from_error(raw: &str) -> Vec<String> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::resolve_git_ref_with_git_info;

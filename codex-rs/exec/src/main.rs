@@ -39,7 +39,3 @@ fn main() -> anyhow::Result<()> {
         Ok(())
     })
 }
-
-#[cfg(all(test, any()))]
-#[path = "main_tests.rs.old"]
-mod tests;

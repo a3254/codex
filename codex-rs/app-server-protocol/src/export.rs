@@ -2087,6 +2087,7 @@ fn index_ts_entries(paths: &[&Path], has_v2_ts: bool) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::protocol::v2;

@@ -44,6 +44,7 @@ pub(crate) async fn clear_memory_root_contents(memory_root: &Path) -> std::io::R
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use tempfile::tempdir;

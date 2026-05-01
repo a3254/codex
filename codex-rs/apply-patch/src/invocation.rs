@@ -375,6 +375,7 @@ fn extract_apply_patch_from_bash(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::unified_diff_from_chunks;

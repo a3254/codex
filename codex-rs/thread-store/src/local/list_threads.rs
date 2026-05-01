@@ -131,6 +131,7 @@ async fn list_rollout_threads(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use chrono::Utc;
     use codex_protocol::ThreadId;

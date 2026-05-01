@@ -68,6 +68,7 @@ pub(crate) fn file_update_changes_to_core(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::file_update_changes_to_core;
     use super::granted_permission_profile_from_request;

@@ -198,7 +198,3 @@ impl ClaudeHooksEngine {
         crate::events::stop::run(&self.handlers, &self.shell, request).await
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "mod_tests.rs.old"]
-mod tests;

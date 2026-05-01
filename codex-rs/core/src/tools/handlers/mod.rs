@@ -12,7 +12,6 @@ mod plan;
 mod request_permissions;
 mod request_user_input;
 mod shell;
-mod test_sync;
 mod tool_search;
 mod tool_suggest;
 mod unavailable_tool;
@@ -225,6 +224,7 @@ fn permissions_are_preapproved(
         == materialized_effective_permissions
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::EffectiveAdditionalPermissions;

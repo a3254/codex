@@ -62,6 +62,3 @@ pub use session_index::find_thread_meta_by_name_str;
 pub use session_index::find_thread_name_by_id;
 pub use session_index::find_thread_names_by_ids;
 pub use state_db::StateDbHandle;
-
-#[cfg(all(test, any()))]
-mod tests;

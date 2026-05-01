@@ -355,6 +355,7 @@ fn send_result(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use std::collections::HashMap;
     use std::time::Duration;

@@ -92,7 +92,3 @@ pub fn create_read_mcp_resource_tool() -> ToolSpec {
         output_schema: None,
     })
 }
-
-#[cfg(all(test, any()))]
-#[path = "mcp_resource_tool_tests.rs.old"]
-mod tests;

@@ -615,7 +615,3 @@ fn inter_agent_message_fields(item: &ConversationItem) -> Option<(String, String
     let communication = serde_json::from_str::<InterAgentCommunication>(text).ok()?;
     Some((communication.recipient.to_string(), communication.content))
 }
-
-#[cfg(all(test, any()))]
-#[path = "agents_tests.rs.old"]
-mod tests;

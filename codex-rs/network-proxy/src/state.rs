@@ -418,4 +418,5 @@ fn network_mode_rank(mode: NetworkMode) -> u8 {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {}

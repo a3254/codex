@@ -453,6 +453,7 @@ fn try_lock_dir(dir: &Path) -> std::io::Result<Option<File>> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::Arg0DispatchPaths;
     use super::Arg0PathEntryGuard;

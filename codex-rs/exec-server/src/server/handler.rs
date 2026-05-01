@@ -342,6 +342,3 @@ impl ExecServerHandler {
         Ok(())
     }
 }
-
-#[cfg(all(test, any()))]
-mod tests;

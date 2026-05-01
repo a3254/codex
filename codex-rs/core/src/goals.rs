@@ -1508,6 +1508,7 @@ pub(crate) fn goal_token_delta_for_usage(usage: &TokenUsage) -> i64 {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::budget_limit_prompt;
     use super::continuation_prompt;

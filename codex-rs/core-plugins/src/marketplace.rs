@@ -772,7 +772,3 @@ fn resolve_marketplace_interface(
         None
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "marketplace_tests.rs.old"]
-mod tests;

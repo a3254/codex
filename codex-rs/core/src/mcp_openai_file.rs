@@ -137,6 +137,7 @@ async fn build_uploaded_local_argument_value(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::session::tests::make_session_and_context;

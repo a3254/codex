@@ -142,6 +142,7 @@ pub fn sha1_digest(bytes: &[u8]) -> [u8; 20] {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::BlockingLruCache;
     use std::num::NonZeroUsize;

@@ -565,7 +565,3 @@ pub(crate) async fn intercept_apply_patch(
         codex_apply_patch::MaybeApplyPatchVerified::NotApplyPatch => Ok(None),
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "apply_patch_tests.rs.old"]
-mod tests;

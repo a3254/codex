@@ -482,6 +482,7 @@ fn policy_denied_error(reason: &str, details: &PolicyDecisionDetails<'_>) -> io:
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::config::NetworkMode;

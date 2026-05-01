@@ -169,6 +169,7 @@ pub(crate) fn is_altgr(_mods: KeyModifiers) -> bool {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

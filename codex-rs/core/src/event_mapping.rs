@@ -207,7 +207,3 @@ pub fn parse_turn_item(item: &ResponseItem) -> Option<TurnItem> {
         _ => None,
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "event_mapping_tests.rs.old"]
-mod tests;

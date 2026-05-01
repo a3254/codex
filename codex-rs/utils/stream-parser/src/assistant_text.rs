@@ -73,6 +73,7 @@ impl AssistantTextStreamParser {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::AssistantTextStreamParser;
     use crate::ProposedPlanSegment;

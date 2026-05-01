@@ -104,6 +104,7 @@ fn load_traceparent_context() -> Option<Context> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::context_from_trace_headers;
     use super::context_from_w3c_trace_context;

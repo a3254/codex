@@ -217,11 +217,9 @@ use crate::skills_helpers::skill_display_name;
 use crate::tui::FrameRequester;
 use crate::ui_consts::LIVE_PREFIX_COLS;
 use codex_app_server_protocol::AppInfo;
-#[cfg(all(test, any()))]
 use codex_core_skills::model::SkillInterface;
 use codex_core_skills::model::SkillMetadata;
 use codex_file_search::FileMatch;
-#[cfg(all(test, any()))]
 use codex_plugin::AppConnectorId;
 use codex_plugin::PluginCapabilitySummary;
 use std::cell::RefCell;
@@ -233,7 +231,6 @@ use std::path::PathBuf;
 use std::time::Duration;
 use std::time::Instant;
 
-#[cfg(all(test, any()))]
 use ratatui::style::Color;
 
 /// If the pasted content exceeds this number of characters, replace it with a
@@ -4440,6 +4437,7 @@ impl ChatComposer {
     }
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

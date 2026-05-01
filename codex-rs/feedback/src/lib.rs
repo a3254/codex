@@ -647,6 +647,7 @@ impl Visit for FeedbackTagsVisitor {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use std::ffi::OsStr;
     use std::fs;

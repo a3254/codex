@@ -400,6 +400,7 @@ fn signing_key_from_private_key_pkcs8_base64(private_key_pkcs8_base64: &str) -> 
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use base64::Engine as _;
     use ed25519_dalek::Signature;

@@ -158,8 +158,6 @@ use std::path::PathBuf;
 use std::sync::Arc;
 use std::time::Duration as StdDuration;
 
-mod guardian_tests;
-
 fn permission_profile_for_sandbox_policy(sandbox_policy: &SandboxPolicy) -> PermissionProfile {
     PermissionProfile::from_legacy_sandbox_policy(sandbox_policy)
 }

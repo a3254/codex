@@ -300,7 +300,3 @@ pub enum Color {
     #[default]
     Auto,
 }
-
-#[cfg(all(test, any()))]
-#[path = "cli_tests.rs.old"]
-mod tests;

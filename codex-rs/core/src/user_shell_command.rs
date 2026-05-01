@@ -35,7 +35,3 @@ pub fn user_shell_command_record_item(
         turn_context,
     ))
 }
-
-#[cfg(all(test, any()))]
-#[path = "user_shell_command_tests.rs.old"]
-mod tests;

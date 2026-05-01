@@ -133,7 +133,3 @@ fn find_system_bwrap_in_search_paths(
             }
         })
 }
-
-#[cfg(all(test, any()))]
-#[path = "bwrap_tests.rs.old"]
-mod tests;

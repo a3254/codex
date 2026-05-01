@@ -120,7 +120,3 @@ pub fn create_apply_patch_json_tool() -> ToolSpec {
         output_schema: None,
     })
 }
-
-#[cfg(all(test, any()))]
-#[path = "apply_patch_tool_tests.rs.old"]
-mod tests;

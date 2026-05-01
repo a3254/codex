@@ -9,6 +9,7 @@ pub(crate) fn render_apps_section(connectors: &[AppInfo]) -> Option<String> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

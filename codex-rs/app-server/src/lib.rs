@@ -1029,6 +1029,7 @@ fn analytics_rpc_transport(transport: &AppServerTransport) -> AppServerRpcTransp
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::LogFormat;
     use pretty_assertions::assert_eq;

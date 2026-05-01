@@ -338,6 +338,7 @@ fn osc52_sequence(text: &str, tmux: bool) -> Result<String, String> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
     use std::cell::Cell;

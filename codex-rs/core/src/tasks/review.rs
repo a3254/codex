@@ -295,6 +295,7 @@ fn normalize_review_template_line_endings(template: &str) -> Cow<'_, str> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::normalize_review_template_line_endings;
     use super::render_review_exit_success;

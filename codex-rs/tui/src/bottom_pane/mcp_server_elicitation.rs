@@ -12,7 +12,6 @@ use codex_protocol::approvals::ElicitationAction;
 use codex_protocol::approvals::ElicitationRequest;
 use codex_protocol::approvals::ElicitationRequestEvent;
 use codex_protocol::mcp::RequestId as McpRequestId;
-#[cfg(all(test, any()))]
 use codex_protocol::protocol::Op;
 use codex_protocol::user_input::TextElement;
 use crossterm::event::KeyCode;
@@ -1714,6 +1713,7 @@ fn wrap_footer_tips(width: u16, tips: Vec<FooterTip>) -> Vec<Vec<FooterTip>> {
     lines
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

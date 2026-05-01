@@ -76,6 +76,7 @@ fn auto_resize_reflow_max_rows(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_terminal_detection::Multiplexer;

@@ -1202,7 +1202,3 @@ fn run_git(args: &[&str], cwd: Option<&Path>) -> Result<(), String> {
         String::from_utf8_lossy(&output.stderr).trim()
     ))
 }
-
-#[cfg(all(test, any()))]
-#[path = "loader_tests.rs.old"]
-mod tests;

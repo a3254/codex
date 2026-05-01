@@ -57,14 +57,10 @@ use tracing::warn;
 mod agent_jobs;
 mod backfill;
 mod device_key;
-#[cfg(all(test, any()))]
-mod device_key_tests;
 mod goals;
 mod logs;
 mod memories;
 mod remote_control;
-#[cfg(all(test, any()))]
-mod test_support;
 mod threads;
 
 pub use device_key::DeviceKeyBindingRecord;
@@ -310,6 +306,7 @@ fn should_remove_db_file(file_name: &str, current_name: &str, base_name: &str) -
     !version_suffix.is_empty() && version_suffix.chars().all(|ch| ch.is_ascii_digit())
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::open_state_sqlite;

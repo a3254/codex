@@ -709,6 +709,7 @@ fn render_json_schema_literal(value: &JsonValue) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::CodeModeToolKind;
     use super::ParsedExecSource;

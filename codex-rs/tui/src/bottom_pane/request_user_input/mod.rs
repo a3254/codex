@@ -31,7 +31,6 @@ use crate::bottom_pane::selection_popup_common::measure_rows_height;
 use crate::history_cell;
 use crate::render::renderable::Renderable;
 
-#[cfg(all(test, any()))]
 use codex_protocol::protocol::Op;
 use codex_protocol::request_user_input::RequestUserInputAnswer;
 use codex_protocol::request_user_input::RequestUserInputEvent;
@@ -1305,6 +1304,7 @@ impl BottomPaneView for RequestUserInputOverlay {
     }
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

@@ -966,7 +966,3 @@ pub(crate) async fn skill_roots_from_layer_stack(
 ) -> Vec<SkillRoot> {
     skill_roots_with_home_dir(Some(fs), config_layer_stack, cwd, home_dir, Vec::new()).await
 }
-
-#[cfg(all(test, any()))]
-#[path = "loader_tests.rs.old"]
-mod tests;

@@ -67,11 +67,8 @@ use crate::render::highlight::highlight_bash_to_lines;
 use crate::render::renderable::Renderable;
 use crate::resume_picker::SessionSelection;
 use crate::resume_picker::SessionTarget;
-#[cfg(all(test, any()))]
 use crate::test_support::PathBufExt;
-#[cfg(all(test, any()))]
 use crate::test_support::test_path_buf;
-#[cfg(all(test, any()))]
 use crate::test_support::test_path_display;
 use crate::transcript_reflow::TranscriptReflowState;
 use crate::tui;
@@ -141,7 +138,6 @@ use codex_protocol::protocol::FileSystemSandboxKind;
 use codex_protocol::protocol::FinalOutput;
 use codex_protocol::protocol::GetHistoryEntryResponseEvent;
 use codex_protocol::protocol::ListSkillsResponseEvent;
-#[cfg(all(test, any()))]
 use codex_protocol::protocol::McpAuthStatus;
 use codex_protocol::protocol::Op;
 use codex_protocol::protocol::RateLimitSnapshot;
@@ -1191,6 +1187,5 @@ impl Drop for App {
 }
 
 #[cfg(all(test, any()))]
+#[path = "support_harness.rs"]
 pub(super) mod test_support;
-#[cfg(all(test, any()))]
-mod tests;

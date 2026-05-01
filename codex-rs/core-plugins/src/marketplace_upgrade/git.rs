@@ -222,6 +222,7 @@ fn ensure_git_success(output: &Output, context: &str) -> Result<(), String> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::git_command;
     use super::is_full_git_sha;

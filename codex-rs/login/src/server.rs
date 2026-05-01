@@ -1131,6 +1131,7 @@ pub(crate) async fn obtain_api_key(
     Ok(body.access_token)
 }
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
 

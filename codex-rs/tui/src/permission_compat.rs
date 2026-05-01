@@ -55,6 +55,7 @@ fn compatibility_workspace_write_profile(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_protocol::models::ManagedFileSystemPermissions;

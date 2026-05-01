@@ -410,7 +410,3 @@ fn plugin_summary(tool: &ToolSuggestEntry) -> String {
         details.join("; ")
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "tool_discovery_tests.rs.old"]
-mod tests;

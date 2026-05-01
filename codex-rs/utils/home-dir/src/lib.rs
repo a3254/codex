@@ -63,6 +63,7 @@ fn find_codex_home_from_env(codex_home_env: Option<&str>) -> std::io::Result<Abs
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::find_codex_home_from_env;
     use codex_utils_absolute_path::AbsolutePathBuf;

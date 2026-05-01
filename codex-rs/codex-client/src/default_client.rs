@@ -166,6 +166,7 @@ fn trace_headers() -> HeaderMap {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use opentelemetry::propagation::Extractor;

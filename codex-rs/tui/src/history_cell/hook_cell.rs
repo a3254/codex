@@ -710,6 +710,7 @@ fn hook_event_label(event_name: HookEventName) -> &'static str {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::test_support::PathBufExt;

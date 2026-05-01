@@ -715,7 +715,3 @@ async fn dispatch_after_tool_use_hook(
 
     None
 }
-
-#[cfg(all(test, any()))]
-#[path = "registry_tests.rs.old"]
-mod tests;

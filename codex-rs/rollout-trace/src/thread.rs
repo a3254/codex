@@ -503,7 +503,3 @@ impl EnabledThreadTraceContext {
         }
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "thread_tests.rs.old"]
-mod tests;

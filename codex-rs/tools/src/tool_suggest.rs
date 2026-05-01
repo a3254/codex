@@ -123,7 +123,3 @@ fn build_tool_suggestion_meta<'a>(
         install_url,
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "tool_suggest_tests.rs.old"]
-mod tests;

@@ -22,12 +22,12 @@ use regex_lite::Regex;
 use std::path::PathBuf;
 
 pub mod apps_server_support;
+pub mod codex_exec_harness;
+pub mod codex_harness;
 pub mod context_snapshot;
 pub mod process;
 pub mod responses;
 pub mod streaming_sse;
-pub mod codex_harness;
-pub mod codex_exec_harness;
 pub mod tracing;
 pub mod zsh_fork;
 

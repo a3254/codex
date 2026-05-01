@@ -380,6 +380,7 @@ pub struct ApplyPatchApprovalRequestEvent {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_utils_absolute_path::test_support::PathBufExt;

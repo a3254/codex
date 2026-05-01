@@ -168,6 +168,7 @@ fn is_dangerous_to_call_with_exec(command: &[String]) -> bool {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

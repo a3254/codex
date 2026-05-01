@@ -246,7 +246,3 @@ fn merge_rate_limit_fields(
     }
     snapshot
 }
-
-#[cfg(all(test, any()))]
-#[path = "session_tests.rs.old"]
-mod tests;

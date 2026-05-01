@@ -82,6 +82,7 @@ impl Renderable for UnifiedExecFooter {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use insta::assert_snapshot;

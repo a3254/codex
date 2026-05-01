@@ -105,6 +105,7 @@ fn remove_marketplace_root(root: &Path) -> Result<Option<AbsolutePathBuf>, Marke
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_config::MarketplaceConfigUpdate;

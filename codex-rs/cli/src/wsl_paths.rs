@@ -36,6 +36,7 @@ pub fn normalize_for_wsl<P: AsRef<OsStr>>(path: P) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

@@ -903,6 +903,7 @@ fn prompt_scope_rank(scope: SkillScope) -> u8 {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use std::collections::HashMap;

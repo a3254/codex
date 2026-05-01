@@ -600,7 +600,3 @@ struct CodeModeExecResult {
     original_token_count: Option<usize>,
     output: String,
 }
-
-#[cfg(all(test, any()))]
-#[path = "terminal_tests.rs.old"]
-mod tests;

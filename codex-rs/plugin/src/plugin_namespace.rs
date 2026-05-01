@@ -42,6 +42,7 @@ pub fn plugin_namespace_for_skill_path(path: &Path) -> Option<String> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::plugin_namespace_for_skill_path;
     use std::fs;

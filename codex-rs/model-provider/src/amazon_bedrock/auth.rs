@@ -138,6 +138,7 @@ impl AuthProvider for BedrockMantleSigV4AuthProvider {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_api::AuthProvider;
     use http::HeaderValue;

@@ -1272,7 +1272,3 @@ enum ProcessStatus {
     },
     Unknown,
 }
-
-#[cfg(all(test, any()))]
-#[path = "process_manager_tests.rs.old"]
-mod tests;

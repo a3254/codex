@@ -780,6 +780,7 @@ impl Drop for NetworkProxyHandle {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::config::NetworkProxySettings;

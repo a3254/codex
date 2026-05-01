@@ -60,6 +60,7 @@ pub(crate) fn selected_primary_environment(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_exec_server::ExecServerRuntimePaths;
     use codex_exec_server::REMOTE_ENVIRONMENT_ID;

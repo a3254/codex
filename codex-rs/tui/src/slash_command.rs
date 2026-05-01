@@ -239,6 +239,7 @@ pub fn built_in_slash_commands() -> Vec<(&'static str, SlashCommand)> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
     use std::str::FromStr;

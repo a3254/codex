@@ -256,6 +256,7 @@ pub(super) async fn enroll_remote_control_server(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::transport::remote_control::protocol::normalize_remote_control_url;

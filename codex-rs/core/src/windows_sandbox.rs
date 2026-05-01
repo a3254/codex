@@ -445,7 +445,3 @@ fn windows_sandbox_setup_mode_tag(mode: WindowsSandboxSetupMode) -> &'static str
         WindowsSandboxSetupMode::Unelevated => "unelevated",
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "windows_sandbox_tests.rs.old"]
-mod tests;

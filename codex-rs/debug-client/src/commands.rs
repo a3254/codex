@@ -76,6 +76,7 @@ pub fn parse_input(line: &str) -> Result<Option<InputAction>, ParseError> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
 

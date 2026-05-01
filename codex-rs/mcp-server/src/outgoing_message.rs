@@ -227,6 +227,7 @@ pub(crate) struct OutgoingError {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
 
     use anyhow::Result;

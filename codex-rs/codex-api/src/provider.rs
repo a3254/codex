@@ -127,6 +127,7 @@ fn matches_azure_responses_base_url(base_url: &str) -> bool {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

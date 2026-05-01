@@ -191,6 +191,7 @@ impl Command for DisableModifyOtherKeys {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::DisableModifyOtherKeys;
     use super::ResetKeyboardEnhancementFlags;

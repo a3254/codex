@@ -347,7 +347,3 @@ fn copy_dir_recursive(source: &Path, target: &Path) -> Result<(), PluginStoreErr
 
     Ok(())
 }
-
-#[cfg(all(test, any()))]
-#[path = "store_tests.rs.old"]
-mod tests;

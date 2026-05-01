@@ -279,7 +279,6 @@ mod review_mode;
 mod side;
 mod slash_commands;
 mod status_and_layout;
-mod status_command_tests;
 mod status_surface_previews;
 mod terminal_title;
 

@@ -38,6 +38,7 @@ pub async fn ensure_oss_provider_ready(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

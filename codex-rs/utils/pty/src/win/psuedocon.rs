@@ -363,6 +363,7 @@ fn append_quoted(arg: &OsStr, cmdline: &mut Vec<u16>) {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::MIN_CONPTY_BUILD;
     use super::windows_build_number;

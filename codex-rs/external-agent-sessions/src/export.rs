@@ -194,6 +194,7 @@ fn turn_complete_item(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_app_server_protocol::ThreadItem;

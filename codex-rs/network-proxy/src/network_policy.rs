@@ -529,6 +529,7 @@ pub(crate) mod test_support {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::test_support::capture_events;
     use super::test_support::find_event_by_name;

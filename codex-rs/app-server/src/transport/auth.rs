@@ -460,6 +460,7 @@ fn unauthorized(message: &'static str) -> WebsocketAuthError {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use axum::http::HeaderValue;

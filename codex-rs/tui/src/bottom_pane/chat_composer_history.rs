@@ -796,6 +796,7 @@ impl HistorySearchState {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::app_event::AppEvent;

@@ -11,7 +11,3 @@ pub fn parse_dynamic_tool(tool: &DynamicToolSpec) -> Result<ToolDefinition, serd
         defer_loading: tool.defer_loading,
     })
 }
-
-#[cfg(all(test, any()))]
-#[path = "dynamic_tool_tests.rs.old"]
-mod tests;

@@ -120,42 +120,23 @@ impl GuardianRejectionCircuitBreaker {
     }
 }
 
-#[cfg(all(test, any()))]
 use approval_request::format_guardian_action_pretty;
-#[cfg(all(test, any()))]
 use approval_request::guardian_assessment_action;
-#[cfg(all(test, any()))]
 use approval_request::guardian_request_turn_id;
-#[cfg(all(test, any()))]
 use prompt::GuardianPromptMode;
-#[cfg(all(test, any()))]
 use prompt::GuardianTranscriptCursor;
-#[cfg(all(test, any()))]
 use prompt::GuardianTranscriptEntry;
-#[cfg(all(test, any()))]
 use prompt::GuardianTranscriptEntryKind;
-#[cfg(all(test, any()))]
 use prompt::build_guardian_prompt_items;
-#[cfg(all(test, any()))]
 use prompt::collect_guardian_transcript_entries;
-#[cfg(all(test, any()))]
 use prompt::guardian_output_schema;
 #[cfg(all(test, any()))]
 pub(crate) use prompt::guardian_policy_prompt;
 #[cfg(all(test, any()))]
 pub(crate) use prompt::guardian_policy_prompt_with_config;
-#[cfg(all(test, any()))]
 use prompt::guardian_truncate_text;
-#[cfg(all(test, any()))]
 use prompt::parse_guardian_assessment;
-#[cfg(all(test, any()))]
 use prompt::render_guardian_transcript_entries;
-#[cfg(all(test, any()))]
 use review::GuardianReviewOutcome;
-#[cfg(all(test, any()))]
 use review::run_guardian_review_session as run_guardian_review_session_for_test;
-#[cfg(all(test, any()))]
 use review_session::build_guardian_review_session_config as build_guardian_review_session_config_for_test;
-
-#[cfg(all(test, any()))]
-mod tests;

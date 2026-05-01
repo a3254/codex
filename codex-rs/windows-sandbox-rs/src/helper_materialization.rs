@@ -347,6 +347,7 @@ fn destination_is_fresh(source: &Path, destination: &Path) -> Result<bool> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::copy_from_source_if_needed;
     use super::CopyOutcome;

@@ -31,7 +31,6 @@ use std::sync::Arc;
 use crate::app::App;
 use crate::app_command::AppCommand;
 use crate::app_event::AppEvent;
-#[cfg(all(test, any()))]
 use crate::history_cell::AgentMessageCell;
 use crate::history_cell::SessionInfoCell;
 use crate::history_cell::UserHistoryCell;
@@ -696,6 +695,7 @@ fn agent_group_positions_iter(
         })
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

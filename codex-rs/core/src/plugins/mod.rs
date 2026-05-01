@@ -6,8 +6,6 @@ mod manager;
 mod mentions;
 mod render;
 mod startup_sync;
-#[cfg(all(test, any()))]
-pub(crate) mod test_support;
 
 pub use codex_core_plugins::marketplace_upgrade::ConfiguredMarketplaceUpgradeError as PluginMarketplaceUpgradeError;
 pub use codex_core_plugins::marketplace_upgrade::ConfiguredMarketplaceUpgradeOutcome as PluginMarketplaceUpgradeOutcome;

@@ -148,7 +148,3 @@ fn format_allowed_modes(available_modes: &[ModeKind]) -> String {
         [..] => format!("modes: {}", mode_names.join(",")),
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "request_user_input_tool_tests.rs.old"]
-mod tests;

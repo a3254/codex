@@ -577,6 +577,7 @@ fn default_continue() -> bool {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::PERMISSION_REQUEST_INPUT_FIXTURE;
     use super::PERMISSION_REQUEST_OUTPUT_FIXTURE;

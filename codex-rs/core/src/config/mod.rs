@@ -123,8 +123,6 @@ pub mod edit;
 mod managed_features;
 mod network_proxy_spec;
 mod permissions;
-#[cfg(all(test, any()))]
-mod schema;
 pub use codex_config::Constrained;
 pub use codex_config::ConstraintError;
 pub use codex_config::ConstraintResult;
@@ -3149,11 +3147,3 @@ pub fn find_codex_home() -> std::io::Result<AbsolutePathBuf> {
 pub fn log_dir(cfg: &Config) -> std::io::Result<PathBuf> {
     Ok(cfg.log_dir.clone())
 }
-
-#[cfg(all(test, any()))]
-#[path = "config_tests.rs.old"]
-mod tests;
-
-#[cfg(all(test, any()))]
-#[path = "config_loader_tests.rs.old"]
-mod config_loader_tests;

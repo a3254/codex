@@ -463,6 +463,7 @@ pub struct BackfillStats {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::ThreadMetadata;
     use super::ThreadRow;

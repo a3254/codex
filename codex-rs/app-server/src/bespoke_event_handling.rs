@@ -2791,6 +2791,7 @@ async fn construct_mcp_tool_call_end_notification(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::CHANNEL_CAPACITY;

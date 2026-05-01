@@ -503,7 +503,3 @@ pub(crate) fn response_input_to_response_item(input: &ResponseInputItem) -> Opti
         _ => None,
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "stream_events_utils_tests.rs.old"]
-mod tests;

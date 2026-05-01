@@ -27,7 +27,3 @@ fn resolve_attribution_value(config_attribution: Option<&str>) -> Option<String>
         None => Some(DEFAULT_ATTRIBUTION_VALUE.to_string()),
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "commit_attribution_tests.rs.old"]
-mod tests;

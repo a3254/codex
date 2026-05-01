@@ -607,7 +607,3 @@ async fn collect_mcp_snapshot_from_manager_with_detail(
         auth_statuses: auth_statuses_from_entries(&auth_status_entries),
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "mod_tests.rs.old"]
-mod tests;

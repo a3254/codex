@@ -1564,6 +1564,7 @@ impl Renderable for BottomPane {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::app::app_server_requests::ResolvedAppServerRequest;

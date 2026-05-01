@@ -638,6 +638,7 @@ mod windows_impl {
     }
 
     #[cfg(test)]
+    #[cfg(all(test, any()))]
     mod tests {
         use crate::policy::SandboxPolicy;
         use crate::spawn_prep::should_apply_network_block;

@@ -201,6 +201,7 @@ fn write_json_dump(path: &PathBuf, dump: &impl Serialize) -> io::Result<()> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use std::fs;
     use std::io::Cursor;

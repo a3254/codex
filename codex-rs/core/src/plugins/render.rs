@@ -1,6 +1,4 @@
-#[cfg(all(test, any()))]
 use crate::context::AvailablePluginsInstructions;
-#[cfg(all(test, any()))]
 use crate::context::ContextualUserFragment;
 use crate::plugins::PluginCapabilitySummary;
 
@@ -56,7 +54,3 @@ pub(crate) fn render_explicit_plugin_instructions(
 
     Some(lines.join("\n"))
 }
-
-#[cfg(all(test, any()))]
-#[path = "render_tests.rs.old"]
-mod tests;

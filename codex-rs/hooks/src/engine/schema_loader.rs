@@ -78,6 +78,7 @@ fn parse_json_schema(name: &str, schema: &str) -> Value {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::generated_hook_schemas;
     use pretty_assertions::assert_eq;

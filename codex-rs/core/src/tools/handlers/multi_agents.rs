@@ -68,7 +68,3 @@ mod resume_agent;
 mod send_input;
 mod spawn;
 pub(crate) mod wait;
-
-#[cfg(all(test, any()))]
-#[path = "multi_agents_tests.rs.old"]
-mod tests;

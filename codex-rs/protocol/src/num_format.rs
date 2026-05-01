@@ -77,6 +77,7 @@ pub fn format_si_suffix(n: i64) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

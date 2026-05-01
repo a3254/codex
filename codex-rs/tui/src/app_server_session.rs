@@ -1,5 +1,4 @@
 use crate::bottom_pane::FeedbackAudience;
-#[cfg(all(test, any()))]
 use crate::legacy_core::append_message_history_entry;
 use crate::legacy_core::config::Config;
 use crate::legacy_core::message_history_metadata;
@@ -1577,6 +1576,7 @@ fn app_server_credits_snapshot_to_core(
     }
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     use super::*;

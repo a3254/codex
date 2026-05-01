@@ -177,7 +177,3 @@ impl HeadTailBuffer {
         }
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "head_tail_buffer_tests.rs.old"]
-mod tests;

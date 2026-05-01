@@ -867,7 +867,3 @@ impl From<ShellEnvironmentPolicyToml> for ShellEnvironmentPolicy {
         }
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "types_tests.rs.old"]
-mod tests;

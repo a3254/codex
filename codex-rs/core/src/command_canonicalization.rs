@@ -36,7 +36,3 @@ pub(crate) fn canonicalize_command_for_approval(command: &[String]) -> Vec<Strin
 
     command.to_vec()
 }
-
-#[cfg(all(test, any()))]
-#[path = "command_canonicalization_tests.rs.old"]
-mod tests;

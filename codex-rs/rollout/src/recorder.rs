@@ -1925,7 +1925,3 @@ async fn select_resume_path_from_db_page(
 fn cwd_matches(session_cwd: &Path, cwd: &Path) -> bool {
     path_utils::paths_match_after_normalization(session_cwd, cwd)
 }
-
-#[cfg(all(test, any()))]
-#[path = "recorder_tests.rs.old"]
-mod tests;

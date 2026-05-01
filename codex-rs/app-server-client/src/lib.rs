@@ -935,6 +935,7 @@ pub(crate) fn request_method_name(request: &ClientRequest) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_app_server_protocol::AccountUpdatedNotification;

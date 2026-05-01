@@ -19,7 +19,6 @@ use codex_protocol::permissions::FileSystemSandboxKind;
 use codex_protocol::permissions::FileSystemSandboxPolicy;
 use codex_protocol::protocol::AskForApproval;
 use codex_protocol::protocol::ReviewDecision;
-#[cfg(all(test, any()))]
 use codex_protocol::protocol::SandboxPolicy;
 use codex_sandboxing::SandboxCommand;
 use codex_sandboxing::SandboxManager;
@@ -415,7 +414,3 @@ impl<'a> SandboxAttempt<'a> {
             })
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "sandboxing_tests.rs.old"]
-mod tests;

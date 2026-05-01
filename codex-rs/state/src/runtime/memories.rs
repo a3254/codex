@@ -1271,6 +1271,7 @@ ON CONFLICT(kind, job_key) DO UPDATE SET
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::JOB_KIND_MEMORY_CONSOLIDATE_GLOBAL;
     use super::JOB_KIND_MEMORY_STAGE1;

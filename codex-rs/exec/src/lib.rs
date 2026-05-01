@@ -1845,7 +1845,3 @@ fn build_review_request(args: &ReviewArgs) -> anyhow::Result<ReviewRequest> {
         user_facing_hint: None,
     })
 }
-
-#[cfg(all(test, any()))]
-#[path = "lib_tests.rs.old"]
-mod tests;

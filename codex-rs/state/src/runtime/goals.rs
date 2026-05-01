@@ -424,6 +424,7 @@ fn status_after_budget_limit(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::runtime::test_support::test_thread_metadata;

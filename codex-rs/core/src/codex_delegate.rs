@@ -53,7 +53,6 @@ use codex_models_manager::manager::SharedModelsManager;
 use codex_protocol::error::CodexErr;
 use codex_protocol::protocol::InitialHistory;
 
-#[cfg(all(test, any()))]
 use crate::session::completed_session_loop_termination;
 
 /// Start an interactive sub-Codex thread and return IO channels.
@@ -851,7 +850,3 @@ where
         }
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "codex_delegate_tests.rs.old"]
-mod tests;

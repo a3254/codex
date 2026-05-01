@@ -30,6 +30,7 @@ fn compile_regex(pattern: &str) -> Regex {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

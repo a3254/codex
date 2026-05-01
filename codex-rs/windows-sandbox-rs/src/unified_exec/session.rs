@@ -78,6 +78,3 @@ pub(crate) use backends::windows_common::make_runner_resizer;
 pub(crate) use backends::windows_common::start_runner_pipe_writer;
 #[cfg(all(test, any()))]
 pub(crate) use backends::windows_common::start_runner_stdin_writer;
-
-#[cfg(all(test, any()))]
-mod tests;

@@ -326,6 +326,3 @@ mod platform {
     unsafe impl async_io::IoSafe for WindowsUnixListener {}
     unsafe impl async_io::IoSafe for WindowsUnixStream {}
 }
-
-#[cfg(all(test, any()))]
-mod lib_tests;

@@ -257,7 +257,3 @@ where
     };
     visit_entry(&entry)
 }
-
-#[cfg(all(test, any()))]
-#[path = "session_index_tests.rs.old"]
-mod tests;

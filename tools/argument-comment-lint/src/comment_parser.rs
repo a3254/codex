@@ -25,6 +25,7 @@ fn is_identifier(text: &str) -> bool {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::parse_argument_comment;
     use super::parse_argument_comment_prefix;

@@ -457,7 +457,3 @@ Rules:
         }
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "role_tests.rs.old"]
-mod tests;

@@ -372,6 +372,7 @@ fn parse_rfc3339_non_optional(value: &str) -> Option<DateTime<Utc>> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use std::io::Write;
 

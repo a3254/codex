@@ -73,6 +73,7 @@ pub fn notify_hook(argv: Vec<String>) -> Hook {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use anyhow::Result;
     use codex_protocol::ThreadId;

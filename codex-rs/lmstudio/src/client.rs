@@ -204,6 +204,7 @@ impl LMStudioClient {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     #![allow(clippy::expect_used, clippy::unwrap_used)]
     use super::*;

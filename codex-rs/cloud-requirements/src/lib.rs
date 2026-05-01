@@ -825,6 +825,7 @@ fn emit_metric(metric_name: &str, tags: Vec<(&str, String)>) {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use base64::Engine;

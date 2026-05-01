@@ -1454,7 +1454,3 @@ fn exec_or_panic(command: Vec<String>) -> ! {
     let err = std::io::Error::last_os_error();
     panic!("Failed to execvp {}: {err}", command[0].as_str());
 }
-
-#[cfg(all(test, any()))]
-#[path = "linux_run_main_tests.rs.old"]
-mod tests;

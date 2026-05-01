@@ -94,7 +94,3 @@ async fn write_startup_remote_plugin_sync_marker(codex_home: &Path) -> std::io::
     }
     tokio::fs::write(marker_path, b"ok\n").await
 }
-
-#[cfg(all(test, any()))]
-#[path = "startup_sync_tests.rs.old"]
-mod tests;

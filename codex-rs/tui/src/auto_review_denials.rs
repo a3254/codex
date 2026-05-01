@@ -75,6 +75,7 @@ pub(crate) fn action_summary(action: &GuardianAssessmentAction) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_protocol::protocol::GuardianCommandSource;
     use codex_utils_absolute_path::test_support::PathBufExt;

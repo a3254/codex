@@ -588,6 +588,7 @@ fn rate_limit_regex() -> &'static regex_lite::Regex {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use assert_matches::assert_matches;

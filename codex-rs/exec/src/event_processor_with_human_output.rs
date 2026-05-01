@@ -597,7 +597,3 @@ fn should_print_final_message_to_tty(
 ) -> bool {
     final_message.is_some() && !final_message_rendered && stdout_is_terminal && stderr_is_terminal
 }
-
-#[cfg(all(test, any()))]
-#[path = "event_processor_with_human_output_tests.rs.old"]
-mod tests;

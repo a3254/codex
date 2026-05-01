@@ -140,6 +140,7 @@ fn is_executable_file(path: &str) -> bool {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use tempfile::TempDir;
 

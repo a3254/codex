@@ -699,6 +699,7 @@ fn push_result_field(lines: &mut Vec<Line<'static>>, label: &str, value: Option<
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::history_cell::HistoryCell;

@@ -1007,6 +1007,7 @@ pub(super) fn maybe_open_auth_url_in_browser(request_handle: &AppServerRequestHa
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::legacy_core::config::ConfigBuilder;

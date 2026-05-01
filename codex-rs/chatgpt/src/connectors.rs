@@ -185,6 +185,7 @@ pub fn merge_connectors_with_accessible(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_connectors::metadata::connector_install_url;

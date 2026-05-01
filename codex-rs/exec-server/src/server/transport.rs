@@ -88,7 +88,3 @@ async fn run_websocket_listener(
         });
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "transport_tests.rs.old"]
-mod transport_tests;

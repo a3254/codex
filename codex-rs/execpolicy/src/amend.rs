@@ -193,6 +193,7 @@ fn append_locked_line(policy_path: &Path, line: &str) -> Result<(), AmendError> 
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

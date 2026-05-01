@@ -720,7 +720,3 @@ fn user_message_positions(items: &[ResponseItem]) -> Vec<usize> {
     }
     positions
 }
-
-#[cfg(all(test, any()))]
-#[path = "history_tests.rs.old"]
-mod tests;

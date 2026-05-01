@@ -115,7 +115,3 @@ fn local_personality_messages_for_slug(slug: &str) -> Option<ModelMessages> {
         _ => None,
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "model_info_tests.rs.old"]
-mod tests;

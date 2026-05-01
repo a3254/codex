@@ -450,6 +450,7 @@ fn safe_format_key(key: &str) -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::safe_format_key;
 

@@ -146,7 +146,3 @@ fn encode_path_segment(value: &str) -> String {
     }
     encoded
 }
-
-#[cfg(all(test, any()))]
-#[path = "workspace_settings_tests.rs.old"]
-mod tests;

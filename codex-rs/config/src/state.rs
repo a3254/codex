@@ -386,7 +386,3 @@ fn verify_layer_ordering(layers: &[ConfigLayerEntry]) -> std::io::Result<Option<
 
     Ok(user_layer_index)
 }
-
-#[cfg(all(test, any()))]
-#[path = "state_tests.rs.old"]
-mod tests;

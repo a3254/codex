@@ -27,11 +27,8 @@ use std::thread;
 use std::time::Duration;
 use tokio::process::Command;
 
-#[cfg(all(test, any()))]
 use nucleo::Utf32Str;
-#[cfg(all(test, any()))]
 use nucleo::pattern::AtomKind;
-#[cfg(all(test, any()))]
 use nucleo::pattern::Pattern;
 
 mod cli;
@@ -641,6 +638,7 @@ impl RunReporter {
     }
 }
 
+#[cfg(all(test, any()))]
 #[cfg(all(test, any()))]
 mod tests {
     #![allow(clippy::unwrap_used)]

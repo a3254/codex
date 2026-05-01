@@ -150,6 +150,7 @@ fn parse_toml_value(raw: &str) -> Result<Value, toml::de::Error> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

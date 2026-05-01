@@ -92,6 +92,7 @@ When marking a budgeted goal achieved with status `complete`, report the final t
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

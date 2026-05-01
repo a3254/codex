@@ -64,6 +64,7 @@ struct CompactHistoryResponse {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use async_trait::async_trait;

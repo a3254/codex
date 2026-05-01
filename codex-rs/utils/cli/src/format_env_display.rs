@@ -24,6 +24,7 @@ pub fn format_env_display<S: AsRef<str>>(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

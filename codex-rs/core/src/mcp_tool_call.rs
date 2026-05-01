@@ -1944,7 +1944,3 @@ async fn notify_mcp_tool_call_skip(
     notify_mcp_tool_call_event(sess, turn_context, tool_call_end_event).await;
     Err(message)
 }
-
-#[cfg(all(test, any()))]
-#[path = "mcp_tool_call_tests.rs.old"]
-mod tests;

@@ -53,7 +53,3 @@ fn format_mode_names(modes: &[ModeKind]) -> String {
         [..] => mode_names.join(", "),
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "collaboration_mode_presets_tests.rs.old"]
-mod tests;

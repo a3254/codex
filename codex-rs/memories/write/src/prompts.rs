@@ -125,7 +125,3 @@ pub fn build_stage_one_input_message(
         ("rollout_contents", truncated_rollout_contents.as_str()),
     ])?)
 }
-
-#[cfg(all(test, any()))]
-#[path = "prompts_tests.rs.old"]
-mod tests;

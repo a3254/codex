@@ -708,6 +708,7 @@ fn sec1_public_key_to_spki_der(sec1_public_key: &[u8]) -> Result<Vec<u8>, Device
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use p256::ecdsa::Signature;

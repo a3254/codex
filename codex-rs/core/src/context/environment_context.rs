@@ -203,7 +203,3 @@ impl ContextualUserFragment for EnvironmentContext {
         format!("\n{}\n", lines.join("\n"))
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "environment_context_tests.rs.old"]
-mod tests;

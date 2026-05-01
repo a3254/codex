@@ -1185,6 +1185,7 @@ impl From<&PendingTurn> for Turn {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::protocol::v2::CommandExecutionSource;

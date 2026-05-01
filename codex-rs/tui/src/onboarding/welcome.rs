@@ -114,6 +114,7 @@ impl StepStateProvider for WelcomeWidget {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crossterm::event::KeyCode;

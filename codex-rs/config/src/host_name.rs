@@ -70,6 +70,7 @@ fn normalize_fqdn_candidate(hostname: &str) -> Option<String> {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::normalize_fqdn_candidate;
     use pretty_assertions::assert_eq;

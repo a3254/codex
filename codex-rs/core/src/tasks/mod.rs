@@ -859,7 +859,3 @@ impl Session {
             .clear_turn(&task.turn_context.sub_id);
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "mod_tests.rs.old"]
-mod tests;

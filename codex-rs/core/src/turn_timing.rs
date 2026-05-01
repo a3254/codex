@@ -193,7 +193,3 @@ fn response_item_records_turn_ttft(item: &ResponseItem) -> bool {
         | ResponseItem::Other => false,
     }
 }
-
-#[cfg(all(test, any()))]
-#[path = "turn_timing_tests.rs.old"]
-mod tests;

@@ -210,6 +210,7 @@ fn session_thread_config_to_toml(
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_model_provider_info::ModelProviderInfo;
     use codex_model_provider_info::WireApi;

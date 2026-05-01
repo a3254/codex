@@ -133,7 +133,3 @@ pub fn resume_command(thread_name: Option<&str>, thread_id: Option<ThreadId>) ->
         }
     })
 }
-
-#[cfg(all(test, any()))]
-#[path = "util_tests.rs.old"]
-mod tests;

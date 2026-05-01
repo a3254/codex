@@ -629,7 +629,3 @@ pub fn get_error_message_ui(e: &CodexErr) -> String {
         TruncationPolicy::Bytes(ERROR_MESSAGE_UI_MAX_BYTES),
     )
 }
-
-#[cfg(all(test, any()))]
-#[path = "error_tests.rs.old"]
-mod tests;

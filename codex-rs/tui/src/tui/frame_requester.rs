@@ -127,6 +127,7 @@ impl FrameScheduler {
     }
 }
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::super::frame_rate_limiter::MIN_FRAME_INTERVAL;
     use super::*;

@@ -552,6 +552,7 @@ fn parse_host_port_fallback(input: &str, default_port: u16) -> Result<SocketAddr
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

@@ -142,10 +142,6 @@ const CYBER_POLICY_ERROR_CODE: &str = "cyber_policy";
 const CYBER_POLICY_FALLBACK_MESSAGE: &str =
     "This request has been flagged for possible cybersecurity risk.";
 
-#[cfg(all(test, any()))]
-#[path = "api_bridge_tests.rs.old"]
-mod tests;
-
 fn extract_request_tracking_id(headers: Option<&HeaderMap>) -> Option<String> {
     extract_request_id(headers).or_else(|| extract_header(headers, CF_RAY_HEADER))
 }

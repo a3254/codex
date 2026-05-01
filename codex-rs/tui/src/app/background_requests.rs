@@ -712,6 +712,7 @@ pub(super) fn mcp_inventory_maps_from_statuses(statuses: Vec<McpServerStatus>) -
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_app_server_protocol::PluginMarketplaceEntry;

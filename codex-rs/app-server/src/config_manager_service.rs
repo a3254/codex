@@ -647,7 +647,3 @@ fn find_effective_layer(
 
     None
 }
-
-#[cfg(all(test, any()))]
-#[path = "config_manager_service_tests.rs.old"]
-mod tests;

@@ -328,6 +328,7 @@ fn remote_control_client_is_alive(client: &ClientState, now: Instant) -> bool {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::outgoing_message::OutgoingMessage;

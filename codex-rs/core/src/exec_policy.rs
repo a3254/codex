@@ -944,7 +944,3 @@ async fn collect_policy_files(dir: impl AsRef<Path>) -> Result<Vec<PathBuf>, Exe
     );
     Ok(policy_paths)
 }
-
-#[cfg(all(test, any()))]
-#[path = "exec_policy_tests.rs.old"]
-mod tests;

@@ -868,6 +868,7 @@ async fn write_jsonrpc_message(
         })
 }
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

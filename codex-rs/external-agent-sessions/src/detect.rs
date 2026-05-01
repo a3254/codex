@@ -88,6 +88,7 @@ fn is_recent_enough(now: i64, latest_timestamp: i64) -> bool {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::ledger::record_imported_session;

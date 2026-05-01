@@ -32,6 +32,7 @@ fn current_user_first_name() -> String {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::prepare_realtime_backend_prompt;
 

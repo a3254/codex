@@ -672,6 +672,7 @@ fn command_no_longer_running_error(process_id: &InternalProcessId) -> JSONRPCErr
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use std::collections::HashMap;
 

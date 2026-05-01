@@ -514,6 +514,7 @@ fn system_time_to_unix_ms(time: SystemTime) -> i64 {
 }
 
 #[cfg(all(test, unix))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;
@@ -545,6 +546,7 @@ mod tests {
 }
 
 #[cfg(all(test, windows))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

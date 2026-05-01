@@ -295,6 +295,7 @@ fn open_create_new_with_mode(path: &Path, _mode: u32) -> Result<File> {
 }
 
 #[cfg(all(test, unix))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

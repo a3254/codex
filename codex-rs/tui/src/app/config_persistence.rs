@@ -542,6 +542,7 @@ impl App {
 }
 
 #[cfg(all(test, any()))]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::app::test_support::app_enabled_in_effective_config;
