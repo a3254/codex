@@ -95,7 +95,7 @@ Now is intentionally one measurable wedge: safe direct VPS setup plus a fake cha
 ### Next
 
 1. Reference Channel Gateway Spike
-   Add a small SDK-backed example that maps webhook-like events to `thread/start`, `turn/start`, `turn/steer`, and `turn/interrupt`. Use local fixtures instead of real WhatsApp credentials.
+   Add a small SDK-backed example that maps webhook-like events to `thread/start`, `turn/start`, `turn/steer`, and `turn/interrupt`. Use local fixtures instead of real WhatsApp credentials. Initial executable artifact: `codex_app_server.channel_gateway` plus `sdk/python/examples/15_channel_gateway/`.
 
 2. Remote Client Capability Profile
    Add a protocol or client convention that declares whether a remote client can render diffs, answer approvals, handle file attachments, and receive command output.

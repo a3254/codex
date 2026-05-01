@@ -10,6 +10,22 @@ If you want Codex in your code editor (VS Code, Cursor, Windsurf), <a href="http
 
 ---
 
+## Fork notes
+
+This fork diverged from `openai/codex` at commit
+`8f3c06cc97bbb045fe5790a6388625c0db35af7f` (`Add persisted hook enablement state`,
+2026-04-30 UTC).
+
+Major additions since the fork point:
+
+- TUI loop scheduling, including slash-command handling, event dispatch support, and prompt handling for scheduled loop completion.
+- Multi-agent orchestration guidance for clearer delegation, agent roles, and collaboration transcript rendering.
+- Experimental orchestrator mode feature gating so orchestration behavior can be enabled explicitly.
+- Clearer Plan mode handoff text and snapshots for implementation transition flows.
+- Repository workflow updates for faster targeted Rust testing.
+- App version update to `0.125.0`.
+- npm lockfile for the root JavaScript tooling dependency set.
+
 ## Quickstart
 
 ### Installing and running Codex CLI

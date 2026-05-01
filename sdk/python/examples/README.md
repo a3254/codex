@@ -81,3 +81,5 @@ python examples/01_quickstart_constructor/async.py
   - list models, pick highest model + highest supported reasoning effort, run turns, print message and usage
 - `14_turn_controls/`
   - separate best-effort `steer()` and `interrupt()` demos with concise summaries
+- `15_channel_gateway/`
+  - fixture-driven WhatsApp-style channel gateway that maps allowed senders to constrained Codex threads

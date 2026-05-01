@@ -53,6 +53,14 @@ from .api import (
     Thread,
     TurnHandle,
 )
+from .channel_gateway import (
+    ChannelGateway,
+    ChannelGatewayError,
+    ChannelMessage,
+    GatewayResult,
+    SenderBinding,
+    approval_prompt_text,
+)
 from .retry import retry_on_overload
 from ._version import __version__
 
@@ -67,6 +75,12 @@ __all__ = [
     "AsyncThread",
     "TurnHandle",
     "AsyncTurnHandle",
+    "ChannelGateway",
+    "ChannelGatewayError",
+    "ChannelMessage",
+    "GatewayResult",
+    "SenderBinding",
+    "approval_prompt_text",
     "InitializeResponse",
     "RunResult",
     "Input",
