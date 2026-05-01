@@ -174,7 +174,7 @@ If the request omits the task prompt, use this default prompt:
 {default_prompt}
 </default_loop_prompt>
 
-First verify whether the requested task is already complete. Use available repository or shell tools if that is necessary to answer. If it is already complete, do not schedule it.
+First verify whether this exact requested task is already complete. Use available repository or shell tools if that is necessary to answer. Only return schedule:false when the request is unambiguously satisfied in the current conversation or current workspace state. Do not treat old plans, historical notes, completed TODOs, or similar prior work as completion unless the user explicitly asked to continue or monitor that exact artifact. When completion is ambiguous, schedule the loop.
 
 Normalize the interval from the exact text inside <loop_request> into a fixed interval string using only s, m, h, or d. For example, flexible time wording may include phrases like "every N minutes", "hourly", "daily", "twice a day", "in N hours", "every N.Nh", or "every other hour". Do not copy interval values from these examples; the interval value must come only from <loop_request>. If the user did not specify a clear interval, use null for interval so Codex will use dynamic scheduling.
 
@@ -184,7 +184,7 @@ Return only a JSON object with this exact shape:
 If already complete, return:
 {{"schedule":false,"interval":null,"prompt":null,"reason":"brief reason"}}
 
-The cleaned prompt should tell the future loop turn to re-check whether the task is already done before taking action, and to report when there is no more work or no next phase."#
+The cleaned prompt should preserve the user's requested outcome, tell the future loop turn to re-check only whether this exact scheduled task is already done before taking action, and tell it to report completion only when there is no remaining work or no next phase for this scheduled task."#
     )
 }
 
@@ -193,9 +193,9 @@ fn loop_turn_prompt(prompt: &str) -> String {
         "\
 This is a scheduled /loop turn.
 
-Re-check whether the task is already done, or whether there are no more phases to continue, before taking action.
+Re-check whether this exact scheduled task is already done, or whether there are no more phases to continue, before taking action. Do not treat old plans, historical notes, completed TODOs, or similar prior work as completion unless they are clearly the artifact or outcome requested by this scheduled task.
 
-If the work is already done or there is no next phase, do not take further action. Say that the loop is complete, and include this exact marker on its own line so Codex can cancel the scheduled loop:
+If this scheduled task's requested work is already done or there is no next phase for this scheduled task, do not take further action. Say that the loop is complete, and include this exact marker on its own line so Codex can cancel the scheduled loop:
 {LOOP_COMPLETE_MARKER}
 
 Otherwise, continue with the task.
@@ -426,6 +426,16 @@ mod tests {
     }
 
     #[test]
+    fn normalization_prompt_requires_exact_task_completion() {
+        let prompt = loop_normalization_prompt("find 5 app improvements", "default work");
+
+        assert!(prompt.contains("Only return schedule:false"));
+        assert!(prompt.contains("unambiguously satisfied"));
+        assert!(prompt.contains("old plans, historical notes, completed TODOs"));
+        assert!(prompt.contains("When completion is ambiguous, schedule the loop"));
+    }
+
+    #[test]
     fn parses_normalized_schedule_response() {
         assert_eq!(
             parse_normalized_loop_response(
@@ -475,6 +485,7 @@ mod tests {
         assert!(prompt.contains("continue with the next phase"));
         assert!(prompt.contains(LOOP_COMPLETE_MARKER));
         assert!(prompt.contains("no more phases"));
+        assert!(prompt.contains("old plans, historical notes, completed TODOs"));
     }
 
     #[test]
