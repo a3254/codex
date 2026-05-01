@@ -144,6 +144,8 @@ pub enum Feature {
     Collab,
     /// Enable task-path-based multi-agent routing.
     MultiAgentV2,
+    /// Treat root TUI sessions as multi-agent orchestrator leads.
+    OrchestratorMode,
     /// Enable CSV-backed agent job tools.
     SpawnCsv,
     /// Enable apps.
@@ -472,6 +474,9 @@ impl Features {
     pub fn normalize_dependencies(&mut self) {
         if self.enabled(Feature::SpawnCsv) && !self.enabled(Feature::Collab) {
             self.enable(Feature::Collab);
+        }
+        if self.enabled(Feature::OrchestratorMode) && !self.enabled(Feature::MultiAgentV2) {
+            self.enable(Feature::MultiAgentV2);
         }
         if self.enabled(Feature::CodeModeOnly) && !self.enabled(Feature::CodeMode) {
             self.enable(Feature::CodeMode);
@@ -840,6 +845,16 @@ pub const FEATURES: &[FeatureSpec] = &[
         id: Feature::MultiAgentV2,
         key: "multi_agent_v2",
         stage: Stage::UnderDevelopment,
+        default_enabled: false,
+    },
+    FeatureSpec {
+        id: Feature::OrchestratorMode,
+        key: "orchestrator_mode",
+        stage: Stage::Experimental {
+            name: "Orchestrator mode",
+            menu_description: "Let Codex automatically act as a team lead for suitable tasks, spawning and coordinating sub-agents when parallel work is useful.",
+            announcement: "",
+        },
         default_enabled: false,
     },
     FeatureSpec {

@@ -852,16 +852,17 @@ impl Session {
 
         let state = self.state.lock().await;
         let config = &state.session_configuration.original_config_do_not_use;
+        let root_agent_usage_hint_text = config
+            .multi_agent_v2
+            .root_agent_usage_hint_text
+            .clone()
+            .or_else(|| {
+                self.features
+                    .enabled(Feature::OrchestratorMode)
+                    .then(|| multi_agents::DEFAULT_ROOT_AGENT_USAGE_HINT_TEXT.to_string())
+            });
         [
-            Some(
-                config
-                    .multi_agent_v2
-                    .root_agent_usage_hint_text
-                    .clone()
-                    .unwrap_or_else(|| {
-                        multi_agents::DEFAULT_ROOT_AGENT_USAGE_HINT_TEXT.to_string()
-                    }),
-            ),
+            root_agent_usage_hint_text,
             Some(
                 config
                     .multi_agent_v2

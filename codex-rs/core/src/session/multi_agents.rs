@@ -67,12 +67,15 @@ pub(super) fn usage_hint_text<'a>(
         | SessionSource::Exec
         | SessionSource::Mcp
         | SessionSource::Custom(_)
-        | SessionSource::Unknown => Some(
-            multi_agent_v2
-                .root_agent_usage_hint_text
-                .as_deref()
-                .unwrap_or(DEFAULT_ROOT_AGENT_USAGE_HINT_TEXT),
-        ),
+        | SessionSource::Unknown => multi_agent_v2
+            .root_agent_usage_hint_text
+            .as_deref()
+            .or_else(|| {
+                turn_context
+                    .features
+                    .enabled(Feature::OrchestratorMode)
+                    .then_some(DEFAULT_ROOT_AGENT_USAGE_HINT_TEXT)
+            }),
         SessionSource::Internal(_) | SessionSource::SubAgent(_) => None,
     }
 }

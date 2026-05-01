@@ -5567,6 +5567,7 @@ async fn build_initial_context_adds_default_orchestrator_usage_hint() {
         Vec::new(),
         |config| {
             let _ = config.features.enable(Feature::MultiAgentV2);
+            let _ = config.features.enable(Feature::OrchestratorMode);
             config.multi_agent_v2.root_agent_usage_hint_text = None;
             config.multi_agent_v2.subagent_usage_hint_text = None;
         },
@@ -5582,6 +5583,31 @@ async fn build_initial_context_adds_default_orchestrator_usage_hint() {
             .any(|message| message.iter().any(|section| section
                 .contains("You are the team lead for a multi-agent Codex session."))),
         "expected default orchestrator usage hint developer message, got {developer_messages:?}"
+    );
+}
+
+#[tokio::test]
+async fn build_initial_context_omits_default_orchestrator_usage_hint_when_mode_disabled() {
+    let (session, turn_context, _rx_event) = make_session_and_context_with_auth_and_config_and_rx(
+        CodexAuth::from_api_key("Test API Key"),
+        Vec::new(),
+        |config| {
+            let _ = config.features.enable(Feature::MultiAgentV2);
+            config.multi_agent_v2.root_agent_usage_hint_text = None;
+            config.multi_agent_v2.subagent_usage_hint_text = None;
+        },
+    )
+    .await;
+
+    let initial_context = session.build_initial_context(turn_context.as_ref()).await;
+
+    let developer_messages = developer_message_texts(&initial_context);
+    assert!(
+        !developer_messages
+            .iter()
+            .any(|message| message.iter().any(|section| section
+                .contains("You are the team lead for a multi-agent Codex session."))),
+        "did not expect default orchestrator usage hint developer message, got {developer_messages:?}"
     );
 }
 

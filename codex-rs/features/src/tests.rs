@@ -102,6 +102,23 @@ fn external_migration_is_experimental_and_disabled_by_default() {
 }
 
 #[test]
+fn orchestrator_mode_is_experimental_and_enables_multi_agent_v2() {
+    let spec = Feature::OrchestratorMode.info();
+    let stage = spec.stage;
+
+    assert!(matches!(stage, Stage::Experimental { .. }));
+    assert_eq!(stage.experimental_menu_name(), Some("Orchestrator mode"));
+    assert_eq!(Feature::OrchestratorMode.default_enabled(), false);
+
+    let mut features = Features::with_defaults();
+    features.enable(Feature::OrchestratorMode);
+    features.normalize_dependencies();
+
+    assert_eq!(features.enabled(Feature::OrchestratorMode), true);
+    assert_eq!(features.enabled(Feature::MultiAgentV2), true);
+}
+
+#[test]
 fn request_permissions_is_under_development() {
     assert_eq!(
         Feature::ExecPermissionApprovals.stage(),
