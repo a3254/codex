@@ -54,10 +54,14 @@ In the codex-rs folder where the rust code lives:
     trivial; prefer new modules/files and keep `chatwidget.rs` focused on orchestration.
 - When running Rust commands (e.g. `just fix` or `cargo test`) be patient with the command and never try to kill them using the PID. Rust lock can make the execution slow, this is expected.
 
-Run `just fmt` (in `codex-rs` directory) automatically after you have finished making Rust code changes; do not ask for approval to run it. Additionally, run the tests:
+Run `just fmt` (in `codex-rs` directory) automatically after you have finished making Rust code changes; do not ask for approval to run it. Additionally, run tests in the narrowest useful scope:
 
-1. Run the test for the specific project that was changed. For example, if changes were made in `codex-rs/tui`, run `cargo test -p codex-tui`.
-2. Once those pass, if any changes were made in common, core, or protocol, run the complete test suite with `cargo test` (or `just test` if `cargo-nextest` is installed). Avoid `--all-features` for routine local runs because it expands the build matrix and can significantly increase `target/` disk usage; use it only when you specifically need full feature coverage. project-specific or individual tests can be run without asking the user, but do ask the user before running the complete test suite.
+1. For small or localized changes, run exact test filters for the tests that cover the touched code. Prefer `cargo nextest run -p <crate> <test_path_or_name>` when `cargo-nextest` is installed; otherwise use `cargo test -p <crate> <test_path_or_name> --lib`. For example:
+   - `cargo nextest run -p codex-tui multi_agents::tests::collab_events_snapshot`
+   - `cargo test -p codex-core session::tests::build_initial_context_adds_default_orchestrator_usage_hint --lib`
+2. Do not run broad crate-wide tests such as `cargo test -p codex-tui`, broad filters such as `cargo test -p codex-core multi_agent_v2`, or `just fix` after every small edit. Save them for final validation of broad changes or when a targeted test fails in a way that suggests wider impact.
+3. Do not run multiple Cargo test commands in parallel. Cargo lock contention and test resource usage can make this slower and can cause spurious failures such as file-descriptor exhaustion.
+4. Once targeted tests pass, if any changes were made in common, core, or protocol, ask before running the complete test suite with `cargo test` or `just test`. Prefer `just test` when `cargo-nextest` is installed. Avoid `--all-features` for routine local runs because it expands the build matrix and can significantly increase `target/` disk usage; use it only when you specifically need full feature coverage.
 
 Before finalizing a large change to `codex-rs`, run `just fix -p <project>` (in `codex-rs` directory) to fix any linter issues in the code. Prefer scoping with `-p` to avoid slow workspace‑wide Clippy builds; only run `just fix` without `-p` if you changed shared crates. Do not re-run tests after running `fix` or `fmt`.
 
