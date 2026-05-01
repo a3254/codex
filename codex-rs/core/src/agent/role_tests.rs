@@ -692,6 +692,8 @@ fn spawn_tool_spec_build_deduplicates_user_defined_built_in_roles() {
     assert!(spec.contains("researcher: no description"));
     assert!(spec.contains("explorer: {\nuser override\n}"));
     assert!(spec.contains("default: {\nDefault agent.\n}"));
+    assert!(spec.contains("orchestrator: {\nUse `orchestrator` for the lead session"));
+    assert!(spec.contains("validator: {\nUse `validator` to independently verify"));
     assert!(!spec.contains("Explorers are fast and authoritative."));
 }
 

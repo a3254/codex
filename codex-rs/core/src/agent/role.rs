@@ -379,6 +379,36 @@ Rules:
                     }
                 ),
                 (
+                    "orchestrator".to_string(),
+                    AgentRoleConfig {
+                        description: Some(r#"Use `orchestrator` for the lead session when a task should be decomposed into parallel agent work.
+Orchestrators coordinate rather than offload the critical path.
+Rules:
+- Decompose only independent workstreams that can run in parallel.
+- Keep urgent blocking work local and avoid delegating tightly coupled same-file edits.
+- Maintain a shared task board with ids, owners, dependencies, status, last update, and result.
+- Assign disjoint ownership when workers edit files.
+- Ask workers and validators for structured results: task id, status, files touched, tests run, blockers, and summary.
+- Use validator or reviewer agents for risky, broad, or user-visible changes.
+- Respect concurrency limits and close idle or completed agents after their results are integrated."#.to_string()),
+                        config_file: None,
+                        nickname_candidates: None,
+                    }
+                ),
+                (
+                    "validator".to_string(),
+                    AgentRoleConfig {
+                        description: Some(r#"Use `validator` to independently verify worker output, risky changes, or broad user-visible behavior.
+Validators should inspect the assigned result, run focused checks when useful, and report pass/fail findings.
+Rules:
+- Stay read-only unless explicitly asked to make a bounded fix.
+- Focus on correctness, regressions, missing tests, and integration risks.
+- Return a structured result with status, findings, required fixes, tests run, blockers, and summary."#.to_string()),
+                        config_file: None,
+                        nickname_candidates: None,
+                    }
+                ),
+                (
                     "worker".to_string(),
                     AgentRoleConfig {
                         description: Some(r#"Use for execution and production work.

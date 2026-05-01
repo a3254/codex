@@ -34,6 +34,7 @@ use std::collections::HashSet;
 const COLLAB_PROMPT_PREVIEW_GRAPHEMES: usize = 160;
 const COLLAB_AGENT_ERROR_PREVIEW_GRAPHEMES: usize = 160;
 const COLLAB_AGENT_RESPONSE_PREVIEW_GRAPHEMES: usize = 240;
+const COLLAB_AGENT_TASK_FIELD_PREVIEW_GRAPHEMES: usize = 180;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub(crate) struct AgentPickerThreadEntry {
@@ -518,23 +519,46 @@ fn wait_complete_lines(
 
     entries
         .into_iter()
-        .map(|entry| {
-            let CollabAgentStatusEntry {
-                thread_id,
-                agent_nickname,
-                agent_role,
-                status,
-            } = entry;
-            let mut spans = agent_label_spans(AgentLabel {
-                thread_id: Some(thread_id),
-                nickname: agent_nickname.as_deref(),
-                role: agent_role.as_deref(),
-            });
-            spans.push(Span::from(": ").dim());
-            spans.extend(status_summary_spans(&status));
-            spans.into()
-        })
+        .flat_map(wait_complete_entry_lines)
         .collect()
+}
+
+fn wait_complete_entry_lines(entry: CollabAgentStatusEntry) -> Vec<Line<'static>> {
+    let CollabAgentStatusEntry {
+        thread_id,
+        agent_nickname,
+        agent_role,
+        status,
+    } = entry;
+    let label = AgentLabel {
+        thread_id: Some(thread_id),
+        nickname: agent_nickname.as_deref(),
+        role: agent_role.as_deref(),
+    };
+    let structured_result = match &status {
+        AgentStatus::Completed(Some(message)) => StructuredAgentResult::parse(message),
+        AgentStatus::PendingInit
+        | AgentStatus::Running
+        | AgentStatus::Interrupted
+        | AgentStatus::Completed(None)
+        | AgentStatus::Errored(_)
+        | AgentStatus::Shutdown
+        | AgentStatus::NotFound => None,
+    };
+    let mut title_spans = agent_label_spans(label);
+    title_spans.push(Span::from(": ").dim());
+    if structured_result.is_some() {
+        title_spans.push(Span::from("Completed").green());
+    } else {
+        title_spans.extend(status_summary_spans(&status));
+    }
+    let mut lines = vec![Line::from(title_spans)];
+
+    if let Some(result) = structured_result {
+        lines.extend(result.lines());
+    }
+
+    lines
 }
 
 fn status_summary_line(status: &AgentStatus) -> Line<'static> {
@@ -577,6 +601,101 @@ fn status_summary_spans(status: &AgentStatus) -> Vec<Span<'static>> {
         AgentStatus::Shutdown => vec![Span::from("Shutdown")],
         AgentStatus::NotFound => vec![Span::from("Not found").red()],
     }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+struct StructuredAgentResult {
+    task_id: Option<String>,
+    status: Option<String>,
+    files_touched: Option<String>,
+    tests_run: Option<String>,
+    blockers: Option<String>,
+    summary: Option<String>,
+}
+
+impl StructuredAgentResult {
+    fn parse(message: &str) -> Option<Self> {
+        let mut result = StructuredAgentResult {
+            task_id: None,
+            status: None,
+            files_touched: None,
+            tests_run: None,
+            blockers: None,
+            summary: None,
+        };
+
+        for line in message.lines() {
+            let Some((name, value)) = line.split_once(':') else {
+                continue;
+            };
+            let value = value.trim();
+            if value.is_empty() {
+                continue;
+            }
+            match normalized_result_field_name(name).as_str() {
+                "task id" => result.task_id = Some(value.to_string()),
+                "status" => result.status = Some(value.to_string()),
+                "files touched" => result.files_touched = Some(value.to_string()),
+                "tests run" => result.tests_run = Some(value.to_string()),
+                "blockers" => result.blockers = Some(value.to_string()),
+                "summary" => result.summary = Some(value.to_string()),
+                _ => {}
+            }
+        }
+
+        result.has_task_board_fields().then_some(result)
+    }
+
+    fn has_task_board_fields(&self) -> bool {
+        self.task_id.is_some()
+            || self.files_touched.is_some()
+            || self.tests_run.is_some()
+            || self.blockers.is_some()
+    }
+
+    fn lines(self) -> Vec<Line<'static>> {
+        let mut lines = Vec::new();
+        let heading = match (self.task_id.as_deref(), self.status.as_deref()) {
+            (Some(task_id), Some(status)) => format!("Task {task_id}: {status}"),
+            (Some(task_id), None) => format!("Task {task_id}"),
+            (None, Some(status)) => format!("Task result: {status}"),
+            (None, None) => "Task result".to_string(),
+        };
+        lines.push(Line::from(vec![
+            "  ".into(),
+            Span::from(heading).magenta().bold(),
+        ]));
+        push_result_field(&mut lines, "Files", self.files_touched);
+        push_result_field(&mut lines, "Tests", self.tests_run);
+        push_result_field(&mut lines, "Blockers", self.blockers);
+        push_result_field(&mut lines, "Summary", self.summary);
+        lines
+    }
+}
+
+fn normalized_result_field_name(name: &str) -> String {
+    name.trim()
+        .trim_matches(|character: char| character == '-' || character == '*')
+        .trim()
+        .to_ascii_lowercase()
+}
+
+fn push_result_field(lines: &mut Vec<Line<'static>>, label: &str, value: Option<String>) {
+    let Some(value) = value else {
+        return;
+    };
+    let value = truncate_text(
+        &value.split_whitespace().collect::<Vec<_>>().join(" "),
+        COLLAB_AGENT_TASK_FIELD_PREVIEW_GRAPHEMES,
+    );
+    if value.is_empty() {
+        return;
+    }
+    lines.push(Line::from(vec![
+        "    ".into(),
+        Span::from(format!("{label}: ")).dim(),
+        Span::from(value),
+    ]));
 }
 
 #[cfg(test)]
@@ -643,7 +762,10 @@ mod tests {
         let mut statuses = HashMap::new();
         statuses.insert(
             robie_id,
-            AgentStatus::Completed(Some("39916800".to_string())),
+            AgentStatus::Completed(Some(
+                "Task ID: math\nStatus: completed\nFiles touched: none\nTests run: not run\nBlockers: none\nSummary: 39916800"
+                    .to_string(),
+            )),
         );
         statuses.insert(bob_id, AgentStatus::Errored("tool timeout".to_string()));
         let finished = waiting_end(CollabWaitingEndEvent {
@@ -654,7 +776,10 @@ mod tests {
                     thread_id: robie_id,
                     agent_nickname: Some("Robie".to_string()),
                     agent_role: Some("explorer".to_string()),
-                    status: AgentStatus::Completed(Some("39916800".to_string())),
+                    status: AgentStatus::Completed(Some(
+                        "Task ID: math\nStatus: completed\nFiles touched: none\nTests run: not run\nBlockers: none\nSummary: 39916800"
+                            .to_string(),
+                    )),
                 },
                 CollabAgentStatusEntry {
                     thread_id: bob_id,

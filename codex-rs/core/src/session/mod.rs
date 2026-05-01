@@ -853,8 +853,22 @@ impl Session {
         let state = self.state.lock().await;
         let config = &state.session_configuration.original_config_do_not_use;
         [
-            config.multi_agent_v2.root_agent_usage_hint_text.clone(),
-            config.multi_agent_v2.subagent_usage_hint_text.clone(),
+            Some(
+                config
+                    .multi_agent_v2
+                    .root_agent_usage_hint_text
+                    .clone()
+                    .unwrap_or_else(|| {
+                        multi_agents::DEFAULT_ROOT_AGENT_USAGE_HINT_TEXT.to_string()
+                    }),
+            ),
+            Some(
+                config
+                    .multi_agent_v2
+                    .subagent_usage_hint_text
+                    .clone()
+                    .unwrap_or_else(|| multi_agents::DEFAULT_SUBAGENT_USAGE_HINT_TEXT.to_string()),
+            ),
         ]
         .into_iter()
         .flatten()
