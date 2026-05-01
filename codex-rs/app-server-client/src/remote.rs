@@ -31,6 +31,7 @@ use codex_app_server_protocol::JSONRPCMessage;
 use codex_app_server_protocol::JSONRPCNotification;
 use codex_app_server_protocol::JSONRPCRequest;
 use codex_app_server_protocol::JSONRPCResponse;
+use codex_app_server_protocol::RemoteClientCapabilities;
 use codex_app_server_protocol::RequestId;
 use codex_app_server_protocol::Result as JsonRpcResult;
 use codex_app_server_protocol::ServerNotification;
@@ -66,6 +67,7 @@ pub struct RemoteAppServerConnectArgs {
     pub client_version: String,
     pub experimental_api: bool,
     pub opt_out_notification_methods: Vec<String>,
+    pub remote_client: Option<RemoteClientCapabilities>,
     pub channel_capacity: usize,
 }
 
@@ -78,6 +80,7 @@ impl RemoteAppServerConnectArgs {
             } else {
                 Some(self.opt_out_notification_methods.clone())
             },
+            remote_client: self.remote_client.clone(),
         };
 
         InitializeParams {

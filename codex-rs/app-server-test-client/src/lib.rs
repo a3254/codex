@@ -1557,6 +1557,7 @@ impl CodexClient {
                             .map(|method| (*method).to_string())
                             .collect(),
                     ),
+                    remote_client: None,
                 }),
             },
         };

@@ -50,6 +50,28 @@ pub struct InitializeCapabilities {
     /// connection (for example `thread/started`).
     #[ts(optional = nullable)]
     pub opt_out_notification_methods: Option<Vec<String>>,
+    /// Client surface affordances that affect how remote gateways should route
+    /// work to this connection.
+    #[ts(optional = nullable)]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub remote_client: Option<RemoteClientCapabilities>,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq, Default, JsonSchema, TS)]
+#[serde(rename_all = "camelCase")]
+pub struct RemoteClientCapabilities {
+    /// The client can render file diffs in a reviewable form.
+    #[serde(default)]
+    pub renders_diffs: bool,
+    /// The client can answer approval requests from the user.
+    #[serde(default)]
+    pub answers_approvals: bool,
+    /// The client can submit file attachments or other binary user input.
+    #[serde(default)]
+    pub supports_file_attachments: bool,
+    /// The client can receive command output notifications.
+    #[serde(default)]
+    pub receives_command_output: bool,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, JsonSchema, TS)]

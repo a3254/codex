@@ -36,6 +36,7 @@ use codex_app_server_protocol::ConfigWarningNotification;
 use codex_app_server_protocol::InitializeCapabilities;
 use codex_app_server_protocol::InitializeParams;
 use codex_app_server_protocol::JSONRPCErrorError;
+use codex_app_server_protocol::RemoteClientCapabilities;
 use codex_app_server_protocol::RequestId;
 use codex_app_server_protocol::Result as JsonRpcResult;
 use codex_app_server_protocol::ServerNotification;
@@ -355,6 +356,8 @@ pub struct InProcessClientStartArgs {
     pub experimental_api: bool,
     /// Notification methods this client opts out of receiving.
     pub opt_out_notification_methods: Vec<String>,
+    /// Remote-client affordances advertised during initialize.
+    pub remote_client: Option<RemoteClientCapabilities>,
     /// Queue capacity for command/event channels (clamped to at least 1).
     pub channel_capacity: usize,
 }
@@ -376,6 +379,7 @@ impl InProcessClientStartArgs {
             } else {
                 Some(self.opt_out_notification_methods.clone())
             },
+            remote_client: self.remote_client.clone(),
         };
 
         InitializeParams {
@@ -987,6 +991,7 @@ mod tests {
             client_version: "0.0.0-test".to_string(),
             experimental_api: true,
             opt_out_notification_methods: Vec::new(),
+            remote_client: None,
             channel_capacity,
         })
         .await
@@ -1162,6 +1167,7 @@ mod tests {
             client_version: "0.0.0-test".to_string(),
             experimental_api: true,
             opt_out_notification_methods: Vec::new(),
+            remote_client: None,
             channel_capacity: 8,
         }
     }
@@ -1655,6 +1661,7 @@ mod tests {
             client_version: "0.0.0-test".to_string(),
             experimental_api: true,
             opt_out_notification_methods: Vec::new(),
+            remote_client: None,
             channel_capacity: 1,
         })
         .await
@@ -2057,6 +2064,7 @@ mod tests {
             client_version: "0.0.0-test".to_string(),
             experimental_api: true,
             opt_out_notification_methods: Vec::new(),
+            remote_client: None,
             channel_capacity: DEFAULT_IN_PROCESS_CHANNEL_CAPACITY,
         }
         .into_runtime_start_args();
@@ -2096,6 +2104,7 @@ mod tests {
             client_version: "0.0.0-test".to_string(),
             experimental_api: true,
             opt_out_notification_methods: Vec::new(),
+            remote_client: None,
             channel_capacity: DEFAULT_IN_PROCESS_CHANNEL_CAPACITY,
         }
         .into_runtime_start_args();

@@ -104,6 +104,7 @@ impl AppServerClient {
                 capabilities: Some(InitializeCapabilities {
                     experimental_api: true,
                     opt_out_notification_methods: None,
+                    remote_client: None,
                 }),
             },
         };

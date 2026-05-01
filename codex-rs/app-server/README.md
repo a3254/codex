@@ -102,6 +102,12 @@ Clients must send a single `initialize` request per transport connection before 
 
 `initialize.params.capabilities` also supports per-connection notification opt-out via `optOutNotificationMethods`, which is a list of exact method names to suppress for that connection. Matching is exact (no wildcards/prefixes). Unknown method names are accepted and ignored.
 
+Remote clients and gateways can also declare their user-interface affordances with
+`capabilities.remoteClient`. The profile is advisory and lets clients identify whether they can render
+diffs, answer approvals, submit file attachments, and receive command output. This is intended for
+lightweight remote clients that need to route work only to surfaces that can safely present the
+required user action.
+
 Applications building on top of `codex app-server` should identify themselves via the `clientInfo` parameter.
 
 **Important**: `clientInfo.name` is used to identify the client for the OpenAI Compliance Logs Platform. If
@@ -138,7 +144,13 @@ Example with notification opt-out:
     },
     "capabilities": {
       "experimentalApi": true,
-      "optOutNotificationMethods": ["thread/started", "item/agentMessage/delta"]
+      "optOutNotificationMethods": ["thread/started", "item/agentMessage/delta"],
+      "remoteClient": {
+        "rendersDiffs": true,
+        "answersApprovals": true,
+        "supportsFileAttachments": false,
+        "receivesCommandOutput": true
+      }
     }
   }
 }

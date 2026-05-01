@@ -886,6 +886,7 @@ async fn initialize_caches_client_and_thread_lifecycle_publishes_once_initialize
                     capabilities: Some(InitializeCapabilities {
                         experimental_api: false,
                         opt_out_notification_methods: None,
+                        remote_client: None,
                     }),
                 },
                 product_client_id: DEFAULT_ORIGINATOR.to_string(),
@@ -1033,6 +1034,7 @@ async fn compaction_event_ingests_custom_fact() {
                     capabilities: Some(InitializeCapabilities {
                         experimental_api: false,
                         opt_out_notification_methods: None,
+                        remote_client: None,
                     }),
                 },
                 product_client_id: DEFAULT_ORIGINATOR.to_string(),
@@ -1145,6 +1147,7 @@ async fn guardian_review_event_ingests_custom_fact_with_optional_target_item() {
                     capabilities: Some(InitializeCapabilities {
                         experimental_api: false,
                         opt_out_notification_methods: None,
+                        remote_client: None,
                     }),
                 },
                 product_client_id: DEFAULT_ORIGINATOR.to_string(),

@@ -1453,6 +1453,17 @@
             "array",
             "null"
           ]
+        },
+        "remoteClient": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RemoteClientCapabilities"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Client surface affordances that affect how remote gateways should route work to this connection."
         }
       },
       "type": "object"
@@ -2345,6 +2356,31 @@
           "type": "string"
         }
       ]
+    },
+    "RemoteClientCapabilities": {
+      "properties": {
+        "answersApprovals": {
+          "default": false,
+          "description": "The client can answer approval requests from the user.",
+          "type": "boolean"
+        },
+        "receivesCommandOutput": {
+          "default": false,
+          "description": "The client can receive command output notifications.",
+          "type": "boolean"
+        },
+        "rendersDiffs": {
+          "default": false,
+          "description": "The client can render file diffs in a reviewable form.",
+          "type": "boolean"
+        },
+        "supportsFileAttachments": {
+          "default": false,
+          "description": "The client can submit file attachments or other binary user input.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
     },
     "RemoteControlClientConnectionAudience": {
       "description": "Audience for a remote-control client connection device-key proof.",
