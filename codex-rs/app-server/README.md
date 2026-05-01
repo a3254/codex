@@ -14,6 +14,7 @@
 - [Approvals](#approvals)
 - [Skills](#skills)
 - [Apps](#apps)
+- [Remote Access Direction](#remote-access-direction)
 - [Auth endpoints](#auth-endpoints)
 - [Experimental API Opt-in](#experimental-api-opt-in)
 
@@ -35,6 +36,9 @@ When running with `--listen ws://IP:PORT`, the same listener also serves basic H
 - Any request carrying an `Origin` header is rejected with `403 Forbidden`.
 
 Websocket transport is currently experimental and unsupported. Do not rely on it for production workloads.
+
+For product direction, not production support guidance, around self-hosted VPS access, mobile approvals,
+and WhatsApp-style gateways, see [Remote Access Product Plan](../../docs/remote-access-product-plan.md).
 
 The unix socket transport is intended for local app-server control-plane clients. `codex app-server proxy`
 opens exactly one raw stream connection to `$CODEX_HOME/app-server-control/app-server-control.sock`
@@ -1604,6 +1608,10 @@ $demo-app Pull the latest updates from the team.
   }
 }
 ```
+
+## Remote Access Direction
+
+Remote app-server clients should start from the existing websocket protocol and treat remote access as a security-sensitive deployment mode. For self-hosted VPS access, mobile approval clients, and WhatsApp-style channel gateways, see [Remote Access Product Plan](../../docs/remote-access-product-plan.md).
 
 ## Auth endpoints
 
