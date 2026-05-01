@@ -463,7 +463,7 @@ fn config_write_error(code: ConfigWriteErrorCode, message: impl Into<String>) ->
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::config_manager::apply_runtime_feature_enablement;

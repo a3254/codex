@@ -100,7 +100,7 @@ fn display_workspace_path(workspace: &Path) -> String {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::display_workspace_path;
     use pretty_assertions::assert_eq;

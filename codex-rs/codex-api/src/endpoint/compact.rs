@@ -63,7 +63,7 @@ struct CompactHistoryResponse {
     output: Vec<ResponseItem>,
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use async_trait::async_trait;

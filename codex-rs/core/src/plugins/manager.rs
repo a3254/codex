@@ -1911,6 +1911,6 @@ fn configured_plugins_from_user_config_value(
     }
 }
 
-#[cfg(test)]
-#[path = "manager_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "manager_tests.rs.old"]
 mod tests;

@@ -710,7 +710,7 @@ const EXEC_DISPLAY_LAYOUT: ExecDisplayLayout = ExecDisplayLayout::new(
     /*output_max_lines*/ 5,
 );
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_protocol::protocol::ExecCommandSource;

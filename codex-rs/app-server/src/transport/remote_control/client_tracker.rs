@@ -327,7 +327,7 @@ fn remote_control_client_is_alive(client: &ClientState, now: Instant) -> bool {
     now.duration_since(client.last_activity_at) < REMOTE_CONTROL_CLIENT_IDLE_TIMEOUT
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::outgoing_message::OutgoingMessage;

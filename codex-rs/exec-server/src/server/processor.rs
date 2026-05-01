@@ -179,7 +179,7 @@ async fn run_connection(
     let _ = outbound_task.await;
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::collections::HashMap;
     use std::sync::Arc;

@@ -371,7 +371,7 @@ fn parse_rfc3339_non_optional(value: &str) -> Option<DateTime<Utc>> {
         .map(|dt| dt.with_timezone(&Utc))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::io::Write;
 

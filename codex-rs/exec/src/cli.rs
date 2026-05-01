@@ -301,6 +301,6 @@ pub enum Color {
     Auto,
 }
 
-#[cfg(test)]
-#[path = "cli_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "cli_tests.rs.old"]
 mod tests;

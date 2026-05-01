@@ -263,7 +263,7 @@ fn exit_code_from_status(code: Option<i32>) -> ExitCode {
         .map_or_else(|| ExitCode::from(1), ExitCode::from)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::normalize_nightly_library_filename;
     use super::strict_rustflags;

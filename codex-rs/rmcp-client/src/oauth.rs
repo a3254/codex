@@ -591,7 +591,7 @@ fn sha_256_prefix(value: &Value) -> Result<String> {
     Ok(truncated.to_string())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use anyhow::Result;

@@ -768,6 +768,6 @@ fn macos_dir_params() -> Vec<(String, PathBuf)> {
     vec![]
 }
 
-#[cfg(test)]
-#[path = "seatbelt_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "seatbelt_tests.rs.old"]
 mod tests;

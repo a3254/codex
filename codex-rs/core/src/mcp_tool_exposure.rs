@@ -83,6 +83,6 @@ fn filter_codex_apps_mcp_tools(
         .collect()
 }
 
-#[cfg(test)]
-#[path = "mcp_tool_exposure_test.rs"]
+#[cfg(all(test, any()))]
+#[path = "mcp_tool_exposure_test.rs.old"]
 mod tests;

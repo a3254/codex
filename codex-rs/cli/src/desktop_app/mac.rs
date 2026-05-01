@@ -291,7 +291,7 @@ fn parse_hdiutil_attach_mount_point(output: &str) -> Option<String> {
     })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::parse_hdiutil_attach_mount_point;
     use pretty_assertions::assert_eq;

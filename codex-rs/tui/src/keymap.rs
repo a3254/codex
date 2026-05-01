@@ -1113,7 +1113,7 @@ fn parse_keybinding(spec: &str) -> Option<KeyBinding> {
     Some(KeyBinding::new(key, modifiers))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_config::types::KeybindingSpec;

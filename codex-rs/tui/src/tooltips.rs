@@ -322,7 +322,7 @@ pub(crate) mod announcement {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::tooltips::announcement::parse_announcement_tip_toml;

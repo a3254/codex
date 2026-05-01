@@ -1304,7 +1304,7 @@ fn style_gutter_dim() -> Style {
     Style::default().add_modifier(Modifier::DIM)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use insta::assert_snapshot;

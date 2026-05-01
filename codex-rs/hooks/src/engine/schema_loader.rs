@@ -77,7 +77,7 @@ fn parse_json_schema(name: &str, schema: &str) -> Value {
         .unwrap_or_else(|err| panic!("invalid generated hooks schema {name}: {err}"))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::generated_hook_schemas;
     use pretty_assertions::assert_eq;

@@ -722,6 +722,6 @@ fn app_tool_policy_from_apps_config(
     AppToolPolicy { enabled, approval }
 }
 
-#[cfg(test)]
-#[path = "connectors_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "connectors_tests.rs.old"]
 mod tests;

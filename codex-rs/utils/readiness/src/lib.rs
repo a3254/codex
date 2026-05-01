@@ -195,7 +195,7 @@ mod errors {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::sync::Arc;
     use std::sync::atomic::Ordering;

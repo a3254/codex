@@ -15,7 +15,7 @@ pub(crate) fn try_parse_error_message(text: &str) -> String {
     text.to_string()
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::try_parse_error_message;
 

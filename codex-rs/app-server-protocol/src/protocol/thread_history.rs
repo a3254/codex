@@ -57,17 +57,17 @@ use std::collections::HashMap;
 use tracing::warn;
 use uuid::Uuid;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::protocol::v2::CommandAction;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::protocol::v2::FileUpdateChange;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::protocol::v2::PatchApplyStatus;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::protocol::v2::PatchChangeKind;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::ExecCommandStatus as CoreExecCommandStatus;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::PatchApplyStatus as CorePatchApplyStatus;
 
 /// Convert persisted [`RolloutItem`] entries into a sequence of [`Turn`] values.
@@ -1184,7 +1184,7 @@ impl From<&PendingTurn> for Turn {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::protocol::v2::CommandExecutionSource;

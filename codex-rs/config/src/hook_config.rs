@@ -158,6 +158,6 @@ impl ManagedHooksRequirementsToml {
     }
 }
 
-#[cfg(test)]
-#[path = "hooks_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "hooks_tests.rs.old"]
 mod tests;

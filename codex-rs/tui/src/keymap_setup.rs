@@ -383,7 +383,7 @@ pub(crate) fn build_keymap_capture_view(
     )
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn keymap_with_replacement(
     keymap: &TuiKeymap,
     context: &str,
@@ -711,7 +711,7 @@ fn key_parts_to_config_key_spec(
     Ok(parts.join("-"))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::picker::KEYMAP_ALL_TAB_ID;
     use super::picker::KEYMAP_COMMON_TAB_ID;

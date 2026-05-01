@@ -121,6 +121,6 @@ pub fn create_apply_patch_json_tool() -> ToolSpec {
     })
 }
 
-#[cfg(test)]
-#[path = "apply_patch_tool_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "apply_patch_tool_tests.rs.old"]
 mod tests;

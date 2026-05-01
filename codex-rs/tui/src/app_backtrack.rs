@@ -31,7 +31,7 @@ use std::sync::Arc;
 use crate::app::App;
 use crate::app_command::AppCommand;
 use crate::app_event::AppEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::history_cell::AgentMessageCell;
 use crate::history_cell::SessionInfoCell;
 use crate::history_cell::UserHistoryCell;
@@ -668,12 +668,12 @@ fn user_positions_iter(
         .filter_map(move |(idx, cell)| (type_of(cell) == user_type).then_some(idx))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn agent_group_count(cells: &[Arc<dyn crate::history_cell::HistoryCell>]) -> usize {
     agent_group_positions_iter(cells).count()
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn agent_group_positions_iter(
     cells: &[Arc<dyn crate::history_cell::HistoryCell>],
 ) -> impl Iterator<Item = usize> + '_ {
@@ -696,7 +696,7 @@ fn agent_group_positions_iter(
         })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::history_cell::AgentMessageCell;

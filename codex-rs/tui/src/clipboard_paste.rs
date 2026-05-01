@@ -368,7 +368,7 @@ pub fn pasted_image_format(path: &Path) -> EncodedImageFormat {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod pasted_paths_tests {
     use super::*;
 

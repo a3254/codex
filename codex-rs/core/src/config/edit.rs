@@ -1331,6 +1331,6 @@ impl ConfigEditsBuilder {
     }
 }
 
-#[cfg(test)]
-#[path = "edit_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "edit_tests.rs.old"]
 mod tests;

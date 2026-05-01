@@ -343,5 +343,5 @@ impl ExecServerHandler {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests;

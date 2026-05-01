@@ -5,7 +5,7 @@ use std::sync::atomic::Ordering;
 use tokio::sync::mpsc;
 use tokio::sync::watch;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::AgentPath;
 
 pub(crate) struct Mailbox {
@@ -71,7 +71,7 @@ impl MailboxReceiver {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

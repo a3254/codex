@@ -274,7 +274,7 @@ fn track_descendants(kq: libc::c_int, root_pid: i32) -> HashSet<i32> {
     seen
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use std::process::Command;

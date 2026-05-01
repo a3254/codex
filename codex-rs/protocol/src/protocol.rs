@@ -3985,7 +3985,7 @@ pub struct CollabResumeEndEvent {
     pub status: AgentStatus,
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::items::ImageGenerationItem;

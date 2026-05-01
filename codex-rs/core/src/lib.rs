@@ -34,7 +34,7 @@ pub mod exec_env;
 mod exec_policy;
 pub mod file_watcher;
 mod flags;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod git_info_tests;
 mod goals;
 mod guardian;

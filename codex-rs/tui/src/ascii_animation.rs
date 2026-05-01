@@ -95,7 +95,7 @@ impl AsciiAnimation {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

@@ -318,7 +318,7 @@ pub(super) fn stored_thread_from_proto(
     })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(super) fn stored_thread_to_proto(thread: StoredThread) -> proto::StoredThread {
     proto::StoredThread {
         thread_id: thread.thread_id.to_string(),
@@ -354,7 +354,7 @@ pub(super) fn stored_thread_to_proto(thread: StoredThread) -> proto::StoredThrea
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn stored_thread_history_to_proto(history: StoredThreadHistory) -> proto::StoredThreadHistory {
     proto::StoredThreadHistory {
         thread_id: history.thread_id.to_string(),
@@ -427,7 +427,7 @@ fn git_info_from_proto(info: proto::GitInfo) -> GitInfo {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn git_info_to_proto(info: GitInfo) -> proto::GitInfo {
     proto::GitInfo {
         sha: info.commit_hash.map(|sha| sha.0),

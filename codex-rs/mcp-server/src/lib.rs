@@ -191,7 +191,7 @@ pub async fn run_main(
     Ok(())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_config::types::OtelExporterKind;

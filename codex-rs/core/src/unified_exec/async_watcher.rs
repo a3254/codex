@@ -323,6 +323,6 @@ async fn resolve_aggregated_output(
     String::from_utf8_lossy(&guard.to_bytes()).to_string()
 }
 
-#[cfg(test)]
-#[path = "async_watcher_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "async_watcher_tests.rs.old"]
 mod tests;

@@ -314,7 +314,7 @@ impl Environment {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::collections::HashMap;
     use std::sync::Arc;

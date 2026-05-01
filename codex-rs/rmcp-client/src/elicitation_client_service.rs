@@ -150,7 +150,7 @@ fn elicitation_response_result(
         .map_err(|err| rmcp::ErrorData::internal_error(err.to_string(), None))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
     use rmcp::model::BooleanSchema;

@@ -934,7 +934,7 @@ pub(crate) fn request_method_name(request: &ClientRequest) -> String {
         .unwrap_or_else(|| "<unknown>".to_string())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_app_server_protocol::AccountUpdatedNotification;

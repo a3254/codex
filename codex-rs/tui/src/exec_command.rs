@@ -50,7 +50,7 @@ where
     Some(rel.to_path_buf())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

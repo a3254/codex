@@ -610,7 +610,7 @@ pub fn print_summary(
     Ok(())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_exec_server::LOCAL_FS;

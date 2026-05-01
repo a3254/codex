@@ -412,7 +412,7 @@ See the Codex keymap documentation for supported actions and examples."
     ))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

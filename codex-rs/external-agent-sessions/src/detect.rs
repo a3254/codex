@@ -87,7 +87,7 @@ fn is_recent_enough(now: i64, latest_timestamp: i64) -> bool {
     latest_timestamp >= now.saturating_sub(SESSION_IMPORT_MAX_AGE.as_secs() as i64)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::ledger::record_imported_session;

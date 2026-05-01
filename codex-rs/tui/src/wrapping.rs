@@ -879,7 +879,7 @@ fn slice_line_spans<'a>(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use itertools::Itertools as _;

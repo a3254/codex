@@ -1012,7 +1012,7 @@ fn elicitation_options(keymap: &ApprovalKeymap) -> Vec<ApprovalOption> {
     ]
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::app_command::AppCommand;

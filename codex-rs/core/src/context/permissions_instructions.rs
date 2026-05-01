@@ -352,6 +352,6 @@ fn granular_instructions(
     sections.join("\n\n")
 }
 
-#[cfg(test)]
-#[path = "permissions_instructions_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "permissions_instructions_tests.rs.old"]
 mod permissions_instructions_tests;

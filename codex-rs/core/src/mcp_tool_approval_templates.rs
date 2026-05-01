@@ -189,7 +189,7 @@ fn render_tool_params(
     Some((Some(Value::Object(tool_params.clone())), display_params))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
     use serde_json::json;

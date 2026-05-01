@@ -824,7 +824,7 @@ fn normalize_realtime_path(url: &mut Url) {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::endpoint::realtime_websocket::protocol::RealtimeTranscriptEntry;

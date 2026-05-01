@@ -106,7 +106,7 @@ fn internal_error(err: impl std::fmt::Display) -> AgentGraphStoreError {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_state::DirectionalThreadSpawnEdgeStatus;

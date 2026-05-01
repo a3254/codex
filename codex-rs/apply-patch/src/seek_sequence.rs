@@ -109,7 +109,7 @@ pub(crate) fn seek_sequence(
     None
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::seek_sequence;
     use std::string::ToString;

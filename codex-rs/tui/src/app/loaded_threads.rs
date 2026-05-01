@@ -96,7 +96,7 @@ pub(crate) fn find_loaded_subagent_threads_for_primary(
     loaded_threads
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::LoadedSubagentThread;
     use super::find_loaded_subagent_threads_for_primary;

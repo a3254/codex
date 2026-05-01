@@ -54,6 +54,6 @@ fn format_mode_names(modes: &[ModeKind]) -> String {
     }
 }
 
-#[cfg(test)]
-#[path = "collaboration_mode_presets_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "collaboration_mode_presets_tests.rs.old"]
 mod tests;

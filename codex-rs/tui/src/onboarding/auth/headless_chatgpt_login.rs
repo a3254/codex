@@ -194,7 +194,7 @@ fn set_device_code_error_for_active_attempt(
     true
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

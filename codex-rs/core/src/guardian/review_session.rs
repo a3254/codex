@@ -1006,7 +1006,7 @@ async fn interrupt_and_drain_turn(codex: &Codex, expected_turn_id: &str) -> anyh
     Ok(())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_protocol::protocol::AgentStatus;

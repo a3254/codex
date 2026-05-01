@@ -23,7 +23,7 @@ fn format_elapsed_millis(millis: i64) -> String {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

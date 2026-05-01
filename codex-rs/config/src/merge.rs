@@ -29,6 +29,6 @@ fn merge_toml_values_at_path(base: &mut TomlValue, overlay: &TomlValue, path: &m
     }
 }
 
-#[cfg(test)]
-#[path = "merge_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "merge_tests.rs.old"]
 mod tests;

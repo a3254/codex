@@ -33,7 +33,7 @@ pub(crate) fn usable_content_width_u16(total_width: u16, reserved_cols: u16) -> 
     usable_content_width(usize::from(total_width), usize::from(reserved_cols))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

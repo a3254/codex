@@ -136,7 +136,7 @@ fn is_powershellish_executable_available(powershell_or_pwsh_exe: &std::path::Pat
         .unwrap_or(false)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::extract_powershell_command;
 

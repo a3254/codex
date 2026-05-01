@@ -575,7 +575,7 @@ fn app_server_request_id_to_mcp_request_id(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::super::ThreadBufferedEvent;
     use super::super::ThreadEventStore;

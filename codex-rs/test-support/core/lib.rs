@@ -21,13 +21,13 @@ pub use codex_utils_absolute_path::test_support::PathExt;
 use regex_lite::Regex;
 use std::path::PathBuf;
 
-pub mod apps_test_server;
+pub mod apps_server_support;
 pub mod context_snapshot;
 pub mod process;
 pub mod responses;
 pub mod streaming_sse;
-pub mod test_codex;
-pub mod test_codex_exec;
+pub mod codex_harness;
+pub mod codex_exec_harness;
 pub mod tracing;
 pub mod zsh_fork;
 

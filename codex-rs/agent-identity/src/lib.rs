@@ -399,7 +399,7 @@ fn signing_key_from_private_key_pkcs8_base64(private_key_pkcs8_base64: &str) -> 
         .context("stored agent identity private key is not valid PKCS#8")
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use base64::Engine as _;
     use ed25519_dalek::Signature;

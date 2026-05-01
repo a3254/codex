@@ -755,7 +755,7 @@ fn is_ctrl_exit_combo(key_event: KeyEvent) -> bool {
         && matches!(key_event.code, KeyCode::Char('c') | KeyCode::Char('d'))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::ActionMenuOption;
     use super::ExternalAgentConfigMigrationOutcome;

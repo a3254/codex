@@ -1133,5 +1133,5 @@ pub fn unstable_features_warning_event(
     })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests;

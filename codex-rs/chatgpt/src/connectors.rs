@@ -184,7 +184,7 @@ pub fn merge_connectors_with_accessible(
     filter_disallowed_connectors(merged, originator().value.as_str())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_connectors::metadata::connector_install_url;

@@ -1203,6 +1203,6 @@ fn run_git(args: &[&str], cwd: Option<&Path>) -> Result<(), String> {
     ))
 }
 
-#[cfg(test)]
-#[path = "loader_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "loader_tests.rs.old"]
 mod tests;

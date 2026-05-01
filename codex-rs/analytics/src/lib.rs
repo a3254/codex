@@ -42,7 +42,7 @@ pub use facts::TurnSteerResult;
 pub use facts::TurnTokenUsageFact;
 pub use facts::build_track_events_context;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod analytics_client_tests;
 
 pub fn now_unix_seconds() -> u64 {

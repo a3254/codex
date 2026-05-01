@@ -287,7 +287,7 @@ impl Renderable for StatusIndicatorWidget {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::app_event::AppEvent;

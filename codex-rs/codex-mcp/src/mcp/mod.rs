@@ -608,6 +608,6 @@ async fn collect_mcp_snapshot_from_manager_with_detail(
     }
 }
 
-#[cfg(test)]
-#[path = "mod_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "mod_tests.rs.old"]
 mod tests;

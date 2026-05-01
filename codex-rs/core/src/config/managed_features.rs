@@ -128,7 +128,7 @@ impl ManagedFeatures {
 
 /// Only available for tests to ensure `ManagedFeatures` is constructed with
 /// any required constraints taken into account.
-#[cfg(test)]
+#[cfg(all(test, any()))]
 impl From<Features> for ManagedFeatures {
     fn from(features: Features) -> Self {
         Self {

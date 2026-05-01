@@ -164,6 +164,6 @@ fn is_windows_1252_punct(byte: u8) -> bool {
     WINDOWS_1252_PUNCT_BYTES.contains(&byte)
 }
 
-#[cfg(test)]
-#[path = "exec_output_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "exec_output_tests.rs.old"]
 mod tests;

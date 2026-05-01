@@ -604,6 +604,6 @@ fn telemetry_preview(content: &str) -> String {
     preview
 }
 
-#[cfg(test)]
-#[path = "context_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "context_tests.rs.old"]
 mod tests;

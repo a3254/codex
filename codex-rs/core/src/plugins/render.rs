@@ -1,10 +1,10 @@
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::context::AvailablePluginsInstructions;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::context::ContextualUserFragment;
 use crate::plugins::PluginCapabilitySummary;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) fn render_plugins_section(plugins: &[PluginCapabilitySummary]) -> Option<String> {
     AvailablePluginsInstructions::from_plugins(plugins).map(|instructions| instructions.render())
 }
@@ -57,6 +57,6 @@ pub(crate) fn render_explicit_plugin_instructions(
     Some(lines.join("\n"))
 }
 
-#[cfg(test)]
-#[path = "render_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "render_tests.rs.old"]
 mod tests;

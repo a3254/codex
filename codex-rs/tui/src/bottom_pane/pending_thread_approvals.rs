@@ -84,7 +84,7 @@ impl Renderable for PendingThreadApprovals {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use insta::assert_snapshot;

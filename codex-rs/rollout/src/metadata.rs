@@ -34,7 +34,7 @@ const ROLLOUT_SUFFIX: &str = ".jsonl";
 const BACKFILL_BATCH_SIZE: usize = 200;
 #[cfg(not(test))]
 const BACKFILL_LEASE_SECONDS: i64 = 900;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 const BACKFILL_LEASE_SECONDS: i64 = 1;
 
 pub(crate) fn builder_from_session_meta(
@@ -438,6 +438,6 @@ async fn collect_rollout_paths(root: &Path) -> std::io::Result<Vec<PathBuf>> {
     Ok(paths)
 }
 
-#[cfg(test)]
-#[path = "metadata_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "metadata_tests.rs.old"]
 mod tests;

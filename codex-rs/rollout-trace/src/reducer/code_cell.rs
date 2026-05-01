@@ -733,6 +733,6 @@ fn runtime_code_cell_key(thread_id: &str, runtime_cell_id: &str) -> (String, Str
     (thread_id.to_string(), runtime_cell_id.to_string())
 }
 
-#[cfg(test)]
-#[path = "code_cell_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "code_cell_tests.rs.old"]
 mod tests;

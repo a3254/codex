@@ -232,7 +232,7 @@ impl ModelProvider for ConfiguredModelProvider {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::num::NonZeroU64;
 

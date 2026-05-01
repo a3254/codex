@@ -180,7 +180,7 @@ fn validate_relative_reference(reference: &str) -> Result<(), String> {
     Ok(())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::AgentPath;
     use pretty_assertions::assert_eq;

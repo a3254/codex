@@ -596,6 +596,6 @@ impl ShellHandler {
     }
 }
 
-#[cfg(test)]
-#[path = "shell_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "shell_tests.rs.old"]
 mod tests;

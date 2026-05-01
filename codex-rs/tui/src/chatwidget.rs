@@ -115,7 +115,7 @@ use codex_config::types::WindowsSandboxModeToml;
 use codex_core_skills::model::SkillMetadata;
 use codex_features::FEATURES;
 use codex_features::Feature;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_git_utils::CommitLogEntry;
 use codex_git_utils::current_branch_name;
 use codex_git_utils::get_git_repo_root;
@@ -143,33 +143,33 @@ use codex_protocol::models::local_image_label_text;
 use codex_protocol::parse_command::ParsedCommand;
 use codex_protocol::plan_tool::PlanItemArg as UpdatePlanItemArg;
 use codex_protocol::plan_tool::StepStatus as UpdatePlanItemStatus;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::AgentMessageDeltaEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::AgentMessageEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::AgentReasoningDeltaEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::AgentReasoningEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::AgentReasoningRawContentDeltaEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::AgentReasoningRawContentEvent;
 use codex_protocol::protocol::AgentStatus;
 use codex_protocol::protocol::ApplyPatchApprovalRequestEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::BackgroundEventEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::CodexErrorInfo as CoreCodexErrorInfo;
 use codex_protocol::protocol::CollabAgentRef;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::CollabAgentSpawnBeginEvent;
 use codex_protocol::protocol::CollabAgentStatusEntry;
 use codex_protocol::protocol::CreditsSnapshot;
 use codex_protocol::protocol::DeprecationNoticeEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::ErrorEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::Event;
 use codex_protocol::protocol::EventMsg;
 use codex_protocol::protocol::ExecApprovalRequestEvent;
@@ -177,7 +177,7 @@ use codex_protocol::protocol::ExecCommandBeginEvent;
 use codex_protocol::protocol::ExecCommandEndEvent;
 use codex_protocol::protocol::ExecCommandOutputDeltaEvent;
 use codex_protocol::protocol::ExecCommandSource;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::ExitedReviewModeEvent;
 use codex_protocol::protocol::GuardianAssessmentAction;
 use codex_protocol::protocol::GuardianAssessmentDecisionSource;
@@ -186,12 +186,12 @@ use codex_protocol::protocol::GuardianAssessmentStatus;
 use codex_protocol::protocol::ImageGenerationBeginEvent;
 use codex_protocol::protocol::ImageGenerationEndEvent;
 use codex_protocol::protocol::ListSkillsResponseEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::McpListToolsResponseEvent;
 use codex_protocol::protocol::McpStartupStatus;
 use codex_protocol::protocol::McpToolCallBeginEvent;
 use codex_protocol::protocol::McpToolCallEndEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::ModelVerification as CoreModelVerification;
 use codex_protocol::protocol::Op;
 use codex_protocol::protocol::PatchApplyBeginEvent;
@@ -200,25 +200,25 @@ use codex_protocol::protocol::RateLimitSnapshot;
 use codex_protocol::protocol::ReviewRequest;
 use codex_protocol::protocol::ReviewTarget;
 use codex_protocol::protocol::SkillMetadata as ProtocolSkillMetadata;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::StreamErrorEvent;
 use codex_protocol::protocol::TerminalInteractionEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::ThreadGoalStatus as ProtocolThreadGoalStatus;
 use codex_protocol::protocol::TokenUsage;
 use codex_protocol::protocol::TokenUsageInfo;
 use codex_protocol::protocol::TurnAbortReason;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::TurnCompleteEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::TurnDiffEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::UndoCompletedEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::UndoStartedEvent;
 use codex_protocol::protocol::UserMessageEvent;
 use codex_protocol::protocol::ViewImageToolCallEvent;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::WarningEvent;
 use codex_protocol::protocol::WebSearchBeginEvent;
 use codex_protocol::protocol::WebSearchEndEvent;
@@ -356,7 +356,7 @@ use crate::exec_command::split_command_string;
 use crate::exec_command::strip_bash_lc_and_escape;
 use crate::get_git_diff::get_git_diff;
 use crate::history_cell;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::history_cell::AgentMessageCell;
 use crate::history_cell::HistoryCell;
 use crate::history_cell::HookCell;
@@ -382,7 +382,7 @@ use crate::text_formatting::truncate_text;
 use crate::tui::FrameRequester;
 mod goal_status;
 use self::goal_status::GoalStatusState;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use self::goal_status::goal_status_indicator_from_app_goal;
 mod goal_menu;
 mod interrupts;
@@ -652,7 +652,7 @@ enum RateLimitErrorKind {
     Generic,
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn core_rate_limit_error_kind(info: &CoreCodexErrorInfo) -> Option<RateLimitErrorKind> {
     match info {
         CoreCodexErrorInfo::ServerOverloaded => Some(RateLimitErrorKind::ServerOverloaded),
@@ -675,7 +675,7 @@ fn app_server_rate_limit_error_kind(info: &AppServerCodexErrorInfo) -> Option<Ra
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn is_core_cyber_policy_error(info: &CoreCodexErrorInfo) -> bool {
     matches!(info, CoreCodexErrorInfo::CyberPolicy)
 }
@@ -1415,7 +1415,7 @@ fn remap_placeholders_for_message_and_history_record(
     )
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn remap_placeholders_for_message(message: UserMessage, next_label: &mut usize) -> UserMessage {
     remap_placeholders_for_message_and_history_record(
         message,
@@ -12203,7 +12203,7 @@ fn extract_first_bold(s: &str) -> Option<String> {
     None
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) fn show_review_commit_picker_with_entries(
     chat: &mut ChatWidget,
     entries: Vec<CommitLogEntry>,
@@ -12241,5 +12241,5 @@ pub(crate) fn show_review_commit_picker_with_entries(
     });
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) mod tests;

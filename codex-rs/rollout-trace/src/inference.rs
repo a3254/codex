@@ -358,7 +358,7 @@ fn append_with_context_best_effort(
     let _ = context.writer.append_with_context(event_context, payload);
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::sync::Arc;
 

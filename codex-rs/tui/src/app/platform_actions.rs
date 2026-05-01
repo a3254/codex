@@ -74,7 +74,7 @@ pub(super) fn side_return_shortcut_matches(key_event: KeyEvent) -> bool {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

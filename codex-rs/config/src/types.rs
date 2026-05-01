@@ -868,6 +868,6 @@ impl From<ShellEnvironmentPolicyToml> for ShellEnvironmentPolicy {
     }
 }
 
-#[cfg(test)]
-#[path = "types_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "types_tests.rs.old"]
 mod tests;

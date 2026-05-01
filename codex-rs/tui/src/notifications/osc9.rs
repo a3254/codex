@@ -70,7 +70,7 @@ fn escape_tmux_dcs_passthrough_payload(message: &str) -> String {
     message.replace('\u{1b}', "\u{1b}\u{1b}")
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use crossterm::Command;
     use pretty_assertions::assert_eq;

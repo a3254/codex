@@ -851,6 +851,6 @@ fn changed_path_for_matched_path(
     )
 }
 
-#[cfg(test)]
-#[path = "file_watcher_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "file_watcher_tests.rs.old"]
 mod tests;

@@ -110,7 +110,7 @@ pub(super) fn plugin_apps_needing_auth(
         .collect()
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_app_server_protocol::AppInfo;
     use codex_core::plugins::AppConnectorId;

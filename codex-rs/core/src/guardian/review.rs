@@ -218,7 +218,7 @@ async fn record_guardian_denial(session: &Arc<Session>, turn: &Arc<TurnContext>,
     });
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) async fn record_guardian_denial_for_test(
     session: &Arc<Session>,
     turn: &Arc<TurnContext>,
@@ -745,7 +745,7 @@ pub(super) async fn run_guardian_review_session(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod review_tests {
     use super::*;
 

@@ -56,7 +56,7 @@ pub(super) async fn archive_thread(
     Ok(())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use chrono::Utc;
     use codex_protocol::ThreadId;

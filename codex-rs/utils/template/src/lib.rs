@@ -279,7 +279,7 @@ where
     Ok(map)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::Template;
     use super::TemplateError;

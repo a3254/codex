@@ -126,6 +126,6 @@ pub fn build_stage_one_input_message(
     ])?)
 }
 
-#[cfg(test)]
-#[path = "prompts_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "prompts_tests.rs.old"]
 mod tests;

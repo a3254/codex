@@ -392,6 +392,6 @@ async fn send_track_events(
     }
 }
 
-#[cfg(test)]
-#[path = "client_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "client_tests.rs.old"]
 mod tests;

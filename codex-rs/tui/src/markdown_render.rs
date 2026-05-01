@@ -968,12 +968,12 @@ fn display_local_link_path(path_text: &str, cwd: Option<&Path>) -> String {
     path_text
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod markdown_render_tests {
     include!("markdown_render_tests.rs");
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

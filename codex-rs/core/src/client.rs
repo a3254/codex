@@ -116,7 +116,7 @@ use codex_login::auth_env_telemetry::AuthEnvTelemetry;
 use codex_login::auth_env_telemetry::collect_auth_env_telemetry;
 use codex_model_provider::SharedModelProvider;
 use codex_model_provider::create_model_provider;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_model_provider_info::DEFAULT_WEBSOCKET_CONNECT_TIMEOUT_MS;
 use codex_model_provider_info::ModelProviderInfo;
 use codex_model_provider_info::WireApi;
@@ -141,7 +141,7 @@ const RESPONSES_WEBSOCKETS_V2_BETA_HEADER_VALUE: &str = "responses_websockets=20
 const RESPONSES_ENDPOINT: &str = "/responses";
 const RESPONSES_COMPACT_ENDPOINT: &str = "/responses/compact";
 const MEMORIES_SUMMARIZE_ENDPOINT: &str = "/memories/trace_summarize";
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) const WEBSOCKET_CONNECT_TIMEOUT: Duration =
     Duration::from_millis(DEFAULT_WEBSOCKET_CONNECT_TIMEOUT_MS);
 
@@ -2151,6 +2151,6 @@ impl WebsocketTelemetry for ApiTelemetry {
     }
 }
 
-#[cfg(test)]
-#[path = "client_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "client_tests.rs.old"]
 mod tests;

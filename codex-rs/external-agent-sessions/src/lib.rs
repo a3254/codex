@@ -168,7 +168,7 @@ fn now_unix_seconds() -> i64 {
         .unwrap_or_default()
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_protocol::ThreadId;

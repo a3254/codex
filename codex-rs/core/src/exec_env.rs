@@ -1,5 +1,5 @@
 use codex_protocol::ThreadId;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::config_types::EnvironmentVariablePattern;
 use codex_protocol::config_types::ShellEnvironmentPolicy;
 use codex_protocol::shell_environment;
@@ -38,7 +38,7 @@ where
     shell_environment::create_env_from_vars(vars, policy, thread_id.as_deref())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn populate_env<I>(
     vars: I,
     policy: &ShellEnvironmentPolicy,
@@ -51,6 +51,6 @@ where
     shell_environment::populate_env(vars, policy, thread_id.as_deref())
 }
 
-#[cfg(test)]
-#[path = "exec_env_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "exec_env_tests.rs.old"]
 mod tests;

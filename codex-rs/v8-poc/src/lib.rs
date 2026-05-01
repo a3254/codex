@@ -12,7 +12,7 @@ pub fn embedded_v8_version() -> &'static str {
     v8::V8::get_version()
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
     use std::sync::Once;

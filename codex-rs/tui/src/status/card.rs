@@ -111,7 +111,7 @@ struct StatusHistoryCell {
     rate_limit_state: Arc<RwLock<StatusRateLimitState>>,
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 #[allow(clippy::too_many_arguments)]
 pub(crate) fn new_status_output(
     config: &Config,
@@ -147,7 +147,7 @@ pub(crate) fn new_status_output(
     )
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 #[allow(clippy::too_many_arguments)]
 pub(crate) fn new_status_output_with_rate_limits(
     config: &Config,

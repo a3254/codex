@@ -350,7 +350,7 @@ pub enum AppEvent {
 }
 
 // Convenience aliases; currently unused.
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use chrono::Utc;

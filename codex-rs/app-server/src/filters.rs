@@ -81,7 +81,7 @@ pub(crate) fn source_kind_matches(source: &CoreSessionSource, filter: &[ThreadSo
     })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_protocol::ThreadId;

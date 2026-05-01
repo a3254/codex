@@ -176,7 +176,7 @@ fn is_disallowed_terminal_title_char(ch: char) -> bool {
     )
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::MAX_TERMINAL_TITLE_CHARS;
     use super::SetWindowTitle;

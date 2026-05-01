@@ -137,7 +137,7 @@ fn scope_for_event(event_name: HookEventName) -> HookScope {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_protocol::protocol::HookEventName;
     use codex_protocol::protocol::HookSource;

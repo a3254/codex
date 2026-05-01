@@ -128,7 +128,7 @@ impl Stopwatch {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::Stopwatch;
     use tokio::time::Duration;

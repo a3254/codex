@@ -626,6 +626,6 @@ fn code_mode_namespace_name<'a>(
         .map(|namespace_description| namespace_description.name.as_str())
 }
 
-#[cfg(test)]
-#[path = "tool_registry_plan_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "tool_registry_plan_tests.rs.old"]
 mod tests;

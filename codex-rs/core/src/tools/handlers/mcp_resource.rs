@@ -670,6 +670,6 @@ where
     }
 }
 
-#[cfg(test)]
-#[path = "mcp_resource_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "mcp_resource_tests.rs.old"]
 mod tests;

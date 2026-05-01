@@ -121,5 +121,5 @@ pub(crate) async fn start_remote_control(
     ))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests;

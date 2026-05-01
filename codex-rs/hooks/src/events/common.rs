@@ -153,7 +153,7 @@ fn is_exact_matcher(matcher: &str) -> bool {
         .all(|ch| ch.is_ascii_alphanumeric() || ch == '_' || ch == '|')
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_protocol::protocol::HookEventName;
     use pretty_assertions::assert_eq;

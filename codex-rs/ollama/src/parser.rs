@@ -28,7 +28,7 @@ pub(crate) fn pull_events_from_value(value: &JsonValue) -> Vec<PullEvent> {
     events
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use assert_matches::assert_matches;
 

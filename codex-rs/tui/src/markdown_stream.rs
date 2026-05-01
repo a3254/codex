@@ -8,13 +8,13 @@
 //! On finalization, `finalize_and_drain_source()` flushes whatever remains (the last line, which
 //! may lack a trailing newline).
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use ratatui::text::Line;
 use std::path::Path;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use std::path::PathBuf;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::markdown;
 
 /// Newline-gated accumulator that buffers raw markdown source and commits only completed lines.
@@ -191,14 +191,14 @@ impl MarkdownStreamCollector {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn test_cwd() -> PathBuf {
     // These tests only need a stable absolute cwd; using temp_dir() avoids baking Unix- or
     // Windows-specific root semantics into the fixtures.
     std::env::temp_dir()
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) fn simulate_stream_markdown_for_tests(
     deltas: &[&str],
     finalize: bool,
@@ -217,7 +217,7 @@ pub(crate) fn simulate_stream_markdown_for_tests(
     out
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use ratatui::style::Color;

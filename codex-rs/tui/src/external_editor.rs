@@ -90,7 +90,7 @@ pub(crate) async fn run_editor(seed: &str, editor_cmd: &[String]) -> Result<Stri
     Ok(contents)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

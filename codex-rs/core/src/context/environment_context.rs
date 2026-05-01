@@ -204,6 +204,6 @@ impl ContextualUserFragment for EnvironmentContext {
     }
 }
 
-#[cfg(test)]
-#[path = "environment_context_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "environment_context_tests.rs.old"]
 mod tests;

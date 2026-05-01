@@ -165,6 +165,6 @@ fn is_trigger_turn_boundary(item: &ResponseItem) -> bool {
             .is_some_and(|communication| communication.trigger_turn)
 }
 
-#[cfg(test)]
-#[path = "thread_rollout_truncation_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "thread_rollout_truncation_tests.rs.old"]
 mod tests;

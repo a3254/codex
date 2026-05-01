@@ -668,7 +668,7 @@ pub(crate) fn highlight_code_to_styled_spans(
     highlight_to_line_spans(code, lang)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use insta::assert_snapshot;

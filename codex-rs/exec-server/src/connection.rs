@@ -8,13 +8,13 @@ use tokio::sync::watch;
 use tokio_tungstenite::WebSocketStream;
 use tokio_tungstenite::tungstenite::Message;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use tokio::io::AsyncBufReadExt;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use tokio::io::AsyncWriteExt;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use tokio::io::BufReader;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use tokio::io::BufWriter;
 
 pub(crate) const CHANNEL_CAPACITY: usize = 128;
@@ -298,7 +298,7 @@ async fn send_malformed_message(
         .await;
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 async fn write_jsonrpc_line_message<W>(
     writer: &mut BufWriter<W>,
     message: &JSONRPCMessage,

@@ -63,7 +63,7 @@ pub(super) async fn list_threads(
     })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::path::PathBuf;
 

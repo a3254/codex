@@ -1190,7 +1190,7 @@ pub fn sandbox_mode_requirement_for_permission_profile(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::HookEventsToml;

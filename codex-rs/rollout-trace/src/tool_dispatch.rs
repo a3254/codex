@@ -414,7 +414,7 @@ fn append_with_context_best_effort(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

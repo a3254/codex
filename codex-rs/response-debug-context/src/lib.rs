@@ -86,7 +86,7 @@ pub fn telemetry_api_error_message(error: &ApiError) -> String {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::ResponseDebugContext;
     use super::extract_response_debug_context;

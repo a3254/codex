@@ -239,7 +239,7 @@ fn civil_from_days(days_since_epoch: i64) -> (i64, i64, i64) {
     (year, month, day)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

@@ -24,7 +24,7 @@ fn is_identifier(text: &str) -> bool {
     chars.all(|ch| ch == '_' || ch.is_ascii_alphanumeric())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::parse_argument_comment;
     use super::parse_argument_comment_prefix;

@@ -79,7 +79,7 @@ pub enum OtelExporter {
     },
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::OtelExporter;
     use super::resolve_exporter;

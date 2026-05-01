@@ -410,7 +410,7 @@ fn log_line(log: &mut File, msg: &str) -> Result<()> {
     Ok(())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

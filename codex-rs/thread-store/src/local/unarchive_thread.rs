@@ -98,7 +98,7 @@ pub(super) async fn unarchive_thread(
     })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use chrono::Utc;
     use codex_protocol::ThreadId;

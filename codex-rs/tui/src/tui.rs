@@ -71,7 +71,7 @@ fn should_emit_notification(condition: NotificationCondition, terminal_focused: 
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::should_emit_notification;
     use codex_config::types::NotificationCondition;

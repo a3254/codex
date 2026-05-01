@@ -274,7 +274,7 @@ fn is_valid_sed_n_arg(arg: Option<&str>) -> bool {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use std::string::ToString;

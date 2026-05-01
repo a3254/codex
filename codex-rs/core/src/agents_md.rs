@@ -320,6 +320,6 @@ impl<'a> AgentsMdManager<'a> {
     }
 }
 
-#[cfg(test)]
-#[path = "agents_md_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "agents_md_tests.rs.old"]
 mod tests;

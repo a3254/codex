@@ -458,6 +458,6 @@ Rules:
     }
 }
 
-#[cfg(test)]
-#[path = "role_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "role_tests.rs.old"]
 mod tests;

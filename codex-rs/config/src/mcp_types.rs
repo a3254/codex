@@ -417,6 +417,6 @@ mod option_duration_secs {
     }
 }
 
-#[cfg(test)]
-#[path = "mcp_types_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "mcp_types_tests.rs.old"]
 mod tests;

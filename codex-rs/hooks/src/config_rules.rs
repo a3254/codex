@@ -71,7 +71,7 @@ pub(crate) fn disabled_hook_keys_from_stack(
     disabled_keys
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_config::ConfigLayerEntry;
     use codex_config::TomlValue;

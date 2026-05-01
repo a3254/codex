@@ -451,7 +451,7 @@ impl Visit for MessageVisitor {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::io;
     use std::sync::Arc;

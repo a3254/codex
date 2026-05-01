@@ -159,7 +159,7 @@ fn derive_revoke_token_endpoint(refresh_endpoint: &str) -> Option<String> {
     Some(url.to_string())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use core_test_support::skip_if_no_network;

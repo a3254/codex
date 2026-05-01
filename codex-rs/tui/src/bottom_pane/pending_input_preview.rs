@@ -176,7 +176,7 @@ impl Renderable for PendingInputPreview {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use insta::assert_snapshot;

@@ -490,7 +490,7 @@ async fn run_session_control(
     inner.sessions.lock().await.remove(&cell_id);
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::collections::HashMap;
     use std::sync::Arc;

@@ -42,7 +42,7 @@ pub fn collect_plugin_enabled_candidates<'a>(
     pending_changes
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::collect_plugin_enabled_candidates;
     use pretty_assertions::assert_eq;

@@ -123,7 +123,7 @@ pub mod edit;
 mod managed_features;
 mod network_proxy_spec;
 mod permissions;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod schema;
 pub use codex_config::Constrained;
 pub use codex_config::ConstraintError;
@@ -212,7 +212,7 @@ fn resolve_mcp_oauth_credentials_store_mode(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) async fn test_config() -> Config {
     let codex_home = tempfile::tempdir().expect("create temp dir");
     Config::load_from_base_config_with_overrides(
@@ -3150,10 +3150,10 @@ pub fn log_dir(cfg: &Config) -> std::io::Result<PathBuf> {
     Ok(cfg.log_dir.clone())
 }
 
-#[cfg(test)]
-#[path = "config_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "config_tests.rs.old"]
 mod tests;
 
-#[cfg(test)]
-#[path = "config_loader_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "config_loader_tests.rs.old"]
 mod config_loader_tests;

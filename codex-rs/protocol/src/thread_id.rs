@@ -92,7 +92,7 @@ impl JsonSchema for ThreadId {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     #[test]

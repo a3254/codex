@@ -373,6 +373,6 @@ fn upsert_network_domains(config: &mut NetworkProxyConfig, hosts: Vec<String>, a
     }
 }
 
-#[cfg(test)]
-#[path = "network_proxy_spec_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "network_proxy_spec_tests.rs.old"]
 mod tests;

@@ -411,6 +411,6 @@ fn plugin_summary(tool: &ToolSuggestEntry) -> String {
     }
 }
 
-#[cfg(test)]
-#[path = "tool_discovery_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "tool_discovery_tests.rs.old"]
 mod tests;

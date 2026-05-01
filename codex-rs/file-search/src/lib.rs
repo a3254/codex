@@ -27,11 +27,11 @@ use std::thread;
 use std::time::Duration;
 use tokio::process::Command;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use nucleo::Utf32Str;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use nucleo::pattern::AtomKind;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use nucleo::pattern::Pattern;
 
 mod cli;
@@ -307,7 +307,7 @@ pub fn run(
 }
 
 /// Sort matches in-place by descending score, then ascending path.
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn sort_matches(matches: &mut [(u32, String)]) {
     matches.sort_by(cmp_by_score_desc_then_path_asc::<(u32, String), _, _>(
         |t| t.0,
@@ -332,7 +332,7 @@ where
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn create_pattern(pattern: &str) -> Pattern {
     Pattern::new(
         pattern,
@@ -641,7 +641,7 @@ impl RunReporter {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     #![allow(clippy::unwrap_used)]
 

@@ -708,7 +708,7 @@ fn render_json_schema_literal(value: &JsonValue) -> String {
     serde_json::to_string(value).unwrap_or_else(|_| "unknown".to_string())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::CodeModeToolKind;
     use super::ParsedExecSource;

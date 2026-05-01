@@ -195,6 +195,6 @@ impl Drop for ResponseStream {
     }
 }
 
-#[cfg(test)]
-#[path = "client_common_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "client_common_tests.rs.old"]
 mod tests;

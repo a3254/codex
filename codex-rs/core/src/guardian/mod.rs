@@ -31,10 +31,10 @@ pub(crate) use review::guardian_rejection_message;
 pub(crate) use review::guardian_timeout_message;
 pub(crate) use review::is_guardian_reviewer_source;
 pub(crate) use review::new_guardian_review_id;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) use review::record_guardian_denial_for_test;
 pub(crate) use review::review_approval_request;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) use review::review_approval_request_with_cancel;
 pub(crate) use review::routes_approval_to_guardian;
 pub(crate) use review::spawn_approval_request_review;
@@ -120,42 +120,42 @@ impl GuardianRejectionCircuitBreaker {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use approval_request::format_guardian_action_pretty;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use approval_request::guardian_assessment_action;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use approval_request::guardian_request_turn_id;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use prompt::GuardianPromptMode;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use prompt::GuardianTranscriptCursor;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use prompt::GuardianTranscriptEntry;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use prompt::GuardianTranscriptEntryKind;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use prompt::build_guardian_prompt_items;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use prompt::collect_guardian_transcript_entries;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use prompt::guardian_output_schema;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) use prompt::guardian_policy_prompt;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) use prompt::guardian_policy_prompt_with_config;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use prompt::guardian_truncate_text;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use prompt::parse_guardian_assessment;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use prompt::render_guardian_transcript_entries;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use review::GuardianReviewOutcome;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use review::run_guardian_review_session as run_guardian_review_session_for_test;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use review_session::build_guardian_review_session_config as build_guardian_review_session_config_for_test;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests;

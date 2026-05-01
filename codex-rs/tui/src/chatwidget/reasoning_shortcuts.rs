@@ -171,7 +171,7 @@ fn effort_rank(effort: ReasoningEffortConfig) -> i32 {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

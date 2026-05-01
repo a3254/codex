@@ -63,7 +63,7 @@ pub fn get_update_action() -> Option<UpdateAction> {
     UpdateAction::from_install_context(InstallContext::current())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

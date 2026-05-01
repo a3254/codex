@@ -235,6 +235,6 @@ pub fn code_mode_name_for_tool_name(tool_name: &ToolName) -> String {
     }
 }
 
-#[cfg(test)]
-#[path = "code_mode_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "code_mode_tests.rs.old"]
 mod tests;

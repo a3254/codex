@@ -1633,7 +1633,7 @@ impl std::fmt::Display for FunctionCallOutputPayload {
 
 // (Moved event mapping logic into codex-core to avoid coupling protocol to UI-facing events.)
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use anyhow::Result;

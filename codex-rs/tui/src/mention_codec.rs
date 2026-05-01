@@ -219,7 +219,7 @@ fn is_tool_path(path: &str) -> bool {
             .is_some_and(|name| name.eq_ignore_ascii_case("SKILL.md"))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

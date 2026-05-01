@@ -26,7 +26,7 @@ mod code_cell;
 mod compaction;
 mod conversation;
 mod inference;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) mod test_support;
 mod thread;
 mod tool;

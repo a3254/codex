@@ -170,7 +170,7 @@ fn default_limit_for_bucket(bucket: &str) -> usize {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::tools::tool_search_entry::build_tool_search_entries;

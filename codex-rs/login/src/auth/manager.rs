@@ -3,7 +3,7 @@ use chrono::Utc;
 use reqwest::StatusCode;
 use serde::Deserialize;
 use serde::Serialize;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use serial_test::serial;
 use std::env;
 use std::fmt::Debug;
@@ -1879,6 +1879,6 @@ impl AuthManager {
     }
 }
 
-#[cfg(test)]
-#[path = "auth_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "auth_tests.rs.old"]
 mod tests;

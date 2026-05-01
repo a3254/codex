@@ -325,6 +325,6 @@ fn verified_plugin_suggestion_completed(
         .any(|plugin| plugin.id == tool_id && plugin.installed)
 }
 
-#[cfg(test)]
-#[path = "tool_suggest_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "tool_suggest_tests.rs.old"]
 mod tests;

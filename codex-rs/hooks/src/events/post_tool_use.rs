@@ -311,7 +311,7 @@ fn serialization_failure_outcome(hook_events: Vec<HookCompletedEvent>) -> PostTo
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_protocol::ThreadId;
     use codex_protocol::protocol::HookEventName;

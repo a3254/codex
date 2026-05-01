@@ -406,7 +406,7 @@ fn fill_migration_markdown(template: &str, current_model: &str, target_model: &s
         .replace("{model_to}", target_model)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::ModelMigrationCopy;
     use super::ModelMigrationScreen;

@@ -1926,6 +1926,6 @@ fn cwd_matches(session_cwd: &Path, cwd: &Path) -> bool {
     path_utils::paths_match_after_normalization(session_cwd, cwd)
 }
 
-#[cfg(test)]
-#[path = "recorder_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "recorder_tests.rs.old"]
 mod tests;

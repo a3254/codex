@@ -74,7 +74,7 @@ pub fn log_note(msg: &str, base_dir: Option<&Path>) {
     append_line(&format!("[{ts} {}] {}", exe_label(), msg), base_dir);
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

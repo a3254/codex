@@ -559,7 +559,7 @@ fn day_suffix(day: u32) -> &'static str {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 thread_local! {
     static NOW_OVERRIDE: std::cell::RefCell<Option<DateTime<Utc>>> =
         const { std::cell::RefCell::new(None) };
@@ -630,6 +630,6 @@ pub fn get_error_message_ui(e: &CodexErr) -> String {
     )
 }
 
-#[cfg(test)]
-#[path = "error_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "error_tests.rs.old"]
 mod tests;

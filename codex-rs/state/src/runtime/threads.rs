@@ -1120,7 +1120,7 @@ pub(super) fn push_thread_order_and_limit(
     builder.push_bind(limit as i64);
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::Anchor;

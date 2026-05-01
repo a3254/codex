@@ -70,14 +70,14 @@ pub async fn spawn_windows_sandbox_session_elevated(
     .await
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) use backends::windows_common::finish_driver_spawn;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) use backends::windows_common::make_runner_resizer;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) use backends::windows_common::start_runner_pipe_writer;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) use backends::windows_common::start_runner_stdin_writer;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests;

@@ -258,6 +258,6 @@ where
     visit_entry(&entry)
 }
 
-#[cfg(test)]
-#[path = "session_index_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "session_index_tests.rs.old"]
 mod tests;

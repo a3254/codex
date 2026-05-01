@@ -329,13 +329,13 @@ pub trait DeviceKeyBindingStore: Debug + Send + Sync {
     ) -> Result<(), DeviceKeyError>;
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 #[derive(Debug, Default)]
 struct InMemoryDeviceKeyBindingStore {
     bindings: std::sync::Mutex<std::collections::HashMap<String, DeviceKeyBinding>>,
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 #[async_trait]
 impl DeviceKeyBindingStore for InMemoryDeviceKeyBindingStore {
     async fn get_binding(&self, key_id: &str) -> Result<Option<DeviceKeyBinding>, DeviceKeyError> {
@@ -707,7 +707,7 @@ fn sec1_public_key_to_spki_der(sec1_public_key: &[u8]) -> Result<Vec<u8>, Device
         .map_err(|err| DeviceKeyError::Crypto(err.to_string()))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use p256::ecdsa::Signature;

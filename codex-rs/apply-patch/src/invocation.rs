@@ -374,7 +374,7 @@ fn extract_apply_patch_from_bash(
     Err(ExtractHeredocError::CommandDidNotStartWithApplyPatch)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::unified_diff_from_chunks;

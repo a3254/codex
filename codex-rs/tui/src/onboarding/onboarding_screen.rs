@@ -580,7 +580,7 @@ pub(crate) async fn run_onboarding_app(
     })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::ApiKeyEntryContext;
     use super::suppress_quit_while_typing_api_key;

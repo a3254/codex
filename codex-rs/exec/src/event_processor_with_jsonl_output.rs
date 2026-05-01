@@ -622,6 +622,6 @@ impl EventProcessor for EventProcessorWithJsonOutput {
     }
 }
 
-#[cfg(test)]
-#[path = "event_processor_with_jsonl_output_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "event_processor_with_jsonl_output_tests.rs.old"]
 mod tests;

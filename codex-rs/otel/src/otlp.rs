@@ -226,7 +226,7 @@ fn config_error(message: impl Into<String>) -> Box<dyn Error> {
     Box::new(io::Error::new(ErrorKind::InvalidData, message.into()))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

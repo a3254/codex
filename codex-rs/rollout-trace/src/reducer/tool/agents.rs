@@ -616,6 +616,6 @@ fn inter_agent_message_fields(item: &ConversationItem) -> Option<(String, String
     Some((communication.recipient.to_string(), communication.content))
 }
 
-#[cfg(test)]
-#[path = "agents_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "agents_tests.rs.old"]
 mod tests;

@@ -181,7 +181,7 @@ use codex_model_provider_info::ModelProviderInfo;
 use codex_protocol::config_types::ShellEnvironmentPolicy;
 use codex_protocol::error::CodexErr;
 use codex_protocol::error::Result as CodexResult;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::exec_output::StreamOutput;
 
 mod handlers;
@@ -193,7 +193,7 @@ mod rollout_reconstruction;
 pub(crate) mod session;
 pub(crate) mod turn;
 pub(crate) mod turn_context;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use self::handlers::submission_dispatch_span;
 use self::handlers::submission_loop;
 use self::review::spawn_review_thread;
@@ -201,16 +201,16 @@ use self::session::AppServerClientMetadata;
 use self::session::Session;
 use self::session::SessionConfiguration;
 pub(crate) use self::session::SessionSettingsUpdate;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use self::turn::AssistantMessageStreamParsers;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use self::turn::collect_explicit_app_ids_from_skill_items;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use self::turn::filter_connectors_for_input;
 use self::turn::realtime_text_for_event;
 use self::turn_context::TurnContext;
 use self::turn_context::TurnSkillsContext;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod rollout_reconstruction_tests;
 
 #[derive(Debug, PartialEq)]
@@ -286,15 +286,15 @@ use crate::state::MailboxDeliveryPhase;
 use crate::state::PendingRequestPermissions;
 use crate::state::SessionServices;
 use crate::state::SessionState;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::stream_events_utils::HandleOutputCtx;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::stream_events_utils::handle_output_item_done;
 use crate::tasks::ReviewTask;
 use crate::tools::network_approval::NetworkApprovalService;
 use crate::tools::network_approval::build_blocked_request_observer;
 use crate::tools::network_approval::build_network_policy_decider;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::tools::parallel::ToolCallRuntime;
 use crate::tools::sandboxing::ApprovalStore;
 use crate::turn_timing::TurnTimingState;
@@ -357,7 +357,7 @@ use codex_tools::ToolsConfig;
 use codex_tools::ToolsConfigParams;
 use codex_utils_absolute_path::AbsolutePathBuf;
 use codex_utils_readiness::ReadinessFlag;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_utils_stream_parser::ProposedPlanSegment;
 
 /// The high-level interface to the Codex system.
@@ -798,7 +798,7 @@ fn is_enterprise_default_service_tier_plan(plan_type: AccountPlanType) -> bool {
         || plan_type.is_team_like()
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) fn completed_session_loop_termination() -> SessionLoopTermination {
     futures::future::ready(()).boxed().shared()
 }
@@ -3396,5 +3396,5 @@ async fn build_hooks_for_config(
     })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) mod tests;

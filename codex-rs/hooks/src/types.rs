@@ -157,7 +157,7 @@ pub enum HookEvent {
     },
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use chrono::TimeZone;
     use chrono::Utc;

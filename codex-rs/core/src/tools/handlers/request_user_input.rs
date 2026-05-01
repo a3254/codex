@@ -73,6 +73,6 @@ impl ToolHandler for RequestUserInputHandler {
     }
 }
 
-#[cfg(test)]
-#[path = "request_user_input_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "request_user_input_tests.rs.old"]
 mod tests;

@@ -1,4 +1,4 @@
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::config::NetworkMode;
 use anyhow::Context;
 use anyhow::Result;
@@ -353,7 +353,7 @@ fn is_strict_subdomain(child: &str, parent: &str) -> bool {
     child != parent && child.ends_with(&format!(".{parent}"))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

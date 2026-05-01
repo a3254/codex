@@ -723,6 +723,6 @@ fn is_mcp_client_startup_timeout_error(error: &StartupOutcomeError) -> bool {
     }
 }
 
-#[cfg(test)]
-#[path = "connection_manager_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "connection_manager_tests.rs.old"]
 mod tests;

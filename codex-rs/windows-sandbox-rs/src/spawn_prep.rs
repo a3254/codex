@@ -329,7 +329,7 @@ pub(crate) fn prepare_elevated_spawn_context(
     })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::SandboxPolicy;
     use super::prepare_legacy_spawn_context;

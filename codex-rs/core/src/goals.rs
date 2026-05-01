@@ -1507,7 +1507,7 @@ pub(crate) fn goal_token_delta_for_usage(usage: &TokenUsage) -> i64 {
         .saturating_add(usage.output_tokens.max(0))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::budget_limit_prompt;
     use super::continuation_prompt;

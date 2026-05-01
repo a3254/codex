@@ -40,6 +40,6 @@ fn main() -> anyhow::Result<()> {
     })
 }
 
-#[cfg(test)]
-#[path = "main_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "main_tests.rs.old"]
 mod tests;

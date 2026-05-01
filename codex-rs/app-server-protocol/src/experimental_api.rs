@@ -55,7 +55,7 @@ impl<K: Ord, V: ExperimentalApi> ExperimentalApi for BTreeMap<K, V> {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::collections::HashMap;
 

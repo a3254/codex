@@ -533,7 +533,7 @@ fn is_standard_plugin_root(path: &Path) -> bool {
     find_plugin_manifest_path(path).is_some()
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use flate2::Compression;

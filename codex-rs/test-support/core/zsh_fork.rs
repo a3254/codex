@@ -9,8 +9,8 @@ use codex_protocol::models::PermissionProfile;
 use codex_protocol::permissions::NetworkSandboxPolicy;
 use codex_protocol::protocol::AskForApproval;
 
-use crate::test_codex::TestCodex;
-use crate::test_codex::test_codex;
+use crate::codex_harness::TestCodex;
+use crate::codex_harness::codex_harness;
 
 #[derive(Clone)]
 pub struct ZshForkRuntime {
@@ -86,7 +86,7 @@ pub async fn build_zsh_fork_test<F>(
 where
     F: FnOnce(&Path) + Send + 'static,
 {
-    let mut builder = test_codex()
+    let mut builder = codex_harness()
         .with_pre_build_hook(pre_build_hook)
         .with_config(move |config| {
             runtime.apply_to_config(config, approval_policy, permission_profile);

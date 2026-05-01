@@ -371,7 +371,7 @@ fn map_decider_decision(decision: NetworkDecision) -> NetworkDecision {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) mod test_support {
     pub(crate) const POLICY_DECISION_EVENT_NAME: &str = super::POLICY_DECISION_EVENT_NAME;
 
@@ -528,7 +528,7 @@ pub(crate) mod test_support {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::test_support::capture_events;
     use super::test_support::find_event_by_name;

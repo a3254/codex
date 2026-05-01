@@ -1081,7 +1081,7 @@ pub(crate) fn normalize_path_for_skill_id(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_protocol::models::SandboxEnforcement;

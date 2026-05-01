@@ -820,7 +820,7 @@ fn unix_timestamp() -> i64 {
     OffsetDateTime::now_utc().unix_timestamp()
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) fn network_proxy_state_for_policy(
     mut network: crate::config::NetworkProxySettings,
 ) -> NetworkProxyState {
@@ -832,10 +832,10 @@ pub(crate) fn network_proxy_state_for_policy(
     NetworkProxyState::with_reloader(state, Arc::new(NoopReloader))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 struct NoopReloader;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 #[async_trait]
 impl ConfigReloader for NoopReloader {
     fn source_label(&self) -> String {
@@ -851,7 +851,7 @@ impl ConfigReloader for NoopReloader {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

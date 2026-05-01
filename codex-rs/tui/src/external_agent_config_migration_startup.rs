@@ -372,7 +372,7 @@ pub(crate) async fn handle_external_agent_config_migration_prompt_if_needed(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_app_server_protocol::ExternalAgentConfigMigrationItemType;

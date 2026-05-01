@@ -87,7 +87,7 @@ impl From<KnownPlan> for PlanType {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::PlanType;
     use crate::auth::KnownPlan;

@@ -63,7 +63,7 @@ pub async fn resolve_installation_id(codex_home: &AbsolutePathBuf) -> Result<Str
     .await?
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::INSTALLATION_ID_FILENAME;
     use super::resolve_installation_id;

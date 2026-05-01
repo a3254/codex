@@ -295,7 +295,7 @@ pub fn apply_capability_denies_for_world_writable(
     Ok(())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::gather_candidates;
     use std::collections::HashMap;

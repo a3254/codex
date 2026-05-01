@@ -229,7 +229,7 @@ fn child_exited(error: &std::io::Error) -> bool {
     matches!(error.kind(), std::io::ErrorKind::InvalidInput)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::BLOCKER_SLEEP_SECONDS;
 

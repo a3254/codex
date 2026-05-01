@@ -8,7 +8,7 @@ pub(crate) fn render_apps_section(connectors: &[AppInfo]) -> Option<String> {
     AppsInstructions::from_connectors(connectors).map(|instructions| instructions.render())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

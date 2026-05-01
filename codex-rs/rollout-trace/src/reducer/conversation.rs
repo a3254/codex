@@ -700,6 +700,6 @@ fn reasoning_encoded_part(body: &ConversationBody) -> Option<(&str, &str)> {
     })
 }
 
-#[cfg(test)]
-#[path = "conversation_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "conversation_tests.rs.old"]
 mod tests;

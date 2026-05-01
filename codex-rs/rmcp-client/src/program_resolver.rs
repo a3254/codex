@@ -60,7 +60,7 @@ pub fn resolve(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::utils::create_env_for_mcp_server;

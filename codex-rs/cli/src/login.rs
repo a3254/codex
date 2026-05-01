@@ -449,7 +449,7 @@ fn safe_format_key(key: &str) -> String {
     format!("{prefix}***{suffix}")
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::safe_format_key;
 

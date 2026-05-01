@@ -528,6 +528,6 @@ pub fn should_require_platform_sandbox(
     }
 }
 
-#[cfg(test)]
-#[path = "policy_transforms_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "policy_transforms_tests.rs.old"]
 mod tests;

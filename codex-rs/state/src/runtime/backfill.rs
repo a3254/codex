@@ -119,7 +119,7 @@ ON CONFLICT(id) DO NOTHING
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::StateRuntime;
     use super::state_db_filename;

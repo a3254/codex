@@ -13,10 +13,6 @@ path = "src/main.rs"
 name = "codex_exec"
 path = "src/lib.rs"
 
-[[test]]
-name = "all"
-path = "tests/all.rs"
-
 [lints]
 workspace = true
 

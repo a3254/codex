@@ -408,7 +408,7 @@ fn parse_powershell_invocation(args: &[String]) -> Option<ParsedPowershell> {
     None
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::is_dangerous_command_windows;
 

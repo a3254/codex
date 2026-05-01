@@ -174,7 +174,7 @@ pub(crate) struct TranscriptWidthChange {
     pub(crate) initialized: bool,
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

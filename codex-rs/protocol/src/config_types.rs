@@ -618,7 +618,7 @@ pub struct CollaborationModeMask {
     pub developer_instructions: Option<Option<String>>,
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

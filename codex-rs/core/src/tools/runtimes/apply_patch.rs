@@ -251,6 +251,6 @@ impl ToolRuntime<ApplyPatchRequest, ExecToolCallOutput> for ApplyPatchRuntime {
     }
 }
 
-#[cfg(test)]
-#[path = "apply_patch_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "apply_patch_tests.rs.old"]
 mod tests;

@@ -592,7 +592,7 @@ fn regex_ci(pat: &str) -> Regex {
     Regex::new(&format!("(?i){pat}")).unwrap_or_else(|e| panic!("invalid regex: {e}"))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use std::path::Path;

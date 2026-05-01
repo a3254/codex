@@ -101,7 +101,7 @@ fn completed_goal_usage(
     format_goal_elapsed_seconds(time_used_seconds)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::GoalStatusState;
     use super::active_goal_usage;

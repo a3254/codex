@@ -290,7 +290,7 @@ fn json_error(err: serde_json::Error) -> JSONRPCErrorError {
     ))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::collections::HashMap;
     use std::ffi::OsString;

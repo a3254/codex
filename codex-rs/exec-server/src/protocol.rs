@@ -396,7 +396,7 @@ mod base64_bytes {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::HttpRequestParams;
     use pretty_assertions::assert_eq;

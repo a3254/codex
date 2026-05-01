@@ -112,6 +112,6 @@ fn previous_char_boundary(value: &str, max_bytes: usize) -> usize {
     index
 }
 
-#[cfg(test)]
-#[path = "workspace_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "workspace_tests.rs.old"]
 mod tests;

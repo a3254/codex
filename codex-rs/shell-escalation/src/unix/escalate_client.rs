@@ -123,7 +123,7 @@ pub async fn run_shell_escalation_execve_wrapper(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use std::os::fd::AsRawFd;

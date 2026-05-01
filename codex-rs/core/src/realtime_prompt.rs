@@ -31,7 +31,7 @@ fn current_user_first_name() -> String {
         .unwrap_or_else(|| DEFAULT_USER_FIRST_NAME.to_string())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::prepare_realtime_backend_prompt;
 

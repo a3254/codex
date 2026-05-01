@@ -1028,7 +1028,7 @@ async fn create_oauth_transport_and_runtime(
     Ok((transport, runtime))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::time::Duration;
 

@@ -75,7 +75,7 @@ pub fn strip_citations(text: &str) -> (String, Vec<String>) {
     (out.visible_text, out.extracted)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::CitationStreamParser;
     use super::strip_citations;

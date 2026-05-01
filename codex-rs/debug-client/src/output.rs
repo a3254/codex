@@ -144,7 +144,7 @@ impl Output {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::fs;
 

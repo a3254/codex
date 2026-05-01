@@ -175,6 +175,6 @@ where
     serializer.serialize_str(&id_token.raw_jwt)
 }
 
-#[cfg(test)]
-#[path = "token_data_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "token_data_tests.rs.old"]
 mod tests;

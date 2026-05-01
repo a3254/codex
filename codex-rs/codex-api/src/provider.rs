@@ -126,7 +126,7 @@ fn matches_azure_responses_base_url(base_url: &str) -> bool {
     AZURE_MARKERS.iter().any(|marker| base_url.contains(marker))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

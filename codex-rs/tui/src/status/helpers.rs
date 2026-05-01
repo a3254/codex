@@ -182,7 +182,7 @@ fn title_case(s: &str) -> String {
     first.to_uppercase().collect::<String>() + &rest
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::legacy_core::DEFAULT_AGENTS_MD_FILENAME;

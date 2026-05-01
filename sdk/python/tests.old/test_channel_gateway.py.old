@@ -1,0 +1,189 @@
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from typing import Any
+
+import pytest
+
+from codex_app_server.channel_gateway import (
+    ChannelGateway,
+    ChannelGatewayError,
+    ChannelMessage,
+    SenderBinding,
+    approval_prompt_text,
+)
+
+
+@dataclass
+class FakeTurn:
+    id: str
+    steered_inputs: list[Any] = field(default_factory=list)
+    interrupted: bool = False
+
+    def steer(self, input: Any) -> object:
+        self.steered_inputs.append(input)
+        return object()
+
+    def interrupt(self) -> object:
+        self.interrupted = True
+        return object()
+
+
+@dataclass
+class FakeThread:
+    id: str
+    turns: list[FakeTurn] = field(default_factory=list)
+
+    def turn(self, input: Any) -> FakeTurn:
+        turn = FakeTurn(id=f"turn-{len(self.turns) + 1}")
+        self.turns.append(turn)
+        return turn
+
+
+@dataclass
+class FakeCodex:
+    started_threads: list[dict[str, Any]] = field(default_factory=list)
+    threads: list[FakeThread] = field(default_factory=list)
+
+    def thread_start(self, **kwargs: Any) -> FakeThread:
+        self.started_threads.append(kwargs)
+        thread = FakeThread(id=f"thread-{len(self.threads) + 1}")
+        self.threads.append(thread)
+        return thread
+
+
+def test_gateway_starts_thread_with_bound_project_settings() -> None:
+    codex = FakeCodex()
+    gateway = ChannelGateway(
+        codex=codex,
+        bindings={
+            "whatsapp:+15551234567": SenderBinding(
+                sender_id="whatsapp:+15551234567",
+                cwd="/srv/app",
+                model="gpt-5.4",
+            )
+        },
+    )
+
+    result = gateway.handle_message(
+        ChannelMessage(
+            message_id="msg-1",
+            sender_id="whatsapp:+15551234567",
+            text="Fix the failing test",
+        )
+    )
+
+    assert result.kind == "started"
+    assert result.thread_id == "thread-1"
+    assert result.turn_id == "turn-1"
+    assert codex.started_threads == [
+        {
+            "approval_policy": "on-request",
+            "cwd": "/srv/app",
+            "model": "gpt-5.4",
+            "sandbox": "workspace-write",
+        }
+    ]
+
+
+def test_gateway_rejects_unbound_sender() -> None:
+    gateway = ChannelGateway(codex=FakeCodex(), bindings={})
+
+    with pytest.raises(ChannelGatewayError, match="not allowed"):
+        gateway.handle_message(
+            ChannelMessage(
+                message_id="msg-1",
+                sender_id="whatsapp:+15550000000",
+                text="Run tests",
+            )
+        )
+
+
+def test_gateway_suppresses_duplicate_messages() -> None:
+    codex = FakeCodex()
+    gateway = ChannelGateway(
+        codex=codex,
+        bindings={
+            "sender-1": SenderBinding(sender_id="sender-1", cwd="/srv/app"),
+        },
+    )
+    message = ChannelMessage(
+        message_id="msg-1",
+        sender_id="sender-1",
+        text="Run tests",
+    )
+
+    first = gateway.handle_message(message)
+    second = gateway.handle_message(message)
+
+    assert first.kind == "started"
+    assert second.kind == "duplicate"
+    assert len(codex.threads) == 1
+    assert len(codex.threads[0].turns) == 1
+
+
+def test_gateway_steers_active_turn_then_starts_after_completion() -> None:
+    codex = FakeCodex()
+    gateway = ChannelGateway(
+        codex=codex,
+        bindings={
+            "sender-1": SenderBinding(sender_id="sender-1", cwd="/srv/app"),
+        },
+    )
+
+    started = gateway.handle_message(
+        ChannelMessage(message_id="msg-1", sender_id="sender-1", text="Start")
+    )
+    steered = gateway.handle_message(
+        ChannelMessage(message_id="msg-2", sender_id="sender-1", text="Keep it short")
+    )
+    gateway.mark_turn_complete("sender-1", started.turn_id or "")
+    next_turn = gateway.handle_message(
+        ChannelMessage(message_id="msg-3", sender_id="sender-1", text="Run tests")
+    )
+
+    assert steered.kind == "steered"
+    assert next_turn.kind == "started"
+    assert next_turn.thread_id == started.thread_id
+    assert next_turn.turn_id == "turn-2"
+    assert len(codex.threads) == 1
+
+
+def test_gateway_stop_interrupts_active_turn() -> None:
+    codex = FakeCodex()
+    gateway = ChannelGateway(
+        codex=codex,
+        bindings={
+            "sender-1": SenderBinding(sender_id="sender-1", cwd="/srv/app"),
+        },
+    )
+
+    gateway.handle_message(
+        ChannelMessage(message_id="msg-1", sender_id="sender-1", text="Start")
+    )
+    result = gateway.handle_message(
+        ChannelMessage(message_id="msg-2", sender_id="sender-1", text="/stop")
+    )
+
+    assert result.kind == "interrupted"
+    assert codex.threads[0].turns[0].interrupted is True
+
+
+def test_approval_prompt_includes_action_context_and_options() -> None:
+    prompt = approval_prompt_text(
+        {
+            "type": "command",
+            "cwd": "/srv/app",
+            "command": "pytest tests/test_api.py",
+            "risk": "runs project test command",
+        }
+    )
+
+    assert prompt == (
+        "Approval required\n"
+        "type: command\n"
+        "cwd: /srv/app\n"
+        "command: pytest tests/test_api.py\n"
+        "risk: runs project test command\n"
+        "Reply approve, deny, ask, or stop."
+    )

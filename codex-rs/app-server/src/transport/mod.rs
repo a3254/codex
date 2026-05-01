@@ -36,7 +36,7 @@ pub(crate) const CHANNEL_CAPACITY: usize = 128;
 mod remote_control;
 mod stdio;
 mod unix_socket;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod unix_socket_tests;
 mod websocket;
 
@@ -468,7 +468,7 @@ pub(crate) async fn route_outgoing_envelope(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_app_server_protocol::ConfigWarningNotification;

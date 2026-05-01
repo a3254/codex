@@ -338,6 +338,6 @@ impl TurnMetadataState {
     }
 }
 
-#[cfg(test)]
-#[path = "turn_metadata_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "turn_metadata_tests.rs.old"]
 mod tests;

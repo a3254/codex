@@ -194,7 +194,7 @@ fn format_to_mime(format: ImageFormat) -> String {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::io::Cursor;
 

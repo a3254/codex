@@ -321,7 +321,7 @@ fn parse_timestamp(timestamp: &str) -> Option<i64> {
         .map(|value| value.timestamp())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

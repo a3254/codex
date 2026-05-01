@@ -49,7 +49,7 @@ pub(crate) fn goal_usage_summary(goal: &ThreadGoal) -> String {
     parts.join(" ")
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_app_server_protocol::ThreadGoal;

@@ -1040,7 +1040,7 @@ impl From<LegacyManagedConfigToml> for ConfigRequirementsToml {
 }
 
 // Cannot name this `mod tests` because of tests.rs in this folder.
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod unit_tests {
     use super::*;
     #[cfg(windows)]

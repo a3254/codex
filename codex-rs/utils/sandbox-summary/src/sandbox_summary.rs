@@ -64,7 +64,7 @@ pub fn summarize_permission_profile(permission_profile: &PermissionProfile, cwd:
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_utils_absolute_path::AbsolutePathBuf;

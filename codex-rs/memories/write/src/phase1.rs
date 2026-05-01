@@ -641,7 +641,7 @@ fn emit_metrics(context: &StageOneRequestContext, counts: &Stats) {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

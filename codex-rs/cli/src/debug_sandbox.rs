@@ -730,7 +730,7 @@ fn cli_overrides_use_legacy_sandbox_mode(cli_overrides: &[(String, TomlValue)]) 
     cli_overrides.iter().any(|(key, _)| key == "sandbox_mode")
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

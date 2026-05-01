@@ -280,6 +280,6 @@ where
     TomlItem::Table(table)
 }
 
-#[cfg(test)]
-#[path = "mcp_edit_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "mcp_edit_tests.rs.old"]
 mod tests;

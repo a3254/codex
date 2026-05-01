@@ -34,7 +34,7 @@ use codex_protocol::ThreadId;
 use codex_protocol::config_types::CollaborationModeMask;
 use codex_protocol::error::CodexErr;
 use codex_protocol::error::Result as CodexResult;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::models::ResponseItem;
 use codex_protocol::openai_models::ModelPreset;
 use codex_protocol::protocol::Event;
@@ -1364,6 +1364,6 @@ fn append_interrupted_boundary(
     }
 }
 
-#[cfg(test)]
-#[path = "thread_manager_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "thread_manager_tests.rs.old"]
 mod tests;

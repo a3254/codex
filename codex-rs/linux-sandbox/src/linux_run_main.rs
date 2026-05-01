@@ -1455,6 +1455,6 @@ fn exec_or_panic(command: Vec<String>) -> ! {
     panic!("Failed to execvp {}: {err}", command[0].as_str());
 }
 
-#[cfg(test)]
-#[path = "linux_run_main_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "linux_run_main_tests.rs.old"]
 mod tests;

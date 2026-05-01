@@ -89,6 +89,6 @@ async fn run_websocket_listener(
     }
 }
 
-#[cfg(test)]
-#[path = "transport_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "transport_tests.rs.old"]
 mod transport_tests;

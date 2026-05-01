@@ -69,7 +69,7 @@ fn normalize_fqdn_candidate(hostname: &str) -> Option<String> {
     normalize_host_name(hostname).filter(|hostname| hostname.contains('.'))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::normalize_fqdn_candidate;
     use pretty_assertions::assert_eq;

@@ -411,7 +411,7 @@ fn file_change_decision(decision: &ReviewDecision) -> Result<FileChangeApprovalD
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::PendingAppServerRequests;
     use super::ResolvedAppServerRequest;

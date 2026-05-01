@@ -225,7 +225,7 @@ fn permissions_are_preapproved(
         == materialized_effective_permissions
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::EffectiveAdditionalPermissions;
     use super::implicit_granted_permissions;

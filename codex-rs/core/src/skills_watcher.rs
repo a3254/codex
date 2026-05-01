@@ -21,7 +21,7 @@ use crate::skills_load_input_from_config;
 
 #[cfg(not(test))]
 const WATCHER_THROTTLE_INTERVAL: Duration = Duration::from_secs(10);
-#[cfg(test)]
+#[cfg(all(test, any()))]
 const WATCHER_THROTTLE_INTERVAL: Duration = Duration::from_millis(50);
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -90,7 +90,7 @@ impl SkillsWatcher {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

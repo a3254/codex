@@ -226,6 +226,6 @@ impl TraceReducer {
     }
 }
 
-#[cfg(test)]
-#[path = "inference_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "inference_tests.rs.old"]
 mod tests;

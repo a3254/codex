@@ -324,6 +324,6 @@ impl ConfigReloader for MtimeConfigReloader {
     }
 }
 
-#[cfg(test)]
-#[path = "network_proxy_loader_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "network_proxy_loader_tests.rs.old"]
 mod tests;

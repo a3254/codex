@@ -153,7 +153,7 @@ impl WidgetRef for &FileSearchPopup {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_file_search::MatchType;

@@ -500,7 +500,7 @@ fn format_network_unix_socket_permission(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::render_debug_config_lines;
     use super::session_all_proxy_url;

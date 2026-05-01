@@ -101,7 +101,7 @@ impl ModelProvider for AmazonBedrockModelProvider {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
 

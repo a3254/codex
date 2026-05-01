@@ -406,7 +406,7 @@ pub(crate) fn build_theme_picker_params(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

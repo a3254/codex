@@ -22,7 +22,7 @@ use std::path::PathBuf;
 use std::sync::Arc;
 use std::time::Duration;
 use tokio::sync::Mutex as AsyncMutex;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use tokio::sync::mpsc;
 use tokio::sync::oneshot;
 use tokio::time::Instant;
@@ -214,7 +214,7 @@ impl FsWatchManager {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_utils_absolute_path::AbsolutePathBuf;

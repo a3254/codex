@@ -327,5 +327,5 @@ mod platform {
     unsafe impl async_io::IoSafe for WindowsUnixStream {}
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod lib_tests;

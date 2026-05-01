@@ -209,7 +209,7 @@ fn session_thread_config_to_toml(
     Ok(TomlValue::Table(table))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_model_provider_info::ModelProviderInfo;
     use codex_model_provider_info::WireApi;

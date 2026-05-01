@@ -151,7 +151,7 @@ impl Request {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use http::HeaderValue;

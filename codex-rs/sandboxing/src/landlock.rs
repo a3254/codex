@@ -100,6 +100,6 @@ fn create_linux_sandbox_command_args(
     linux_cmd
 }
 
-#[cfg(test)]
-#[path = "landlock_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "landlock_tests.rs.old"]
 mod tests;

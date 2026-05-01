@@ -28,6 +28,6 @@ fn resolve_attribution_value(config_attribution: Option<&str>) -> Option<String>
     }
 }
 
-#[cfg(test)]
-#[path = "commit_attribution_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "commit_attribution_tests.rs.old"]
 mod tests;

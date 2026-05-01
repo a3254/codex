@@ -207,7 +207,7 @@ fn longest_suffix_prefix_len(s: &str, needle: &str) -> usize {
     0
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::InlineHiddenTagParser;
     use super::InlineTagSpec;

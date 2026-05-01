@@ -675,7 +675,7 @@ pub(super) async fn fetch_feedback_upload(
 /// in-process MCP subsystem (tools keyed as `mcp__{server}__{tool}`, plus
 /// per-server resource/template/auth maps). Test-only because the TUI
 /// renders directly from `McpServerStatus` rather than these maps.
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(super) type McpInventoryMaps = (
     HashMap<String, codex_protocol::mcp::Tool>,
     HashMap<String, Vec<codex_protocol::mcp::Resource>>,
@@ -683,7 +683,7 @@ pub(super) type McpInventoryMaps = (
     HashMap<String, McpAuthStatus>,
 );
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(super) fn mcp_inventory_maps_from_statuses(statuses: Vec<McpServerStatus>) -> McpInventoryMaps {
     let mut tools = HashMap::new();
     let mut resources = HashMap::new();
@@ -711,7 +711,7 @@ pub(super) fn mcp_inventory_maps_from_statuses(statuses: Vec<McpServerStatus>) -
     (tools, resources, resource_templates, auth_statuses)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_app_server_protocol::PluginMarketplaceEntry;

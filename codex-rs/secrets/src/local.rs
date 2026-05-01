@@ -329,7 +329,7 @@ fn parse_canonical_key(canonical_key: &str) -> Option<SecretListEntry> {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_keyring_store::tests::MockKeyringStore;

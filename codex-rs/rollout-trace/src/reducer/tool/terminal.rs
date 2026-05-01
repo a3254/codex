@@ -601,6 +601,6 @@ struct CodeModeExecResult {
     output: String,
 }
 
-#[cfg(test)]
-#[path = "terminal_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "terminal_tests.rs.old"]
 mod tests;

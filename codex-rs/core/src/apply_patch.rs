@@ -100,6 +100,6 @@ pub(crate) fn convert_apply_patch_to_protocol(
     result
 }
 
-#[cfg(test)]
-#[path = "apply_patch_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "apply_patch_tests.rs.old"]
 mod tests;

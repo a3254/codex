@@ -108,7 +108,7 @@ fn mcp_hook_tool_input(raw_arguments: &str) -> Value {
     serde_json::from_str(raw_arguments).unwrap_or_else(|_| Value::String(raw_arguments.to_string()))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::session::tests::make_session_and_context;

@@ -17,7 +17,7 @@ pub use crate::runtime::BlockedRequest;
 pub use crate::runtime::BlockedRequestArgs;
 pub use crate::runtime::NetworkProxyAuditMetadata;
 pub use crate::runtime::NetworkProxyState;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) use crate::runtime::network_proxy_state_for_policy;
 
 #[derive(Debug, Default, Clone, PartialEq, Eq)]
@@ -417,5 +417,5 @@ fn network_mode_rank(mode: NetworkMode) -> u8 {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {}

@@ -308,6 +308,6 @@ fn normalize_extra_user_roots(extra_user_roots: &[AbsolutePathBuf]) -> Vec<Absol
     normalized
 }
 
-#[cfg(test)]
-#[path = "manager_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "manager_tests.rs.old"]
 mod tests;

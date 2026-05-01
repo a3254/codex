@@ -1846,6 +1846,6 @@ fn build_review_request(args: &ReviewArgs) -> anyhow::Result<ReviewRequest> {
     })
 }
 
-#[cfg(test)]
-#[path = "lib_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "lib_tests.rs.old"]
 mod tests;

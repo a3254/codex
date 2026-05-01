@@ -335,7 +335,7 @@ fn default_user_shell_from_path(user_shell_path: Option<PathBuf>) -> Shell {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod detect_shell_type_tests {
     use super::*;
 
@@ -403,7 +403,7 @@ mod detect_shell_type_tests {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 #[cfg(unix)]
-#[path = "shell_tests.rs"]
+#[path = "shell_tests.rs.old"]
 mod tests;

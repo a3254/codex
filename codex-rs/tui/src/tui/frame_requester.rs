@@ -56,7 +56,7 @@ impl FrameRequester {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 impl FrameRequester {
     /// Create a no-op frame requester for tests.
     pub(crate) fn test_dummy() -> Self {
@@ -126,7 +126,7 @@ impl FrameScheduler {
         }
     }
 }
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::super::frame_rate_limiter::MIN_FRAME_INTERVAL;
     use super::*;

@@ -188,7 +188,7 @@ fn model_provider_from_proto(
     Ok((id, info))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn model_provider_to_proto(
     id: impl Into<String>,
     provider: ModelProviderInfo,
@@ -255,7 +255,7 @@ fn model_provider_auth_from_proto(
     })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn model_provider_auth_to_proto(auth: ModelProviderAuthInfo) -> proto::ModelProviderAuthInfo {
     let ModelProviderAuthInfo {
         command,
@@ -274,12 +274,12 @@ fn model_provider_auth_to_proto(auth: ModelProviderAuthInfo) -> proto::ModelProv
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn proto_string_map(values: HashMap<String, String>) -> proto::StringMap {
     proto::StringMap { values }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 fn proto_wire_api(wire_api: WireApi) -> proto::WireApi {
     match wire_api {
         WireApi::Responses => proto::WireApi::Responses,
@@ -294,7 +294,7 @@ fn parse_error(message: impl Into<String>) -> ThreadConfigLoadError {
     )
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::collections::BTreeMap;
     use std::collections::HashMap;

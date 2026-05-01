@@ -41,7 +41,7 @@ fn toml_string_literal(value: &str) -> String {
     serde_json::to_string(value).expect("serialize TOML string literal")
 }
 
-pub fn test_codex_exec() -> TestCodexExecBuilder {
+pub fn codex_exec_harness() -> TestCodexExecBuilder {
     TestCodexExecBuilder {
         home: TempDir::new().expect("create temp home"),
         cwd: TempDir::new().expect("create temp cwd"),

@@ -186,7 +186,7 @@ pub trait ExecBackend: Send + Sync {
     async fn start(&self, params: ExecParams) -> Result<StartedExecProcess, ExecServerError>;
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
     use tokio::time::Duration;

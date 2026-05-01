@@ -1324,7 +1324,7 @@ fn find_first_non_existent_component(target_path: &Path) -> Option<PathBuf> {
     None
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

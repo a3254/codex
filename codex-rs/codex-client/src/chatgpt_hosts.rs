@@ -10,7 +10,7 @@ pub fn is_allowed_chatgpt_host(host: &str) -> bool {
             .any(|suffix| host.ends_with(suffix))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

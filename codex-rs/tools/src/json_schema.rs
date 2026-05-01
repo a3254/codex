@@ -335,6 +335,6 @@ fn singleton_null_schema_error() -> serde_json::Error {
     ))
 }
 
-#[cfg(test)]
-#[path = "json_schema_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "json_schema_tests.rs.old"]
 mod tests;

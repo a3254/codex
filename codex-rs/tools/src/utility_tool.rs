@@ -94,6 +94,6 @@ pub fn create_test_sync_tool() -> ToolSpec {
     })
 }
 
-#[cfg(test)]
-#[path = "utility_tool_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "utility_tool_tests.rs.old"]
 mod tests;

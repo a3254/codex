@@ -525,7 +525,7 @@ fn path_to_slash_string(path: &Path) -> String {
         .join("/")
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

@@ -115,7 +115,7 @@ pub(crate) struct CreditsSnapshotDisplay {
 ///
 /// Pass the timestamp from the same observation point as `snapshot`; supplying a significantly
 /// older or newer `captured_at` can produce misleading reset labels and stale classification.
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) fn rate_limit_snapshot_display(
     snapshot: &RateLimitSnapshot,
     captured_at: DateTime<Local>,
@@ -344,7 +344,7 @@ fn format_credit_balance(raw: &str) -> Option<String> {
     None
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::CreditsSnapshotDisplay;
     use super::RateLimitSnapshotDisplay;

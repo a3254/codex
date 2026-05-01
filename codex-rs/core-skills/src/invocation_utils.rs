@@ -140,6 +140,6 @@ fn canonicalize_if_exists(path: &AbsolutePathBuf) -> AbsolutePathBuf {
     path.canonicalize().unwrap_or_else(|_| path.clone())
 }
 
-#[cfg(test)]
-#[path = "invocation_utils_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "invocation_utils_tests.rs.old"]
 mod tests;

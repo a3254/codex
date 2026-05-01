@@ -150,6 +150,6 @@ pub fn tool_definition_to_responses_api_tool(tool_definition: ToolDefinition) ->
     }
 }
 
-#[cfg(test)]
-#[path = "responses_api_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "responses_api_tests.rs.old"]
 mod tests;

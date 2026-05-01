@@ -119,7 +119,7 @@ license = "Apache-2.0"
 
 [workspace.dependencies]
 # Internal
-app_test_support = { path = "app-server/tests/common" }
+app_test_support = { path = "test-support/app-server" }
 codex-analytics = { path = "analytics" }
 codex-agent-graph-store = { path = "agent-graph-store" }
 codex-agent-identity = { path = "agent-identity" }
@@ -222,8 +222,8 @@ codex-utils-string = { path = "utils/string" }
 codex-utils-template = { path = "utils/template" }
 codex-v8-poc = { path = "v8-poc" }
 codex-windows-sandbox = { path = "windows-sandbox-rs" }
-core_test_support = { path = "core/tests/common" }
-mcp_test_support = { path = "mcp-server/tests/common" }
+core_test_support = { path = "test-support/core" }
+mcp_test_support = { path = "test-support/mcp-server" }
 
 # External
 age = "0.11.1"

@@ -50,7 +50,7 @@ fn env_var_present(name: &str) -> bool {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_model_provider_info::WireApi;

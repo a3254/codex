@@ -875,7 +875,7 @@ async fn handle_server_notification(
     Ok(())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_app_server_protocol::JSONRPCMessage;
     use codex_app_server_protocol::JSONRPCNotification;

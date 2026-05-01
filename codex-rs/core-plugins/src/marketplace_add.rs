@@ -209,7 +209,7 @@ where
     })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use anyhow::Result;

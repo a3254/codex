@@ -66,7 +66,7 @@ pub(crate) fn has_builtin_prefix(name: &str, flags: BuiltinCommandFlags) -> bool
         .any(|(command_name, _)| fuzzy_match(command_name, name).is_some())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

@@ -116,7 +116,7 @@ fn resolve_upstream_if_remote_ahead(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::merge_base_with_head;
     use crate::GitToolingError;

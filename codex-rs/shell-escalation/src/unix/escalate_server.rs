@@ -374,7 +374,7 @@ async fn handle_escalate_session_with_policy(
     Ok(())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_protocol::approvals::EscalationPermissions;

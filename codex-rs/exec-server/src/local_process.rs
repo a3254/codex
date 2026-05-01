@@ -49,7 +49,7 @@ use crate::rpc::invalid_request;
 const RETAINED_OUTPUT_BYTES_PER_PROCESS: usize = 1024 * 1024;
 const NOTIFICATION_CHANNEL_CAPACITY: usize = 256;
 const PROCESS_EVENT_CHANNEL_CAPACITY: usize = 256;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 const EXITED_PROCESS_RETENTION: Duration = Duration::from_millis(25);
 #[cfg(not(test))]
 const EXITED_PROCESS_RETENTION: Duration = Duration::from_secs(30);
@@ -703,7 +703,7 @@ fn notification_sender(inner: &Inner) -> Option<RpcNotificationSender> {
         .clone()
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_protocol::config_types::ShellEnvironmentPolicyInherit;

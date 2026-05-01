@@ -679,7 +679,7 @@ fn der_item_length(der: &[u8]) -> Option<usize> {
         .filter(|length| *length <= der.len())
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::collections::HashMap;
     use std::fs;

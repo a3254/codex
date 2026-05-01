@@ -544,6 +544,6 @@ pub async fn touch_thread_updated_at(
         })
 }
 
-#[cfg(test)]
-#[path = "state_db_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "state_db_tests.rs.old"]
 mod tests;

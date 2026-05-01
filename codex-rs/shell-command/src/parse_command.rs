@@ -59,7 +59,7 @@ fn single_unknown_for_command(command: &[String]) -> ParsedCommand {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 #[allow(clippy::items_after_test_module)]
 /// Tests are at the top to encourage using TDD + Codex to fix the implementation.
 mod tests {

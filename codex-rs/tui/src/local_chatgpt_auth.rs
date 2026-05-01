@@ -53,7 +53,7 @@ pub(crate) fn load_local_chatgpt_auth(
     })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

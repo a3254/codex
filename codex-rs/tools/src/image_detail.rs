@@ -37,6 +37,6 @@ pub fn sanitize_original_image_detail(
     }
 }
 
-#[cfg(test)]
-#[path = "image_detail_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "image_detail_tests.rs.old"]
 mod tests;

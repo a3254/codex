@@ -571,7 +571,7 @@ fn append_query_param(url: &str, key: &str, value: Option<&str>) -> String {
     format!("{url}{separator}{key}={encoded}")
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
 

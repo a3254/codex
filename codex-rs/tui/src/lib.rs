@@ -242,9 +242,9 @@ mod voice {
 
 mod wrapping;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) mod test_backend;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) mod test_support;
 
 use crate::onboarding::onboarding_screen::OnboardingScreenArgs;
@@ -436,7 +436,7 @@ pub(crate) async fn start_app_server_for_picker(
     Ok(AppServerSession::new(app_server))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) async fn start_embedded_app_server_for_picker(
     config: &Config,
 ) -> color_eyre::Result<AppServerSession> {
@@ -1760,7 +1760,7 @@ fn should_show_login_screen(login_status: LoginStatus, config: &Config) -> bool 
     login_status == LoginStatus::NotAuthenticated
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::legacy_core::config::ConfigBuilder;

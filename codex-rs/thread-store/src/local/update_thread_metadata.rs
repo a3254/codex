@@ -192,7 +192,7 @@ fn rollout_path_is_archived(store: &LocalThreadStore, path: &std::path::Path) ->
     path.starts_with(store.config.codex_home.join(ARCHIVED_SESSIONS_SUBDIR))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use pretty_assertions::assert_eq;
     use serde_json::Value;

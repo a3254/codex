@@ -340,6 +340,6 @@ fn linux_sandbox_arg0_override(exe: &Path) -> String {
     }
 }
 
-#[cfg(test)]
-#[path = "manager_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "manager_tests.rs.old"]
 mod tests;

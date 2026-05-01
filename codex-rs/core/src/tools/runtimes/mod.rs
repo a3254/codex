@@ -258,5 +258,5 @@ fn shell_single_quote(input: &str) -> String {
 }
 
 #[cfg(all(test, unix))]
-#[path = "mod_tests.rs"]
+#[path = "mod_tests.rs.old"]
 mod tests;

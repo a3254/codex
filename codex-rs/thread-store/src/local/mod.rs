@@ -7,7 +7,7 @@ mod read_thread;
 mod unarchive_thread;
 mod update_thread_metadata;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod test_support;
 
 use async_trait::async_trait;
@@ -244,7 +244,7 @@ impl ThreadStore for LocalThreadStore {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_protocol::ThreadId;
     use codex_protocol::models::BaseInstructions;

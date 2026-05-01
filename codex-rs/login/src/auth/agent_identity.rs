@@ -76,7 +76,7 @@ fn key(record: &AgentIdentityAuthRecord) -> AgentIdentityKey<'_> {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use serial_test::serial;

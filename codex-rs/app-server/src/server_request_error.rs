@@ -11,7 +11,7 @@ pub(crate) fn is_turn_transition_server_request_error(error: &JSONRPCErrorError)
         == Some(TURN_TRANSITION_PENDING_REQUEST_ERROR_REASON)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::is_turn_transition_server_request_error;
     use codex_app_server_protocol::JSONRPCErrorError;

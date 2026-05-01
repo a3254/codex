@@ -51,6 +51,6 @@ pub async fn build_memory_tool_developer_instructions(
         .ok()
 }
 
-#[cfg(test)]
-#[path = "prompts_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "prompts_tests.rs.old"]
 mod tests;

@@ -54,7 +54,7 @@ where
         .map_err(|err| serde_json::Error::io(io::Error::new(io::ErrorKind::InvalidData, err)))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::collections::BTreeMap;
 

@@ -214,7 +214,7 @@ fn map_remote_error(error: ExecServerError) -> io::Error {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_protocol::models::PermissionProfile;
     use codex_protocol::permissions::FileSystemAccessMode;

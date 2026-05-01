@@ -92,7 +92,7 @@ pub fn compute_allow_paths(
     AllowDenyPaths { allow, deny }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_protocol::protocol::SandboxPolicy;

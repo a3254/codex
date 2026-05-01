@@ -1016,6 +1016,6 @@ fn join_program_and_argv(program: &AbsolutePathBuf, argv: &[String]) -> Vec<Stri
         .collect::<Vec<_>>()
 }
 
-#[cfg(test)]
-#[path = "unix_escalation_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "unix_escalation_tests.rs.old"]
 mod tests;

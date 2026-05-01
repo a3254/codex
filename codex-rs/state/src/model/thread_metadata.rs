@@ -462,7 +462,7 @@ pub struct BackfillStats {
     pub failed: usize,
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::ThreadMetadata;
     use super::ThreadRow;

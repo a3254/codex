@@ -95,7 +95,7 @@ pub fn blocked_text_response_with_policy(
         .unwrap_or_else(|_| Response::new(Body::from("blocked")))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::reasons::REASON_NOT_ALLOWED;

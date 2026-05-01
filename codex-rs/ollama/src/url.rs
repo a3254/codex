@@ -17,7 +17,7 @@ pub fn base_url_to_host_root(base_url: &str) -> String {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

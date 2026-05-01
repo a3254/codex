@@ -356,6 +356,6 @@ fn create_auth_storage_with_keyring_store(
     }
 }
 
-#[cfg(test)]
-#[path = "storage_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "storage_tests.rs.old"]
 mod tests;

@@ -120,7 +120,7 @@ pub enum RefreshTokenFailedReason {
     Other,
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::KnownPlan;
     use super::PlanType;

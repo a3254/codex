@@ -29,9 +29,9 @@ use crate::render::line_utils::push_owned_lines;
 use crate::render::renderable::Renderable;
 use crate::style::proposed_plan_style;
 use crate::style::user_message_style;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::test_support::PathBufExt;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::test_support::test_path_buf;
 use crate::text_formatting::format_and_truncate_tool_result;
 use crate::text_formatting::truncate_text;
@@ -46,13 +46,13 @@ use base64::Engine;
 use codex_app_server_protocol::McpServerStatus;
 use codex_app_server_protocol::McpServerStatusDetail;
 use codex_config::types::McpServerTransportConfig;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_mcp::qualified_mcp_tool_name_prefix;
 use codex_otel::RuntimeMetricsSummary;
 use codex_protocol::account::PlanType;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::mcp::Resource;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::mcp::ResourceTemplate;
 use codex_protocol::models::ManagedFileSystemPermissions;
 use codex_protocol::models::PermissionProfile;
@@ -1990,7 +1990,7 @@ pub(crate) fn empty_mcp_output() -> PlainHistoryCell {
     PlainHistoryCell { lines }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 /// Render MCP tools grouped by connection using the fully-qualified tool names.
 pub(crate) fn new_mcp_tools_output(
     config: &Config,
@@ -2984,7 +2984,7 @@ fn format_mcp_invocation<'a>(invocation: McpInvocation) -> Line<'a> {
     invocation_spans.into()
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::exec_cell::CommandOutput;

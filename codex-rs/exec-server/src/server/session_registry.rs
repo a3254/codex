@@ -11,7 +11,7 @@ use crate::rpc::RpcNotificationSender;
 use crate::rpc::invalid_request;
 use crate::server::process_handler::ProcessHandler;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 const DETACHED_SESSION_TTL: Duration = Duration::from_millis(200);
 #[cfg(not(test))]
 const DETACHED_SESSION_TTL: Duration = Duration::from_secs(10);

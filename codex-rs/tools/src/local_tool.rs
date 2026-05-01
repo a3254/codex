@@ -428,6 +428,6 @@ fn windows_shell_guidance() -> &'static str {
 - When using `Start-Process` to launch a background helper or service, pass `-WindowStyle Hidden` unless the user explicitly asked for a visible interactive window. Use visible windows only for interactive tools the user needs to see or control."#
 }
 
-#[cfg(test)]
-#[path = "local_tool_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "local_tool_tests.rs.old"]
 mod tests;

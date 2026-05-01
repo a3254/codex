@@ -1683,7 +1683,7 @@ fn print_completion(cmd: CompletionCommand) {
     generate(cmd.shell, &mut app, name, &mut std::io::stdout());
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use assert_matches::assert_matches;

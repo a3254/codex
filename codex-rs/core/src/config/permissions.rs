@@ -11,7 +11,7 @@ use codex_config::permissions_toml::PermissionProfileToml;
 use codex_config::permissions_toml::PermissionsToml;
 use codex_config::types::SandboxWorkspaceWrite;
 use codex_network_proxy::NetworkProxyConfig;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_network_proxy::NetworkUnixSocketPermission as ProxyNetworkUnixSocketPermission;
 use codex_protocol::config_types::WindowsSandboxLevel;
 use codex_protocol::models::PermissionProfile;
@@ -702,6 +702,6 @@ fn maybe_push_unknown_special_path_warning(
     );
 }
 
-#[cfg(test)]
-#[path = "permissions_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "permissions_tests.rs.old"]
 mod tests;

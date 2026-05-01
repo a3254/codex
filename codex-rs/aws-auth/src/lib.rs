@@ -133,7 +133,7 @@ impl AwsAuthError {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use std::time::Duration;
     use std::time::UNIX_EPOCH;

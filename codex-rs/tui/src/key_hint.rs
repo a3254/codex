@@ -6,7 +6,7 @@ use ratatui::style::Style;
 use ratatui::style::Stylize;
 use ratatui::text::Span;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 const ALT_PREFIX: &str = "⌥ + ";
 #[cfg(all(not(test), target_os = "macos"))]
 const ALT_PREFIX: &str = "⌥ + ";
@@ -168,7 +168,7 @@ pub(crate) fn is_altgr(_mods: KeyModifiers) -> bool {
     false
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
 

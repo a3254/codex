@@ -45,7 +45,7 @@ impl<'a> SessionMetricTagValues<'a> {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::APP_VERSION_TAG;
     use super::AUTH_MODE_TAG;

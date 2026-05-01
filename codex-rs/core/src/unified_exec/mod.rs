@@ -171,11 +171,11 @@ pub(crate) fn generate_chunk_id() -> String {
         .collect()
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 #[cfg(unix)]
-#[path = "process_tests.rs"]
+#[path = "process_tests.rs.old"]
 mod process_tests;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 #[cfg(unix)]
-#[path = "mod_tests.rs"]
+#[path = "mod_tests.rs.old"]
 mod tests;

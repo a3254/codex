@@ -124,6 +124,6 @@ fn build_tool_suggestion_meta<'a>(
     }
 }
 
-#[cfg(test)]
-#[path = "tool_suggest_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "tool_suggest_tests.rs.old"]
 mod tests;

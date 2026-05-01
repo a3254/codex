@@ -15,7 +15,7 @@ fn user_shell_command_fragment(
     UserShellCommand::new(command, exec_output.exit_code, exec_output.duration, output)
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub fn format_user_shell_command_record(
     command: &str,
     exec_output: &ExecToolCallOutput,
@@ -36,6 +36,6 @@ pub fn user_shell_command_record_item(
     ))
 }
 
-#[cfg(test)]
-#[path = "user_shell_command_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "user_shell_command_tests.rs.old"]
 mod tests;

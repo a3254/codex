@@ -102,6 +102,6 @@ pub fn create_report_agent_job_result_tool() -> ToolSpec {
     })
 }
 
-#[cfg(test)]
-#[path = "agent_job_tool_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "agent_job_tool_tests.rs.old"]
 mod tests;

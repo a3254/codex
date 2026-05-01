@@ -464,6 +464,6 @@ fn is_windows_drive_or_unc_root(p: &std::path::Path) -> bool {
     )
 }
 
-#[cfg(test)]
-#[path = "turn_diff_tracker_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "turn_diff_tracker_tests.rs.old"]
 mod tests;

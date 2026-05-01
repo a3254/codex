@@ -67,7 +67,7 @@ pub(crate) fn sign_request(
     })
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 pub(crate) fn header_value(headers: &http::HeaderMap, name: &str) -> Option<String> {
     headers
         .get(name)

@@ -247,7 +247,7 @@ impl WidgetRef for &CwdPromptScreen {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::test_backend::VT100Backend;

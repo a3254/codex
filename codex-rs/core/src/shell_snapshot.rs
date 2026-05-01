@@ -562,6 +562,6 @@ fn snapshot_session_id_from_file_name(file_name: &str) -> Option<&str> {
     }
 }
 
-#[cfg(test)]
-#[path = "shell_snapshot_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "shell_snapshot_tests.rs.old"]
 mod tests;

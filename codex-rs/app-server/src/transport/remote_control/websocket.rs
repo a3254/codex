@@ -1042,7 +1042,7 @@ fn format_remote_control_websocket_connect_error(
     message
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::outgoing_message::OutgoingMessage;

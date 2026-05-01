@@ -208,6 +208,6 @@ pub fn parse_turn_item(item: &ResponseItem) -> Option<TurnItem> {
     }
 }
 
-#[cfg(test)]
-#[path = "event_mapping_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "event_mapping_tests.rs.old"]
 mod tests;

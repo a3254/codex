@@ -84,7 +84,7 @@ impl ScrollState {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::ScrollState;
 

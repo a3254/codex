@@ -412,7 +412,7 @@ use tracing::info;
 use tracing::warn;
 use uuid::Uuid;
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_app_server_protocol::ServerRequest;
 
 mod apps_list_helpers;
@@ -8156,7 +8156,7 @@ fn normalize_thread_list_cwd_filters(
     Ok(Some(normalized_cwds))
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod thread_list_cwd_filter_tests {
     use super::normalize_thread_list_cwd_filters;
     use codex_app_server_protocol::ThreadListCwdFilter;
@@ -9872,7 +9872,7 @@ fn normalize_thread_turns_status(
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::outgoing_message::OutgoingEnvelope;

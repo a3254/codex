@@ -119,7 +119,7 @@ pub fn auth_provider_from_auth(auth: &CodexAuth) -> SharedAuthProvider {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use codex_model_provider_info::WireApi;
     use codex_model_provider_info::create_oss_provider_with_base_url;

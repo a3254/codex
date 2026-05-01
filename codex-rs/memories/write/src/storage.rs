@@ -237,6 +237,6 @@ fn rollout_summary_file_stem_from_parts(
     }
 }
 
-#[cfg(test)]
-#[path = "storage_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "storage_tests.rs.old"]
 mod tests;

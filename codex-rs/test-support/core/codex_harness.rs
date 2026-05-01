@@ -781,11 +781,11 @@ pub struct TestCodexHarness {
 
 impl TestCodexHarness {
     pub async fn new() -> Result<Self> {
-        Self::with_builder(test_codex()).await
+        Self::with_builder(codex_harness()).await
     }
 
     pub async fn with_config(mutator: impl FnOnce(&mut Config) + Send + 'static) -> Result<Self> {
-        Self::with_builder(test_codex().with_config(mutator)).await
+        Self::with_builder(codex_harness().with_config(mutator)).await
     }
 
     pub async fn with_builder(mut builder: TestCodexBuilder) -> Result<Self> {
@@ -1009,7 +1009,7 @@ fn function_call_output<'a>(bodies: &'a [Value], call_id: &str) -> &'a Value {
     panic!("function_call_output {call_id} not found");
 }
 
-pub fn test_codex() -> TestCodexBuilder {
+pub fn codex_harness() -> TestCodexBuilder {
     TestCodexBuilder {
         config_mutators: vec![],
         auth: CodexAuth::from_api_key("dummy"),

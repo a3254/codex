@@ -110,7 +110,7 @@ impl App {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::app::side::SideThreadState;

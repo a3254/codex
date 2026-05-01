@@ -8,10 +8,10 @@ use std::collections::BTreeSet;
 
 use codex_app_server_protocol::McpServerStartupState;
 use codex_app_server_protocol::McpServerStatusUpdatedNotification;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::McpStartupCompleteEvent;
 use codex_protocol::protocol::McpStartupStatus;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::McpStartupUpdateEvent;
 
 use super::ChatWidget;

@@ -1,6 +1,6 @@
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::outgoing_message::OutgoingEnvelope;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use crate::outgoing_message::OutgoingMessage;
 use crate::outgoing_message::OutgoingMessageSender;
 use codex_app_server_protocol::ServerNotification;
@@ -12,7 +12,7 @@ use codex_protocol::ThreadId;
 use std::collections::HashMap;
 use std::sync::Arc;
 use tokio::sync::Mutex;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use tokio::sync::mpsc;
 use tokio::sync::watch;
 
@@ -450,7 +450,7 @@ fn loaded_thread_status(runtime: &RuntimeFacts) -> ThreadStatus {
     ThreadStatus::Idle
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use codex_utils_absolute_path::test_support::PathBufExt;

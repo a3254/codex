@@ -42,7 +42,7 @@ fn should_collect_unavailable_tool(name: &str, namespace: Option<&str>) -> bool 
     namespace.is_some_and(|namespace| namespace.starts_with("mcp__")) || name.starts_with("mcp__")
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

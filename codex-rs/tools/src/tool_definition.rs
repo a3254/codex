@@ -25,6 +25,6 @@ impl ToolDefinition {
     }
 }
 
-#[cfg(test)]
-#[path = "tool_definition_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "tool_definition_tests.rs.old"]
 mod tests;

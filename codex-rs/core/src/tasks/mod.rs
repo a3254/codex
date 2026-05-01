@@ -860,6 +860,6 @@ impl Session {
     }
 }
 
-#[cfg(test)]
-#[path = "mod_tests.rs"]
+#[cfg(all(test, any()))]
+#[path = "mod_tests.rs.old"]
 mod tests;

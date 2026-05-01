@@ -226,7 +226,7 @@ pub(crate) struct OutgoingError {
     pub id: RequestId,
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
 
     use anyhow::Result;

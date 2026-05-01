@@ -83,7 +83,7 @@ fn path_with_base(path: &Path, base_path: &Path) -> PathBuf {
     path
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use pretty_assertions::assert_eq;

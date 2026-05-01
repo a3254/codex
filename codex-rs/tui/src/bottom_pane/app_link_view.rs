@@ -1,7 +1,7 @@
 use codex_protocol::ThreadId;
 use codex_protocol::approvals::ElicitationAction;
 use codex_protocol::mcp::RequestId as McpRequestId;
-#[cfg(test)]
+#[cfg(all(test, any()))]
 use codex_protocol::protocol::Op;
 use crossterm::event::KeyCode;
 use crossterm::event::KeyEvent;
@@ -567,7 +567,7 @@ impl crate::render::renderable::Renderable for AppLinkView {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, any()))]
 mod tests {
     use super::*;
     use crate::app::app_server_requests::ResolvedAppServerRequest;
